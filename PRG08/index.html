@@ -1,0 +1,1896 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/PRG08/">
+      
+      
+        <link rel="prev" href="../PRG07/">
+      
+      
+        <link rel="next" href="../PRG09/">
+      
+      
+      <link rel="icon" href="../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>UD8. Programació Orientada a Objectes. Classes amb atributs. - Programació 1DAMsp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="UD8. Programació Orientada a Objectes. Classes amb atributs. - Programació 1DAMsp" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG08.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://prg-eljust.github.io/prg/PRG08/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="UD8. Programació Orientada a Objectes. Classes amb atributs. - Programació 1DAMsp" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG08.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud8-programacio-orientada-a-objectes-classes-amb-atributs" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Programació 1DAMsp" class="md-header__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAMsp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD8. Programació Orientada a Objectes. Classes amb atributs.
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG01/" class="md-tabs__link">
+        
+  
+    
+  
+  UD1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG02/" class="md-tabs__link">
+        
+  
+    
+  
+  UD2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG03/" class="md-tabs__link">
+        
+  
+    
+  
+  UD3
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG04/" class="md-tabs__link">
+        
+  
+    
+  
+  UD4
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG05/" class="md-tabs__link">
+        
+  
+    
+  
+  UD5
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG06/" class="md-tabs__link">
+        
+  
+    
+  
+  UD6
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG07/" class="md-tabs__link">
+        
+  
+    
+  
+  UD7
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  UD8
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG09/" class="md-tabs__link">
+        
+  
+    
+  
+  UD9
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG10/" class="md-tabs__link">
+        
+  
+    
+  
+  UD10
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG11/" class="md-tabs__link">
+        
+  
+    
+  
+  UD11
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Programació 1DAMsp" class="md-nav__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAMsp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UD8
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    UD8
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-la-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a la POO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-i-objectes-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes i objectes en Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes i objectes en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicio-de-la-classe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definició de la classe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicio-dels-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definició dels objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-dels-atributs-dels-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús dels atributs dels objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-dels-propis-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús dels propis objectes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ús dels propis objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copiar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copiar objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparar objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passar-un-objecte-a-una-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passar un objecte a una funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retornar-un-objecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retornar un objecte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-niuades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes niuades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectors-dobjectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectors d'objectes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio-a-la-poo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció a la POO
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-i-objectes-en-java" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes i objectes en Java
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Classes i objectes en Java">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definicio-de-la-classe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definició de la classe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#definicio-dels-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definició dels objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-dels-atributs-dels-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús dels atributs dels objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-dels-propis-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ús dels propis objectes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ús dels propis objectes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#copiar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copiar objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparar-objectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comparar objectes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#passar-un-objecte-a-una-funcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passar un objecte a una funció
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retornar-un-objecte" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retornar un objecte
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-niuades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes niuades
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vectors-dobjectes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Vectors d'objectes
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ud8-programacio-orientada-a-objectes-classes-amb-atributs">UD8. Programació Orientada a Objectes. Classes amb atributs</h1>
+<h2 id="introduccio-a-la-poo">Introducció a la POO</h2>
+<p><strong>Un mon orientat a objectes</strong></p>
+<p>Tot el que ens envolta són objectes:</p>
+<p><img alt="Objectes quotidians" class="center" src="../img/ud8/objectes.png" /></p>
+<p>I, com podem veure, cada <strong>objecte</strong> és d'una <strong>classe</strong> en concret:</p>
+<p><img alt="Classes d'objectes" class="center" src="../img/ud8/classesObjectes.png" /></p>
+<p><strong>Què és la Programació Orientada a Objectes (POO)?</strong></p>
+<p>És una forma de programar (un paradigma de programació) que es basa precissament en això: en els objectes. Primer definiriem una classe i, a partir d'aquesta, podrem crear els objectes d'eixa classe (igual com creem variables d'un tipus determinat).</p>
+<p><strong>Què es posa en una classe?</strong></p>
+<p>En una classe posarem allò que volem que descriga els objectes d'eixa classe. Si ens adonem, podem descriure un objecte per "com és" i "què pot fer":</p>
+<ul>
+<li>Com és l'objectes? Voldrem indicar unes característiques o <strong>atributs</strong>.</li>
+<li>Què pot fer l'objecte? Voldrem indicar unes operacions o <strong>mètodes</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Aclariment</p>
+<p>Per anar pas a pas, en aquest tema només vorem els <strong>atributs</strong> de les classes. Els <strong>mètodes</strong> els veurem en el tema següent.</p>
+</div>
+<p><strong>Exemple gràfic d'una classe i els seus objectes</strong></p>
+<p>Suposem que volem fer un programa sobre la gestió dels alumnes de l'institut. Cada alumne és un objecte.</p>
+<ul>
+<li>Com és cada alumne? Voldríem saber el seu codi, nom, domicili i curs.</li>
+<li>Què pot fer cada alumne? Matricular-se, examinar-se...</li>
+</ul>
+<p>Si l'institut no estiguera, per a guardar les dades de cada alumne caldrien fitxer amb la mateixa estructura (codi, nom, domicili i curs). Per tant, necessitaríem una <strong>plantilla</strong> on estiguera eixa estructura i fer <strong>fotocòpies</strong> d'ella:</p>
+<p><img alt="Exemple" class="center" src="../img/ud8/exemple.png" /></p>
+<p><strong>Terminologia de la POO</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>CONCEPTES POO</strong></th>
+<th style="text-align: center;"><strong>TERMINOLOGIA INFORMAL</strong></th>
+<th style="text-align: center;"><strong>ANALOGIA EN LA VIDA REAL</strong></th>
+<th style="text-align: center;"><strong>EXEMPLES</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>Classe</strong></td>
+<td style="text-align: center;">Tipus</td>
+<td style="text-align: center;">Plantilla plastificada</td>
+<td style="text-align: center;"><em>Alumne</em></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Objectes</strong></td>
+<td style="text-align: center;">Variables</td>
+<td style="text-align: center;">Fotocòpies a emplenar</td>
+<td style="text-align: center;"><em>alu1, alu2, alu3</em></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Atributs</strong></td>
+<td style="text-align: center;">Variables membre</td>
+<td style="text-align: center;">Apartats de la fitxa</td>
+<td style="text-align: center;"><em>num, nom, dom, curs</em></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Mètodes</strong></td>
+<td style="text-align: center;">Funcions i proced.</td>
+<td style="text-align: center;">Accions sobre la fotocòpia</td>
+<td style="text-align: center;"><em>matricularAlumne(), canviDeCurs()...</em></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Estat de l'objecte</strong></td>
+<td style="text-align: center;">Valors dels atributs</td>
+<td style="text-align: center;">El que s'escriu en la fotocòpia</td>
+<td style="text-align: center;"><em>num = 3, nom = "Pep"</em></td>
+</tr>
+</tbody>
+</table>
+<p>Més endavant vorem altres conceptes relacionats amb la POO, com herència, abtracció, polimorfisme, encapsulament, acoblament i cohesió.</p>
+<h2 id="classes-i-objectes-en-java">Classes i objectes en Java</h2>
+<p>Com ja hem dit, per a poder declarar un <strong>objecte</strong>, primer necessitem crear una <strong>classe</strong> (plantilla). Després ja podrem definir els nostres objectes en base a eixa classe.</p>
+<h3 id="definicio-de-la-classe">Definició de la classe</h3>
+<p>Anem a vore com podem definir una classe en Java. Però com ja hem dit, en este tema només vorem una classe com un conjunt d'atributs. En el tema següent dins la classe posarem també les operacions o mètodes que es poden fer en cada objecte.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kd">class</span> <span class="nc">Alumne</span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cicle</span><span class="p">;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">curs</span><span class="p">;</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>La classe <em>Alumne</em> és la plantilla a partir de la qual crearem objectes on guardarem les dades de cada alumne. Per convenció, el nom de la classe sempre començarà en majúscula.</li>
+</ol>
+</div>
+<p><strong>Sintaxi</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span>
+<span class="normal"><a href="#__codelineno-1-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kd">class</span> <span class="nc">NomClasse</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="o">[</span><span class="kd">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kd">private</span><span class="o">]</span><span class="w"> </span><span class="n">tipus</span><span class="w"> </span><span class="n">camp1</span><span class="p">;</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="o">[</span><span class="kd">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kd">private</span><span class="o">]</span><span class="w"> </span><span class="n">tipus</span><span class="w"> </span><span class="n">camp2</span><span class="p">;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="p">...</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="o">[</span><span class="kd">public</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="kd">private</span><span class="o">]</span><span class="w"> </span><span class="n">tipus</span><span class="w"> </span><span class="n">campN</span><span class="p">;</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Ja vorem si hem de posar que  un atribut és <em>public</em> o <em>private</em>.</li>
+</ol>
+<p>De moment crearem les classes en el mateix fitxer on tenim el <strong><em>main</em></strong>, fora de la classe principal, però ja vorem que convindria que cada classe anara en un fitxer (que tindria el mateix nom de la classe).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">ProjecteMeu.java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kd">class</span> <span class="nc">Alumne</span><span class="p">{</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cicle</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">curs</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="kd">class</span> <span class="nc">ProjecteMeu</span><span class="p">{</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">ctatic</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">){</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="p">...</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<details class="question">
+<summary>Exercici 1. Definir classes en Java</summary>
+<p>Crea un projecte de nom Proves i defineix en ell les classes corresponents a les següents estructures de dades:</p>
+<ol>
+<li>Una data: dia, mes i any.</li>
+<li>Un temps: hores, minuts, segons i centèsimes.</li>
+<li>Un rectangle: cantó superior dreta (x1, y1) i cantó inferior esquerra (x2, y2).</li>
+<li>Un concursant: nom complet, nom artístic i any de naixement.</li>
+<li>Un CD d'àudio: grup, títol del disc, any publicació, quantitat de cançons.</li>
+<li>Un nom complet de persona: nom, primer cognom i segon cognom.</li>
+<li>Un número de telèfon: prefix i resta del número.</li>
+<li>Un domicili: carrer, número, pis, porta, codi postal, població i comarca.</li>
+<li>Un color RGB: format per 3 enters (quantitat de roig, de verd i de blau).</li>
+</ol>
+</details>
+<h3 id="definicio-dels-objectes">Definició dels objectes</h3>
+<p>Abans hem vist com crear en Java la <strong>classe</strong> ("plantilla") <em>Alumne</em>. Ara volem guardar les dades de cada alumne. Per a això crearem <strong>objectes</strong> ("fotocopies") a partir d'eixa classe.</p>
+<p>En Java, esta definició d'objectes es fa amb la paraula clau <strong>new</strong> (la que usem per als vectors, ja que també són objectes) i indicant la classe a partir de la qual es creen.</p>
+<p><img alt="Formes de crear objectes" class="center" src="../img/ud8/formesCrearObjectes.png" /></p>
+<details class="example">
+<summary>Exemple bàsic</summary>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kd">class</span> <span class="nc">Alumne</span><span class="p">{</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cicle</span><span class="p">;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">curs</span><span class="p">;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="p">}</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="kd">class</span> <span class="nc">ProjecteMeu</span><span class="p">{</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">args</span><span class="o">[]</span><span class="p">){</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">alu1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">alu2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">alu3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Amb la paraula clau <strong>new</strong> creem un objecte de la classe <em>Alumne</em> i el guardem en la variable <em>alu1</em>. A partir d'ara, <em>alu1</em> és un objecte de la classe <em>Alumne</em>. El mateix per a <em>alu2</em> i <em>alu3</em>.</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 2. Definir objectes en Java</summary>
+<p>En el <strong>main</strong> del projecte Proves, crea els objectes corresponents a les classes que has definit en l'exercici anterior. Practica amb les 2 forme vistes.</p>
+</details>
+<h3 id="us-dels-atributs-dels-objectes">Ús dels atributs dels objectes</h3>
+<p>Ja hem creat la classe (el nou "tipus") i els objectes ("variables" d'eixe nou tipus). Ara anem a utilitzar eixos objectes.</p>
+<p>Per a accedir als atributs d'un objecte, utilitzarem l'operador punt (<strong>.</strong>). Així, per a accedir a l'atribut <em>num</em> de l'objecte <em>alu1</em>, farem <em>alu1.num</em>.</p>
+<details class="example">
+<summary>Exemples d'usos d'atributs</summary>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="p">...</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;INTRODUEIX LES DADES DE L&#39;ALUMNE:&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Número: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">alu1</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">funcionsIO</span><span class="p">.</span><span class="na">readIntC</span><span class="p">();</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Nom: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">alu1</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">funcionsIO</span><span class="p">.</span><span class="na">readString</span><span class="p">();</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="s">&quot;Curs: &quot;</span><span class="p">);</span><span class="w"> </span><span class="n">alu1</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">funcionsIO</span><span class="p">.</span><span class="na">readIntC</span><span class="p">();</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="n">alu1</span><span class="p">.</span><span class="na">cicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DAM&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//(2)!</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="p">...</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="k">if</span><span class="p">(</span><span class="n">alu1</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">totAprovat</span><span class="p">){</span><span class="w"> </span><span class="c1">//(3)!</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;L&#39;alumne &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">alu1</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; passa a segon curs.&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">//(4)!</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="n">alu1</span><span class="p">.</span><span class="na">curs</span><span class="o">++</span><span class="p">;</span><span class="w"> </span><span class="c1">//(5)!</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Assignació per teclat</li>
+<li>Assignació directa</li>
+<li>Consulta</li>
+<li>Concatenació, impressió...</li>
+<li>Autoincrement</li>
+</ol>
+</details>
+<p>Veiem que els atributs dels objectes es poden utilitzar com qualsevol variable "normal": assignar valors, llegir-los, mostrar-los per pantalla, operar amb ells...</p>
+<details class="example">
+<summary>Exemple complet de definició de classe, objectes i ús dels atributs</summary>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span>
+<span class="normal"><a href="#__codelineno-5-21">21</a></span>
+<span class="normal"><a href="#__codelineno-5-22">22</a></span>
+<span class="normal"><a href="#__codelineno-5-23">23</a></span>
+<span class="normal"><a href="#__codelineno-5-24">24</a></span>
+<span class="normal"><a href="#__codelineno-5-25">25</a></span>
+<span class="normal"><a href="#__codelineno-5-26">26</a></span>
+<span class="normal"><a href="#__codelineno-5-27">27</a></span>
+<span class="normal"><a href="#__codelineno-5-28">28</a></span>
+<span class="normal"><a href="#__codelineno-5-29">29</a></span>
+<span class="normal"><a href="#__codelineno-5-30">30</a></span>
+<span class="normal"><a href="#__codelineno-5-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.io.*</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="c1">//******** CLASSE Alumne ********</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="kd">class</span> <span class="nc">Alumne</span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">cognom</span><span class="p">;</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">telefons</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">String</span><span class="o">[</span><span class="mi">3</span><span class="o">]</span><span class="p">;</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">edat</span><span class="p">;</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="p">}</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="c1">//******** CLASSE Pública Principal ********</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">NomPrograma</span><span class="p">{</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="w">        </span><span class="c1">// Definicició d&#39;objectes</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span><span class="w"> </span><span class="c1">//(2)!</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">        </span><span class="c1">// Ús dels atributs</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Miquel Josep&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">cognom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Garcia&quot;</span><span class="p">;</span><span class="w"> </span><span class="c1">//(3)!</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">telefons</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;96282287&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">telefons</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;96283613&quot;</span><span class="p">;</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24"></a>
+<a id="__codelineno-5-25" name="__codelineno-5-25"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="na">nom</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">a1</span><span class="p">.</span><span class="na">cognom</span><span class="p">);</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27"></a><span class="w">        </span><span class="k">for</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">&lt;</span><span class="n">a1</span><span class="p">.</span><span class="na">telefons</span><span class="p">.</span><span class="na">length</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">){</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">a1</span><span class="p">.</span><span class="na">telefons</span><span class="o">[</span><span class="n">i</span><span class="o">]</span><span class="p">);</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span>
+<a id="__codelineno-5-31" name="__codelineno-5-31"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Definirem la classe fora de la classe principal (encara que en un futur cada classe anirà en un fitxer diferent).</li>
+<li>Crearem els objectes <em>a1</em> i <em>a2</em> de la classe <em>Alumne</em> dins del <strong>main</strong> (o de qualsevol mètode).</li>
+<li>Assignarem els atributs.</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 3. Ús dels atributs dels objectes</summary>
+<p>En el projecte <em>Proves</em> assigna valors als atributs dels objectes que has creat i mostra'ls per pantalla.</p>
+</details>
+<h3 id="us-dels-propis-objectes">Ús dels propis objectes</h3>
+<p>Ja hem vist com treballar amb els atributs dels objectes. Ara vorem com tractar els objectes en conjunt (sense indicar els atributs).</p>
+<p>Quan usem un objecte (sense indicar cap atribut), estarem accedint a <strong>l'adreça de memòria</strong> on estan es dades de l'objecte, igual que passa en els arrays.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kd">class</span> <span class="nc">Alumne</span><span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">num</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">edat</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">curs</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="p">}</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="kd">class</span> <span class="nc">ProgramaPrincipal</span><span class="p">{</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">){</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">a1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span><span class="w"> </span><span class="c1">// IMAGINEM QUE SE LI ASSIGNA L&#39;ADREÇA 1002</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">        </span><span class="n">Alumne</span><span class="w"> </span><span class="n">a2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Alumne</span><span class="p">();</span><span class="w"> </span><span class="c1">// IMAGINEM QUE SE LI ASSIGNA L&#39;ADREÇA 1007</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">18</span><span class="p">;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">        </span><span class="n">a1</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">        </span><span class="n">a2</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">        </span><span class="n">a2</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">22</span><span class="p">;</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">        </span><span class="n">a2</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">        </span><span class="p">...</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Exemple assignació memoria objectes" class="center" src="../img/ud8/exempleUsObjectes.png" /></p>
+</div>
+<p>Per tant, hem d'anar en compte quan fem coses com:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">if</span><span class="p">(</span><span class="n">alu_1</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">alu_2</span><span class="p">)</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">alu_1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_2</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">alu_1</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Segurament no estarem fent allò que pretenem ja que estem comparant les adreces de memòria dels objectes (1002 != 1007), no els seus valors.</li>
+</ol>
+<h4 id="copiar-objectes">Copiar objectes</h4>
+<p>Què passa si copiem objectes amb <strong><em>alu_1 = alu_2</em></strong>?</p>
+<p><img alt="Copia de l'adreça" class="center" src="../img/ud8/copiarObjectes1.png" /></p>
+<p><strong>PROBLEMA</strong>: En realitat, el que estem fent és copiar l'adreça de memòria, no les dades. Per tant, si canviem un atribut d'un dels objectes, canviarem l'atribut de l'altre objecte també.</p>
+<p><strong>SOLUCIÓ</strong>: Si el que volíem fer és una còpia dels valors de l'objecte, hauríem de copiar els atributs un a un.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">alu_1</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">num</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">alu_1</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">edat</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">alu_1</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">curs</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Copia correca" class="center" src="../img/ud8/copiarObjectes2.png" /></p>
+<h4 id="comparar-objectes">Comparar objectes</h4>
+<p>Què passa si comparem objectes amb <strong><em>if(alu_1 == alu_2)</em></strong>?</p>
+<ul>
+<li>Només serà <strong><em>true</em></strong> si els dos objectes apunten a la mateixa adreça de memòria.</li>
+</ul>
+<p><img alt="Comparació d'objectes" class="center" src="../img/ud8/compararObjectes.png" /></p>
+<ul>
+<li>Però si apunten a adreces diferents, encara que tinguin els mateixos valors, serà <strong><em>false</em></strong>.</li>
+</ul>
+<p><img alt="Comparació d'objectes" class="center" src="../img/ud8/comparaObjectes.png" /></p>
+<p><strong>SOLUCIÓ</strong>: Si el que volíem fer és comparar els valors dels atributs, hauríem de comparar-los un a un.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="k">if</span><span class="p">(</span><span class="n">alu_1</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">num</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">alu_1</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">edat</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">alu_1</span><span class="p">.</span><span class="na">curs</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">alu_2</span><span class="p">.</span><span class="na">curs</span><span class="p">){</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="p">...</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Representació gràfica dels objectes</p>
+<p>Per a recalcar que un objecte no guarda directament els valors dels seus atributs sinó una adreça a elles, a partir d'ara ho representarem gràficament amb una fletxa.</p>
+<p>Per exemple, tenim 3 objectes de tipus <em>Alumne</em>. Imaginem que en un moment donat tenim els següents valors:</p>
+<p><img alt="Representació gràfica dels objectes" class="center" src="../img/ud8/representacioGraficaObjectes.png" /></p>
+</div>
+<h4 id="passar-un-objecte-a-una-funcio">Passar un objecte a una funció</h4>
+<p>Podem passar un objecte com a paràmetre a una funció. I estarem passant-lo <strong>per referència</strong> (no per valor). Com ja vam vore, això significa que si canviem els valors dels atributs de l'objecte dins de la funció, aquests canvis es veuran fora de la funció.</p>
+<p><img alt="Pas d'objectes en funcions" class="center" src="../img/ud8/pasObjectes.png" /></p>
+<details class="question">
+<summary>Exercici 4. Passar objectes a procediments</summary>
+<p>En el projecte <em>Proves</em>, crea els procediments <strong><em>llegirCD</em></strong> i <strong><em>imprimirCD</em></strong> semblants a l'exemple anterior, passant un CD com a paràmetre. Crida-les des del <strong>main</strong>.</p>
+</details>
+<h4 id="retornar-un-objecte">Retornar un objecte</h4>
+<p>Una funció també pot retornar un objecte. Veiem un exemple on tenim dos funcions que retornen un objecte. Una que no li passa cap paràmetre i una altra que sí.</p>
+<p><img alt="Exemple de pas d'objecte" class="center" src="../img/ud8/exemplePasObjectes.png" /></p>
+<details class="question">
+<summary>Exercici 5</summary>
+<p>Modifica el projecte <em>Proves</em>:</p>
+<p>Crea el procediment <strong><em>incrementaAny</em></strong>, al qual li passes una data (de la classe Data) i t'incrementa l'any en 1 (però no mostra res). És a dir, cal fer el següent:</p>
+<ul>
+<li>Fes el procediment al qual li passes com a paràmetre una data (dis-li de nom: data). Incrementa en 1 l'any de la data.</li>
+<li>En el <em>main</em>, crea una data (dis-li de nom: d1), posa-li valors i crida al procediment anterior passant-li la data <em>d1</em>.</li>
+<li>Comprova que l'any de la data <em>d1</em> ha canviat (mostra-ho per pantalla).</li>
+</ul>
+</details>
+<details class="question">
+<summary>Exercici 6. Retornar objectes</summary>
+<p>Modifica el projecte <em>Proves</em>:</p>
+<p>Funció <strong><em>incrementaAnyEnDataNova</em></strong>, a la qual li passes una data (de la classe Data) i et retorna una nova data amb l'any incrementat en 1. És a dir, cal fer el següent:</p>
+<ul>
+<li>Crear una altra data, de nom <em>dNova</em> (declarar-la i reservar-li memòria amb <em>new</em>).</li>
+<li>Copiar en eixa altra data (<em>dNova</em>) les dades de la data del paràmetre però amb un any més.</li>
+<li>Retornar eixa nova data.</li>
+</ul>
+<p>En el <em>main</em> crea una data (dis-li de nom: <em>dOrigen</em>), posa-li valors i crida a la funció <em>incrementaAnyEnDataNova</em> passant-li eixa data com a paràmetre. Recorda que hauràs d'arreplegar la data retornada. Per a això, caldrà crear-te prèviament una altra data (dis-li de nom: <em>dDesti</em>), la qual no caldrà que li reserves memòria amb el <em>new</em>.</p>
+<p>Comprova en el <em>main</em> que la nova data (<em>dDesti</em>) té els valors esperats: els mateixos que <em>dOrigen</em> però amb un any més (mostra-ho per pantalla).</p>
+</details>
+<h2 id="classes-niuades">Classes niuades</h2>
+<p>Ja hem vist que una classe és una estructura que conté distints atributs. Eixos atributs poden ser variables (d'un cert tipus)... o objectes (d'una certa classe).</p>
+<p>És com si tinguérem una classe dins d'altra. Eixa classe de dins es diu que és una <strong><em>classe niuada</em></strong>.</p>
+<p><img alt="Classes niuades" class="center" src="../img/ud8/classeNiuada.png" /></p>
+<p><strong>IMPLEMENTACIÓ</strong></p>
+<p>Primer crearem la classe <em>Domicili</em>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kd">class</span> <span class="nc">Domicili</span><span class="p">{</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">carrer</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">codPostal</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">poble</span><span class="p">;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Esta classe podrà estar definida dins la classe <em>Client</em> però nosaltres la posarem fora (per si volguérem crear objectes de la classe <em>Domicili</em>).</li>
+</ol>
+<p>A continuació crearem la classe <em>Client</em>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kd">class</span> <span class="nc">Client</span><span class="p">{</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">dni</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="n">Domicili</span><span class="w"> </span><span class="n">dom</span><span class="p">;</span><span class="w"> </span><span class="c1">//(1)!</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">deute</span><span class="p">;</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>O bé: <strong>Domicili dom = new Domicili();</strong></li>
+</ol>
+<p>Ara vorem la diferència d'indicar o no la reserva de memòria per a la subclasse.</p>
+<ol>
+<li>Sense instanciar l'atribut objecte (és a dir, sense <em>new</em>):</li>
+</ol>
+<p><img alt="Sense instanciar l'atribut Objecte" class="center" src="../img/ud8/senseInstanciar.png" /></p>
+<ol>
+<li>Instanciant l'atribut objecte (és a dir, amb <em>new</em>):</li>
+</ol>
+<p><img alt="Instanciant l'atribut objecte" class="center" src="../img/ud8/instanciant.png" /></p>
+<p>A la vista d'això... quan definirem un atribut objecte amb el <em>new</em> i quan sense <em>new</em>?</p>
+<ul>
+<li>
+<p>Si anem a tindre molts objectes de la classe <em>Client</em> però només a uns pocs d'ells els posarem domicili, reservarem memòria per al domicili només als que ho necessiten. Per tant, <strong>sense <em>new</em></strong>.</p>
+</li>
+<li>
+<p>Si tots els objectes de la classe <em>Client</em> han de tindre un domicili, reservarem memòria per a tots ells. Per tant, <strong>amb <em>new</em></strong>.</p>
+</li>
+</ul>
+<p><img alt="Notació als exemples" class="center" src="../img/ud8/notaFletxes.png" /></p>
+<details class="question">
+<summary>Exercici 7. Classes niuades</summary>
+<p>En el projecte <em>Proves</em>:</p>
+<ol>
+<li>
+<p>Crea la classe <em>Cercle</em> amb els atributs <em>radi</em>, <em>colorVora</em> i <em>colorDins</em>, tenint en compte que els colors han de ser objectes de la classe <em>Color</em> que ja estava definida. Fes-ho de la primera forma que hem vist: la que en la definició de la classe NO es reserva memòria per a la subclasse.</p>
+</li>
+<li>
+<p>Després, en el <em>main</em> crea l'objecte <em>cercle1</em> (de la classe <em>Cercle</em>) i ompli'l de dades qualseol.</p>
+</li>
+<li>
+<p>Mostra per pantalla les dades de <em>cercle1</em>.</p>
+</li>
+<li>
+<p>Executa el projecte per vore que funciona.</p>
+</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 8</summary>
+<p>Crea el projecte <em>Institut</em>. A continuació:</p>
+<ol>
+<li>
+<p>Copia en ell les classes <em>NomComplet</em>, <em>Domicili</em> i <em>TelFix</em> (que tenies en el projecte <em>Proves</em>).</p>
+</li>
+<li>
+<p>Crea la classe <em>Alumne</em> que tinga 4 atributs: un nom complet, un domicili, un telèfon del pare i un telèfon de la mare, basant-te en les classes anteriors. És a dir: caldrà fer ús de les classes niuades. Com de tots els alumnes és normal guardar eixes dades, ho farem de la segona forma que hem vist: la que en la definició de la classe es reserva memòria per a la subclasse.</p>
+</li>
+<li>
+<p>Crea la classe <em>Ordinador</em>, sabent que de cadascun voldrem guardar el número de sèrie (enter), la cpu (String), ram (enter) i dd (enter) i, a més, qui és l'alumne que l'utilitza. L'alumne serà un objecte de la classe <em>Alumne</em>. És a dir: cadrà fer ús de les classes niuades. Com no tots els ordinadors tenen un alumne assignat, ho farem de la primera forma que hem vist: la que en la definició de la classe NO es reserva memòria per a la subclasse.</p>
+</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 9</summary>
+<p>En el projecte <em>Institut</em>, en el <em>main</em>:</p>
+<ol>
+<li>
+<p>Crea 2 alumnes (<em>alu1</em> i <em>alu2</em>) i ompli'ls de dades qualsevol.</p>
+</li>
+<li>
+<p>Crea 3 ordinadors (<em>ord1</em>, <em>ord2</em> i <em>ord3</em>), sense omplir-los de dades.</p>
+</li>
+<li>
+<p>Ompli <em>ord1</em> de dades qualsevol però sense assignar-li cap alumne.</p>
+</li>
+<li>
+<p>Ompli <em>ord2</em> de dades qualsevol assignant-li les dades d'un nou alumne.</p>
+</li>
+<li>
+<p>Assigna a l'ordinador 1 l'alumne 2.</p>
+</li>
+<li>
+<p>Canvia el número de telèfon del pare de l'alumne 2 (per exemple 5555555)</p>
+</li>
+<li>
+<p>Mostra per pantalla el telèfon del pare de l'alumne que està usant l'ordinador 1. No ho faces a partir de l'alumne 2, sinó a partir de l'ordinador 1. Comprova que ha canviat (ha de mostrar 5555555).</p>
+</li>
+<li>
+<p>Posa un <strong><em>breakpoint</em></strong> en el punt 7 i observa les variables del programa per comprovar com s'han anat omplint els objectes.</p>
+</li>
+</ol>
+</details>
+<h2 id="vectors-dobjectes">Vectors d'objectes</h2>
+<p>L'ús simultani de vectors i objectes ens proporciona una eina potent per a guardar i manipular informació.</p>
+<p>Per exemple, suposem que volem guardar les dades dels N clients d'una empresa:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><strong>0</strong></th>
+<th style="text-align: center;"><strong>1</strong></th>
+<th style="text-align: center;"><strong>2</strong></th>
+<th style="text-align: center;"><strong>...</strong></th>
+<th style="text-align: center;"><strong>N-1</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>dni</strong></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">30</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>nom</strong></td>
+<td style="text-align: center;">Pep</td>
+<td style="text-align: center;">Pepa</td>
+<td style="text-align: center;">Pepet</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>deute</strong></td>
+<td style="text-align: center;">500.0</td>
+<td style="text-align: center;">0.0</td>
+<td style="text-align: center;">200.0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>Abans de vore este tema, haguérem implementat això com 3 vectors paral·lels:</p>
+<p><img alt="Amb vectors" class="center" src="../img/ud8/ambVectors.png" /></p>
+<p>Però ara ho implementarem com un únic vector... de clients. És a dir, d'objectes de la classe Client:</p>
+<p><img alt="Únic vector de Clients" class="center" src="../img/ud8/unicVectorClients.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Compte!</p>
+<p>El vector és d'objectes. Recordem que un objecte és només una referència i cal reservar memòria per a eixe objecte. Per tant, el <em>new</em> del vector d'objectes només reserva espai per a les referencies i <strong>caldrà fer un new per a cada objecte del vector</strong>. Ara ho vorem amb la implementació d'un exemple.</p>
+</div>
+<details class="example">
+<summary>Exemple de creació i ús d'un vector d'objectes (100 clients)</summary>
+<p><img alt="Exemple vector objectes" class="center" src="../img/ud8/exempleVectorObjectes.png" /></p>
+<p><strong>NOTA</strong>: també es poden crear matrius n-dimensionals d'objectes, o objectes que tenen alguna matriu com a atribut...</p>
+</details>
+<details class="question">
+<summary>Exercici 10. Arrays d'objectes</summary>
+<p><strong>BIBLIOTECA</strong></p>
+<p>Una biblioteca vol emmagatzemar informació de cada llibre que té:</p>
+<ul>
+<li>Codi de referència (alfanumèric)</li>
+<li>Autors (màxim, 3)</li>
+<li>Títol</li>
+<li>Editorial</li>
+<li>Any de publicació</li>
+</ul>
+<hr />
+<ol>
+<li>Implementa l'estructura necessària per a guardar 100 llibres.</li>
+<li>Reserva memòria per a cadascun d'eixos llibres.</li>
+<li>Dona d'alta un llibre qualsevol.</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 11</summary>
+<p><strong>LLOGUER DE COTXES</strong></p>
+<p>Una empresa de lloguer de cotxes vol tindre guardada la informació de cadascun dels cotxes:</p>
+<ul>
+<li>Matrícula (lletres i número)</li>
+<li>Marca</li>
+<li>Model</li>
+<li>Data de compra (una la classe <em>Data</em> que ja tenim definida)</li>
+<li>Kilòmetres</li>
+</ul>
+<hr />
+<ol>
+<li>Implementa l'estructura necessària per a guardar 100 cotxes (però no reserves memòria per als cotxes).</li>
+<li>Fes un bucle per a omplir les dades dels cotxes.</li>
+<li>Mostra les dades de tots els cotxes.</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 12</summary>
+<p><strong>EMPRESA CONSTRUCTORA</strong></p>
+<p>L'empresa constructora "MACA S.A." promou la construcció de l'edifici de luxe "Xequin-Pis". L'edifici està organitzat en 6 escales (de l'A a l'F). Per cada escala hi ha 8 plantes, i en cada planta hi han 5 portes. La constructora vol tindre registrat de cada vivenda els metres quadrats, habitacions i preu. A més, si la vivenda està venuda, també vol guardar el nom i NIF del nou propietari.</p>
+<ol>
+<li>Definix la classe <strong><em>Vivenda</em></strong> amb les variables: m2, q_hab, preu, nom i nif.</li>
+<li>Definix <strong><em>edifici</em></strong> (al <em>main</em>), com una matriu tridimensional de vivendes. Utilitza les constants necessàries per a establir les dimensions de la matriu.</li>
+<li>Definix el procediment <strong><em>contruirVivenda</em></strong>, al qual se li passa com a paràmetre l'edifici. El procediment demanarà per teclat la identificació de la vivenda i les característiques i les guardarà.</li>
+<li>Definix el procediment <strong><em>comprarVivenda</em></strong>, al qual se li passa com a paràmetre l'edifici. El procediment demanarà per teclat la identificació de la vivenda. Si està fabricada (m2 &gt; 0) i per vendre (camp propietari buit), es demanaran les dades del propietari i es guardaran en el lloc corresponent.</li>
+<li>Definix el procediment <strong><em>propietats</em></strong>, al qual se li passa com a paràmetre l'edifici i el nif d'una persona, i ha de mostrar les dades de totes les seues vivendes.</li>
+<li>Crea al <em>main</em> l'aplicació principal amb un bucle i un menú amb les opcions:<ol>
+<li>Construir vivenda</li>
+<li>Comprar vivenda</li>
+<li>Mostrar propietats d'algú</li>
+<li>Eixir</li>
+</ol>
+</li>
+</ol>
+</details>
+<details class="question">
+<summary>Exercici 13</summary>
+<p><strong><em>TALLER DE COTXES</em></strong></p>
+<p>En un taller de cotxes, cada volta que un treballador acaba una feina, inserix en l'ordinador el seu nom, la data (dia, mes i any) i quantes hores i minuts ha estat treballant.</p>
+<ol>
+<li>Defineix la classe <strong><em>Feina</em></strong> amb les variables: nom, dia, mes, any, hores i minuts.</li>
+<li>El programa serà un bucle amb un menú:<ol>
+<li>Afegir feina</li>
+<li>Llistar feines d'un treballador</li>
+<li>Eixir</li>
+</ol>
+</li>
+</ol>
+<p><strong>Opció 1</strong>: Demanar dades d'una feina i afegir-la en una llista de feines.
+    - Si ho fas amb un vector de feines, caldrà tindre una variable on indicar quantes feines tenim en cada moment, per a saber on posar la nova feina.
+    - Però seria millor un <em>ArrayList</em> de feines, ja que realment és una llista perquè va variant la grandària al llarg del programa.</p>
+<p><strong>Opció 2</strong>: Demanar el nom del treballador. Es mostrarà per pantalla una línia per cada feina seua (amb les dades corresponents) i, a la dreta, l'import a cobrar corresponent, a 40€ l'hora. Al final del llistat, es posarà la quantitat d'hores i minuts totals, així com l'import total del treballador.</p>
+</details>
+<details class="question">
+<summary>Exercici 14</summary>
+<p><strong>HORARIS DE L'INSTITUT</strong></p>
+<p>Volem crear una aplicació que ens permeta introduir les dades dels horaris dels grups de l'institut.</p>
+<p>Per a cada grup volem guardar el codi del grup i el seu horari. En este horari ha de guardar informació de cada sessió de la setmana (5 dies x 6 franges horàries).No cal guardar en cap lloc els dies de la setmana ni les franges horàries.</p>
+<p>Per a cada sessió caldrà guardar el codi del mòdul (assignatura), el nom del professor i el número de l'aula on s'impartirà la classe.</p>
+<p>Tria l'estructura de dades més adient per a emmagatzemar tota eixa informació.</p>
+<p>El programa tindrà un menú amb estes opcions:</p>
+<ol>
+<li>Crear horari</li>
+<li>Mostrar horari</li>
+<li>Modificar horari</li>
+</ol>
+<p>Caldrà definir i utilitzar adequadament estes següents:</p>
+<ul>
+<li><strong><em>getGrup</em></strong>. Se li passa la llista de grups i un codi de grup. Retornarà l'objecte del grup corresponent. O <em>null</em> si no l'ha trobat.</li>
+<li><strong><em>creaGrup</em></strong>. Se li passa la llista de grups. Es demanarà per teclat un codi de grup. Si ja està el grup en la llista (crida a <em>getGrup</em>), avisarà. Si no, per cada sessió de la setmana es preguntarà el mòdul, qui l'imparteix i a quina aula, i afegirà eixe grup a la llista. Retornarà l'objecte del grup creat (o <em>null</em> si no l'ha creat).</li>
+<li><strong><em>mostraHorari</em></strong>. Se li passa la llista de grups, el codi de grup i quina dada d'estes 3 volem mostrar: (M)òdul / (P)rofe / (A)ula. Es mostrarà l'horari per pantalla (en forma de matriu) amb la informació corresponent. SI no existeix el grup retornarà <em>false</em>.</li>
+<li><strong><em>modificaHorari</em></strong>. Se li passa la llista de grups i el codi del grup que volem modificar. Si existeix, es mostrarà el seu horari i es preguntarà per dia de la setmana (1 a 5) i hora (1 a 6) que es vol modificar. A continuació es preguntarà l'assignatura, el professor i l'aula a canviar (si alguna d'estes dades es deixa en blanc, no es modificarà). A continuació s'actualitzaran les dades corresponents. Si no existeix el grup retornarà <em>false</em>.</li>
+</ul>
+<p>A més d'eixes funcions, crea-te'n altres si creus que et fan falta.</p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../PRG07/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: UD7">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                UD7
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../PRG09/" class="md-footer__link md-footer__link--next" aria-label="Següent: UD9">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                UD9
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

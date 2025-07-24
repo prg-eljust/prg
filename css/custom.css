@@ -1,0 +1,42 @@
+/* 📷 Imatges centrades */
+img.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+}
+
+/* 📊 Taules centrades amb Markdown */
+.md-typeset table.center {
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  text-align: center;
+}
+
+/* 📦 Alineació correcta de les taules i cel·les amb Markdown */
+.md-typeset table.center th, .md-typeset table.center td {
+  text-align: center;
+}
+
+/* 🔘 Botons centrats amb amplada natural */
+a.md-button.center {
+  display: block;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* 📦 Centrat de blocs de codi com mermaid */
+div.mermaid {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* 📦 Centrat genèric per a altres elements amb classe .center */
+.center {
+  text-align: center;
+}

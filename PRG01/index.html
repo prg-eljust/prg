@@ -1,0 +1,2121 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/PRG01/">
+      
+      
+      
+        <link rel="next" href="../PRG02/">
+      
+      
+      <link rel="icon" href="../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>UD1. Dades simples. Instruccions seqüencials - Programació 1DAMsp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="UD1. Dades simples. Instruccions seqüencials - Programació 1DAMsp" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG01.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://prg-eljust.github.io/prg/PRG01/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="UD1. Dades simples. Instruccions seqüencials - Programació 1DAMsp" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG01.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud1-dades-simples-instruccions-sequencials" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Programació 1DAMsp" class="md-header__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAMsp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD1. Dades simples. Instruccions seqüencials
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  UD1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG02/" class="md-tabs__link">
+        
+  
+    
+  
+  UD2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG03/" class="md-tabs__link">
+        
+  
+    
+  
+  UD3
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG04/" class="md-tabs__link">
+        
+  
+    
+  
+  UD4
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG05/" class="md-tabs__link">
+        
+  
+    
+  
+  UD5
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG06/" class="md-tabs__link">
+        
+  
+    
+  
+  UD6
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG07/" class="md-tabs__link">
+        
+  
+    
+  
+  UD7
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG08/" class="md-tabs__link">
+        
+  
+    
+  
+  UD8
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG09/" class="md-tabs__link">
+        
+  
+    
+  
+  UD9
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG10/" class="md-tabs__link">
+        
+  
+    
+  
+  UD10
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG11/" class="md-tabs__link">
+        
+  
+    
+  
+  UD11
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Programació 1DAMsp" class="md-nav__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAMsp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UD1
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    UD1
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dades-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dades simples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dades simples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors aritmètics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-prioritat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regles de prioritat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-relacionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors relacionals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-logics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors lògics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors lògics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lleis-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lleis de De Morgan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lleis de De Morgan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      2a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-prioritat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regles de prioritat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcions-predefinides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions predefinides
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcions-definides-per-lusuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions definides per l'usuari
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activitats
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG03/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduccio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducció
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dades-simples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dades simples
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dades simples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constants" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constants
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expressions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors aritmètics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-prioritat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regles de prioritat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-relacionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors relacionals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-logics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors lògics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors lògics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#lleis-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lleis de De Morgan
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lleis de De Morgan">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      1a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      2a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3a-llei-de-de-morgan" class="md-nav__link">
+    <span class="md-ellipsis">
+      3a llei de De Morgan
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regles-de-prioritat_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regles de prioritat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#funcions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Funcions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#funcions-predefinides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions predefinides
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funcions-definides-per-lusuari" class="md-nav__link">
+    <span class="md-ellipsis">
+      Funcions definides per l'usuari
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#activitats" class="md-nav__link">
+    <span class="md-ellipsis">
+      Activitats
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ud1-dades-simples-instruccions-sequencials">UD1. Dades simples. Instruccions seqüencials</h1>
+<h2 id="introduccio">Introducció</h2>
+<p>Un programa és una seqüència d’instruccions que manipulen unes dades per a obtindre uns resultats.</p>
+<p>Eixes instruccions són ordres que li fem a l’ordinador. Per a això cal dir-li-ho en el llenguatge que entén, que és el llenguatge màquina, compost per seqüències de 0s i 1s, igual que tota la informació que es guarda en un ordinador (números, text, fotos, música, jocs, pel·lícules...):</p>
+<p>Però com per a nosaltres (els humans) ens resulta molt difícil, li ho direm en altre llenguatge. Començarem amb <strong><em>Python</em></strong> i més avant vorem <strong><em>Java</em></strong>.</p>
+<p>En este tema vorem les dades que són manipulades pels programes.</p>
+<h2 id="dades-simples">Dades simples</h2>
+<p>Una dada és qualsevol informació amb la qual treballa un algorisme.</p>
+<p>Cada dada és d'un tipus determinat que, bàsicament, serà enter, real, caràcter o lògic, però que dependrà del llenguatge de programació en què estem treballant.</p>
+<p>Les dades apareixen en un programa en una de les següents formes:</p>
+<ul>
+<li>variables</li>
+<li>constants (simbòliques i literals)</li>
+</ul>
+<h3 id="variables">Variables</h3>
+<p>Una variable és un lloc on podem guardar una dada.</p>
+<p><img alt="representació gràfica d'una variable" class="center" src="../img/variable.png" /></p>
+<p>La imatge representa la variable <strong>edat</strong>, que guarda el valor <strong>17</strong>. Cada variable es caracteritza per tindre:</p>
+<ul>
+<li>Un <strong>nom</strong> (edat) i un <strong>tipus</strong> (enter), que s'han d'especificar quan es defineix la variable en un programa, amb una instrucció declarativa (encara que hi ha llenguatges, com <em>Python</em>, que no cal indicar el tipus).</li>
+<li>Un <strong>valor</strong> (17), que li s'assignarà en alguna instrucció d'assignació (o bé en la mateixa instrucció declarativa) i que podrà ser canviat per altre valor les voltes que calga.</li>
+</ul>
+<p>Les variables s'emmagatzemen a la memòria RAM, de forma que:</p>
+<p><img alt="representació de la variable emmagatzemada en memòria" class="center" src="../img/variable-en-ram.png" /></p>
+<ul>
+<li>El <strong>nom</strong> (edat) representa l'adreça de la RAM on està el valor.</li>
+<li>El <strong>tipus</strong> (enter) especifica la quantitat de <em>bytes</em> necessaris per guardar un valor (4).</li>
+<li>El <strong>valor</strong> és el contingut (17).</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Exemple</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// instrucció declarativa</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">edat</span><span class="p">;</span><span class="w"> </span><span class="c1">// Definim una variable, de nom &#39;edat&#39; i de tipus &#39;enter&#39;     </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">// instruccions d&#39;assignació</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">17</span><span class="p">;</span><span class="w">          </span><span class="c1">// Donem valor &#39;17&#39; a la variable edat</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="n">llig</span><span class="p">(</span><span class="n">edat</span><span class="p">);</span><span class="w">         </span><span class="c1">// Assignem per teclat un valor a edat. Per exemple 19</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="n">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">edat</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">    </span><span class="c1">// Tornem a canviar el valor. Ara valdrà 22</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="n">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">23.5</span><span class="p">;</span><span class="w">        </span><span class="c1">// ERROR! Per què?</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="c1">// utilització de la variable</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="n">escriu</span><span class="p">(</span><span class="n">edat</span><span class="p">);</span><span class="w">       </span><span class="c1">// Escrivim en pantalla el valor de la variable edat</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Més endavant veurem estes instruccions detalladament</p>
+</div>
+<h3 id="constants">Constants</h3>
+<p>Una constant és com una variable però que el valor no canvia durant l'execució del programa.</p>
+<p>Les constants poden aparéixer en forma de literals o bé amb nom (constants simbòliques):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>SIMBÒLIQUES</strong></th>
+<th style="text-align: center;"><strong>LITERALS</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">MAX_EDAT</td>
+<td style="text-align: center;">99</td>
+</tr>
+<tr>
+<td style="text-align: center;">PI</td>
+<td style="text-align: center;">3.1416</td>
+</tr>
+<tr>
+<td style="text-align: center;">VALOR_EURO</td>
+<td style="text-align: center;">166.386</td>
+</tr>
+<tr>
+<td style="text-align: center;">NOM_INSTITUT</td>
+<td style="text-align: center;">"Jaume II el Just"</td>
+</tr>
+<tr>
+<td style="text-align: center;">CICLES_INFORMATICA</td>
+<td style="text-align: center;">true</td>
+</tr>
+<tr>
+<td style="text-align: center;">MAJORIA_EDAT</td>
+<td style="text-align: center;">18</td>
+</tr>
+</tbody>
+</table>
+<p>Les constants simbòliques, igual que les variables, tenen un valor concret que se li dóna al principi del programa però, com ja hem dit, <strong>no poden canviar de valor</strong>.</p>
+<p>Les constants literals alfanumèriques han d'expressar-se tancades entre cometes.</p>
+<h2 id="expressions">Expressions</h2>
+<p>Les constants i variables no apareixen aïllades, sinó formant part d'expressions. Una expressió és un càlcul necessari per a obtindre un resultat.</p>
+<p>Una expressió és una combinació d'<strong>operands</strong> units mitjançant <strong>operadors</strong>.</p>
+<ul>
+<li>Els <strong>operands</strong> poden ser de diferents tipus:<ul>
+<li>Literals: "Jaume II el Just", 100</li>
+<li>Constants: PI</li>
+<li>Variables: edat</li>
+<li>Funcions: arrel(100), longitut(nom)</li>
+</ul>
+</li>
+<li>Els <strong>operadors</strong> els vorem en altre apartat</li>
+</ul>
+<details class="example">
+<summary>Exemples d'expressions</summary>
+<ul>
+<li>
+<p>Numèriques:</p>
+<ul>
+<li>edat</li>
+<li>5</li>
+<li>2 * PI * quadrat(radi)</li>
+<li>(-b+arrel(quadrat(b)-(4<em>a</em>c)))/(2*a)</li>
+</ul>
+</li>
+<li>
+<p>Alfanumèriques:</p>
+<ul>
+<li>"Neus"</li>
+<li>"Miquel" + "Garcia" + "Marqués"</li>
+</ul>
+</li>
+<li>
+<p>Lògiques:</p>
+<ul>
+<li>true</li>
+<li>false</li>
+<li>valor1 &lt; valor2</li>
+<li>(valor1 &lt; valor2)&amp;&amp;(valor2 &lt;valor3)</li>
+</ul>
+</li>
+</ul>
+</details>
+<h2 id="operadors">Operadors</h2>
+<p>Són els símbols de les operacions amb els quals es construeixen les expressions.</p>
+<p>Depenent del tipus de dades dels operands o del tipus del resultat, tenim uns <strong>tipus</strong> d'<strong>operadors</strong>: aritmètics, lògics, relacionals i alfanumèrics.</p>
+<h3 id="operadors-aritmetics">Operadors aritmètics</h3>
+<p>Són les operacions matemàtiques. Les variables o constants que hi intervenen són <strong>numèriques</strong> (enters o reals) i el resultat també. Els més usuals són:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>OPERADOR</strong></th>
+<th style="text-align: center;"><strong>SIGNIFICAT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">^</td>
+<td style="text-align: center;">Exponenciació</td>
+</tr>
+<tr>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">Producte</td>
+</tr>
+<tr>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">Divisió</td>
+</tr>
+<tr>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">Residu de divisió entera</td>
+</tr>
+<tr>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">Suma</td>
+</tr>
+<tr>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Resta</td>
+</tr>
+</tbody>
+</table>
+<h4 id="regles-de-prioritat">Regles de prioritat</h4>
+<p>Les expressions que tenen 2 o més operands necessiten unes regles que permeten determinar en quin ordre s'avaluen. Per exemple, si escrivim <code>escriu(2*5-3);</code> què mostrarà? 7 o 4? La resposta és 7, ja que les regles de prioritat indiquen que l'operador del producte té més prioritat que el de la resta, com veiem a la taula:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>OPERADOR</strong></th>
+<th style="text-align: center;"><strong>PRIORITAT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">^</td>
+<td style="text-align: center;">ALTA</td>
+</tr>
+<tr>
+<td style="text-align: center;">*  /  %</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">+  -</td>
+<td style="text-align: center;">BAIXA</td>
+</tr>
+</tbody>
+</table>
+<p>Si dos operadors d'igual prioritat coincideixen en una mateixa expressió, s'avaluen <strong>d'esquerra a dreta</strong>. Però si volguèrem canviar l'ordre d'avaluació en una expressió, utilitzarem els <strong>parèntesi</strong> necessaris. A banda, és recomanable l'ús de parèntesis davant del dubte.</p>
+<h3 id="operadors-relacionals">Operadors relacionals</h3>
+<p>Serveixen per a comparar 2 expressions, retornant un valor lògic: vertader o fals.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>OPERADOR</strong></th>
+<th style="text-align: center;"><strong>SIGNIFICAT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">Menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">Major</td>
+</tr>
+<tr>
+<td style="text-align: center;">==</td>
+<td style="text-align: center;">Igual</td>
+</tr>
+<tr>
+<td style="text-align: center;">!=</td>
+<td style="text-align: center;">Distint</td>
+</tr>
+<tr>
+<td style="text-align: center;">&lt;=</td>
+<td style="text-align: center;">Menor o igual</td>
+</tr>
+<tr>
+<td style="text-align: center;">&gt;=</td>
+<td style="text-align: center;">Major o igual</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>Exemples d'expressions lògiques</summary>
+<p>Si <strong>x = 10</strong> i <strong>y = 20</strong>:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>EXPRESSIÓ</strong></th>
+<th style="text-align: center;"><strong>VALOR</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">(x + y) &lt; 20</td>
+<td style="text-align: center;">false</td>
+</tr>
+<tr>
+<td style="text-align: center;">(y - x) &lt;= x</td>
+<td style="text-align: center;">true</td>
+</tr>
+<tr>
+<td style="text-align: center;">(y - x) &gt;= x</td>
+<td style="text-align: center;">true</td>
+</tr>
+<tr>
+<td style="text-align: center;">x == y</td>
+<td style="text-align: center;">false</td>
+</tr>
+<tr>
+<td style="text-align: center;">x != y</td>
+<td style="text-align: center;">true</td>
+</tr>
+<tr>
+<td style="text-align: center;">'c' &lt; 'f'</td>
+<td style="text-align: center;">true *</td>
+</tr>
+</tbody>
+</table>
+<p>* També podem comparar caràcters (van entre cometes)</p>
+</details>
+<h3 id="operadors-logics">Operadors lògics</h3>
+<p>Els operadors lògics són <strong><em>NO</em></strong>, <strong><em>I</em></strong><em> i </em><strong>O</strong><em>. Però per seguir la nomenclatura estàndard dels algorismes utilitzarem els noms anglesos: </em><strong>NOT</strong><em>, </em><strong>AND</strong><em> i </em><strong>OR</strong><em>. Actúen sobre operands o expressions lògiques i el resultat també és un valor lògic, que ve donat per les corresponents </em><strong>taules de veritat</strong>*, on V és Vertader (true) i F és Fals (false):</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>x</strong></th>
+<th style="text-align: center;"><strong>NOT x</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>x</strong></th>
+<th style="text-align: center;"><strong>y</strong></th>
+<th style="text-align: center;"><strong>x AND y</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>x</strong></th>
+<th style="text-align: center;"><strong>y</strong></th>
+<th style="text-align: center;"><strong>x OR y</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+</tr>
+</tbody>
+</table>
+<details class="example">
+<summary>Exemples</summary>
+<p><code>NOT (3 &lt; 5)</code> -&gt; <strong>F</strong></p>
+<p><code>(3 &lt; 5) AND (4 &lt; 2)</code> -&gt; <strong>F</strong></p>
+<p><code>(3 &lt; 5) OR (4 &lt; 2)</code> -&gt; <strong>V</strong></p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Expressions sinònimes</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">NOT(a &lt; b)</th>
+<th style="text-align: center;">a &gt;= b</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">NOT(a &lt;= b)</td>
+<td style="text-align: center;">a &gt; b</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">NOT(a + b == 0)</td>
+<td style="text-align: center;">a + b != 0 Compte! No canvien els operandors aritmètics</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">NOT(true)</td>
+<td style="text-align: center;">false</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">NOT(false)</td>
+<td style="text-align: center;">true</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">NOT(jubilat == true)</td>
+<td style="text-align: center;">NOT(jubilat)</td>
+<td style="text-align: center;">jubilat == false</td>
+</tr>
+<tr>
+<td style="text-align: center;">NOT(jubilat == false)</td>
+<td style="text-align: center;">jubiat == true</td>
+<td style="text-align: center;">jubilat</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="lleis-de-de-morgan">Lleis de De Morgan</h4>
+<p>Són regles que permeten transformar expressions lògiques en altres equivalents. Són molt útils per a simplificar expressions condicionals. Concretament, transformen expressions formades amb un NOT sobre alguna expressió que té dins algun AND, OR o NOT.</p>
+<h5 id="1a-llei-de-de-morgan">1a llei de De Morgan</h5>
+<p><code>NOT(A AND B)</code> és equivalent a <code class="center">NOT(A) OR NOT(B)</code></p>
+<details class="example" open="open">
+<summary>Exemple</summary>
+<p>Si A és <em>Plou</em>, i B és <em>Fa fred</em>:</p>
+<p><code>NOT(A AND B)</code> significa <em>No és cert que ploga i faça fred alhora</em>. Això, segons esta llei, és equivalent a dir: <code>NOT(A) OR NOT(B)</code>, que significa <em>No plou o no fa fred</em>. Veiem-ho d'una altra forma, amb les variables <em>plou</em> i <em>fred</em>:</p>
+<p><code>NOT(plou AND fred) -&gt; NOT(plou) OR NOT(fred)</code></p>
+<p>És a dir, tinguen els valors que tinguen <em>plou</em> i <em>fred</em> (verdader o fals), sempre tindrem el mateix resultat en les 2 expressions equivalents. Comprovem-ho amb la taula de veritat:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>p(plou)</strong></th>
+<th style="text-align: center;"><strong>f(fred)</strong></th>
+<th style="text-align: center;"><strong>p AND f</strong></th>
+<th style="text-align: center;"><strong>NOT(p AND f)</strong></th>
+<th style="text-align: center;"><strong>NOT(p)</strong></th>
+<th style="text-align: center;"><strong>NOT(f)</strong></th>
+<th style="text-align: center;"><strong>NOT(p) OR NOT(f)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>F</strong></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>F</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>V</strong></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>V</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>V</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>V</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>V</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>V</strong></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h5 id="2a-llei-de-de-morgan">2a llei de De Morgan</h5>
+<p><code>NOT(A OR B)</code> és equivalent a <code class="center">NOT(A) AND NOT(B)</code></p>
+<details class="example" open="open">
+<summary>Exemple</summary>
+<p>Si A és <em>Plou</em>, i B és <em>Fa fred</em>:</p>
+<p><code>NOT(A OR B)</code> significa <em>No és cert que: ploga o façca fred</em>. Això, segons esta llei, és equivalent a dir: <code>NOT(A) AND NOT(B)</code>, que significa <em>No plou i no fa fred</em>. Veiem-ho ara amb les variables <em>plou</em> i <em>fred</em>:</p>
+<p><code>NOT(plou OR fred) -&gt; NOT(plou) AND NOT(fred)</code></p>
+<p>És a dir, tinguen els valors que tinguen <em>plou</em> i <em>fred</em> (verdader o fals), sempre tindrem el mateix resultat en les 2 expressions equivalents. Comprovem-ho amb la taula de veritat:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>p(plou)</strong></th>
+<th style="text-align: center;"><strong>f(fred)</strong></th>
+<th style="text-align: center;"><strong>p OR f</strong></th>
+<th style="text-align: center;"><strong>NOT(p OR f)</strong></th>
+<th style="text-align: center;"><strong>NOT(p)</strong></th>
+<th style="text-align: center;"><strong>NOT(f)</strong></th>
+<th style="text-align: center;"><strong>NOT(p) AND NOT(f)</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>F</strong></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>F</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>F</strong></td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>F</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>F</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>F</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;">F</td>
+<td style="text-align: center;"><strong>V</strong></td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;">V</td>
+<td style="text-align: center;"><strong>V</strong></td>
+</tr>
+</tbody>
+</table>
+</details>
+<h5 id="3a-llei-de-de-morgan">3a llei de De Morgan</h5>
+<p><code>NOT(NOT(A))</code> és equivalent a <code class="center">A</code></p>
+<details class="example" open="open">
+<summary>Exemple</summary>
+<p>Dir que <em>No és cert que no plou</em> és el mateix que dir que <em>plou</em>.</p>
+</details>
+<div class="admonition info">
+<p class="admonition-title">Com aplicar estes lleis quan el NOT actúa sobre més d'un operador lògic?</p>
+<p>Per exemple:</p>
+<p><code>NOT(plou AND NOT(fred) AND sol AND humitat)</code></p>
+<p>Caldria:</p>
+<ul>
+<li>Llevar el NOT que abarca tota l'expressió.</li>
+<li>Canviar els AND per OR i al revés.</li>
+<li>Posar un NOT a cada part.</li>
+</ul>
+<p>És a dir:</p>
+<p><code>(NOT(plou) OR NOT(NOT(fred)) OR NOT(sol) OR NOT(humanitat))</code></p>
+<p>I, aplicant la llei de la doble negació, quedaria:</p>
+<p><code>NOT(plou) OR fred OR NOT(sol) OR NOT(humitat)</code></p>
+<p>Compte! Si en l'expressió que abarca el NOT hi ha ORs i ANDs (les 2 coses alhora), cal anar en compte en transformació, ja que, com anem a vore a continuació, l'AND és més prioritari que l'OR. La solució seria, abans de fer la transformació, posar els parèntesis que calguen, i després ja fer la transformació conservant els parèntesis.</p>
+<p>Per exemple, si tenim:</p>
+<p><code>NOT(plou AND fred OR sol)</code></p>
+<p>Primer posarem parèntesis per tindre una solució equivalent. Com l'AND és més prioritari que l'OR, posarem els paréntesi així:</p>
+<p><code>NOT((plou AND fred) OR sol)</code></p>
+<p>Ara ja apliquem les lleis de <em>De Morgan</em>, conservant els parèntesis de dins:</p>
+<p><code>(NOT(plou) OR NOT(fred)) AND NOT(sol)</code></p>
+</div>
+<h4 id="regles-de-prioritat_1">Regles de prioritat</h4>
+<p>Com els operadors lògics i relacionals poden formar expressions juntament amb els aritmètics, també necessitem unes <strong>regles de prioritat</strong> per a saber quins operadors s'avaluen primer.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>OPERADOR</strong></th>
+<th style="text-align: center;"><strong>PRIORITAT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">NOT</td>
+<td style="text-align: center;">ALTA</td>
+</tr>
+<tr>
+<td style="text-align: center;">^</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">*, /, %</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">+, -</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">&lt;, &gt;, &lt;=, &gt;=</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">==, !=</td>
+<td style="text-align: center;">|</td>
+</tr>
+<tr>
+<td style="text-align: center;">AND</td>
+<td style="text-align: center;">V</td>
+</tr>
+<tr>
+<td style="text-align: center;">OR</td>
+<td style="text-align: center;">BAIXA</td>
+</tr>
+</tbody>
+</table>
+<p>Estes regles són bastant estàndards però podria dependre de cada llenguatge de programació.</p>
+<p>No obstant, davant el dubte, sempre podem (i devem) emprar els parèntesis.</p>
+<h2 id="funcions">Funcions</h2>
+<p>Són trossos de codi que podem utilitzar en els nostres programes. Hi ha de 2 tipus: predefinides i definides per l'usuari.</p>
+<h3 id="funcions-predefinides">Funcions predefinides</h3>
+<p>Els llenguatges de programació tenen funcions predefinides amb les quals podem dur a terme les tasques més usuals. Les funcions (igual que en les de les matemàtiques) solen rebre un o més <strong>arguments</strong> i retornen un valor que anoomenem <strong>resultat</strong>.</p>
+<p>Per exemple, per a mostrar coses per pantalla tenim:</p>
+<ul>
+<li><code>printf("Hola");</code> en llenguatge C</li>
+<li><code>System.out.println("Hola");</code> en llenguatge Java</li>
+<li><code>escriu("Hola")</code> forma que emprarem en algorismes</li>
+</ul>
+<h3 id="funcions-definides-per-lusuari">Funcions definides per l'usuari</h3>
+<p>Podem crear funcions i usar-les en diferens parts del programa:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Exemple de funció</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>    Programa principal{
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>        escriu(&quot;L&#39;àrea del  triangle de base 2 i altura 4 és:&quot;);
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>        area = areaTriangle(2, 4);
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>        escriu(area);
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a>        escriu(&quot;L&#39;àrea del triangle de base 3 i altura 6 és:&quot; + areaTriangle(3, 6));
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>    }
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    // -------------------------------------------------
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a>    funció areaTriangle(base: enter, altura: enter){
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>        area real;
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>        area = base * altura / 2;
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a>        retorna area;
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>    }
+</code></pre></div></td></tr></table></div>
+<p>Ja vorem en detall l'ús de funcions més endavat...</p>
+<h2 id="activitats">Activitats</h2>
+<details class="question">
+<summary>Activitat 1</summary>
+<p>Calcula el valor de cada expressió si és vàlida. Si no és vàlida, indica el motiu.</p>
+<p>a. 10 * 3 + 5 * 2</p>
+<p>b. 15 % 4</p>
+<p>c. 2 + 7 / 3</p>
+<p>d. 4 + "preu"</p>
+<p>e. (5 + 2) &lt; 8</p>
+<p>f. 4 &gt;= 4</p>
+<p>g. true OR false</p>
+<p>h. 5 OR (2 &lt; 3)</p>
+<p>i. (6 &gt;= 2) OR (3 &lt;= 5)</p>
+<p>j. NOT(NOT(NOT(4 &lt; 10&gt;)))</p>
+<p>k. 4 + false</p>
+<p>l. 4 + 2 * 4 / 2</p>
+<p>m. ((5 &lt; 0) AND (6 &gt;= 7)) OR (45 % 5 &lt;= 0)</p>
+<p>n. ((10 - 4) &gt; 0) OR true</p>
+<p>o. ((10 - 4) &lt; 0) OR true</p>
+</details>
+<details class="question">
+<summary>Activitat 2</summary>
+<p>Donats els següents valors de les variables <strong>X = 1</strong>, <strong>Y = 4</strong>, <strong>Z = 10</strong> i la constant <strong>PI = 3.14</strong>, avalua les expressions següents:</p>
+<p>a. <code>2 * X + 0.5 * Y - 1 / 5 * Z</code></p>
+<p>b. <code>((PI * X ^ 2) &gt; Y) OR ((2 * PI * X) &lt;= Z)</code></p>
+<p>c. <code>"Hola, món!" == "Hola," + "món!"</code></p>
+<p>d. <code>'a' == 'A'</code></p>
+</details>
+<details class="question">
+<summary>Activitat 3</summary>
+<p>Construeix expressions correctes per a les fórmules següents:</p>
+<p><img alt="Expressions a escriure" class="center" src="../img/ud1-act3.png" /></p>
+</details>
+<details class="question">
+<summary>Activitat 4</summary>
+<p>A partir de les següents constants:</p>
+<ul>
+<li><strong>gran = fals</strong></li>
+<li><strong>redó = cert</strong></li>
+<li><strong>suau = fals</strong></li>
+</ul>
+<p>...indica quin serà el valor de les següents expressions:</p>
+<p>a. gran i redó i suau;</p>
+<p>b. gran o redó o suau;</p>
+<p>c. gran i redó o suau;</p>
+<p>d. gran o redó i suau;</p>
+<p>e. gran i (redó o suau);</p>
+<p>f. (gran o redó) i suau;</p>
+</details>
+<details class="question">
+<summary>Activitat 5</summary>
+<p>Indica amb parèntesis l'ordre en què l'ordinador executaria les diferents operacions:</p>
+<p>a. x + y + z</p>
+<p>b. x * y + z</p>
+<p>c. x + y * z</p>
+<p>d. x - y * z</p>
+<p>e. x + y / z</p>
+<p>f. x * y / z</p>
+<p>g. x / y / z</p>
+<p>h. x / y * y + x % y</p>
+<p>i. x / y + z + x</p>
+</details>
+<details class="question">
+<summary>Activitat 6</summary>
+<p>Tranforma les següents expressions en altres equivalents utilitzant les lleis de <em>De Morgan</em>. Cal tindre en compte que <strong>a</strong>, <strong>b</strong>, <strong>c</strong> són variables enteres i <strong>p</strong>, <strong>q</strong>, <strong>r</strong> són variables booleanes (lògiques).</p>
+<p>a. <code>NOT((p AND q) OR r)</code></p>
+<p>b. <code>NOT((a == b) OR (a == 0))</code></p>
+<p>c. <code>NOT(NOT p OR NOT q OR (a == b + c))</code></p>
+<p>d. <code>NOT(p AND (q OR r))</code></p>
+<p>e. <code>NOT((a &lt; b) AND (b &lt; c))</code></p>
+<p>f. <code>NOT(NOT p AND q OR NOT r)</code></p>
+<p>g. <code>NOT(NOT(a != b) OR (a + b == 7))</code></p>
+<p>h. <code>NOT((a / b == 0) OR (a == c))</code></p>
+</details>
+<details class="question">
+<summary>Activitat 7</summary>
+<p>Donats els valors inicials de les següents variables enteres i lògiques:</p>
+<p><code class="center">a = 3; b = 5; c = 7; p = cert; q = fals;</code></p>
+<p>... indica els valors que tindran estes variables després de les següents assignacions.</p>
+<p><strong><em>NOTA: en cada apartat es tindrà en compte els canvis de les variables dels apartats anteriors.</em></strong></p>
+<p>a. <code>a = 3 * b</code></p>
+<p>b. <code>b = a + c</code></p>
+<p>c. <code>p = p and (c &gt; b)</code></p>
+<p>d. <code>q = p or q</code></p>
+<p>e. <code>r = a == b</code></p>
+<p>f. <code>a = a + 1</code></p>
+<p>g. <code>b = b - 2</code></p>
+<p>h. <code>a = a</code></p>
+<p>i. <code>b = b / 2 + c % 3</code></p>
+</details>
+<details class="question">
+<summary>Activitat 8</summary>
+<p>Sent <strong>a</strong>, <strong>b</strong>, <strong>c</strong> i <strong>d</strong> variables numèriques, escriu l'expressió lògica corresponent a:</p>
+<p>a. Els valors de b i c són tots dos superiors al valor de d</p>
+<p>b. a, b i c són idèntics</p>
+<p>c. a, b i c són idèntics però diferents de d</p>
+<p>d. b està comprés, estrictament, entre els valors de a i c</p>
+<p>e. b està comrprés, estrictament, entre els valors de a i c, i el valor de a és més xicotet que el valor de c</p>
+<p>f. Hi ha, com a mínim, dos valors idèntics entre a, b i c</p>
+<p>g. Hi ha dos valors idèntics entre a, b i c, i només dos</p>
+<p>h. Hi ha, com a màxim, dos valors idèntics entre a, b i c</p>
+</details>
+<details class="question">
+<summary>Activitat 9</summary>
+<p>Escriu l'expressió algorísmica de les següents expressions:</p>
+<p>a. Avaluar si el contingut d'una variable numèrica és divisible per 10 o per 7</p>
+<p>b. Avaluar si una variable <em>preu</em> no és menor de 100½ ni major de 200€</p>
+</details>
+<details class="question">
+<summary>Activitat 10</summary>
+<p>Si DN, MN, AN representen el dia, mes i any d'una persona i DA, MA, AA el dia, mes i any actuals, expresssa amb una expressió si la persona ha complit 18 anys.</p>
+</details>
+<details class="question">
+<summary>Activitat 11</summary>
+<p>En un algorisme que analitza els resultats d'exàmens, hi ha 5 variables definides:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">char</span><span class="w"> </span><span class="n">opcio</span><span class="p">;</span><span class="w">             </span><span class="c1">// Tipus d&#39;alumne: (C)iències o (L)letres</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">nl</span><span class="p">,</span><span class="w"> </span><span class="n">nv</span><span class="p">,</span><span class="w"> </span><span class="n">nm</span><span class="p">,</span><span class="w"> </span><span class="n">nf</span><span class="p">;</span><span class="w">     </span><span class="c1">// Notes de literatura, valencià, mate i física d&#39;un alumne</span>
+</code></pre></div></td></tr></table></div>
+<p>Totes les notes estan calculades sobre 10 i tenen el mateix pes per a fer la mitjana.</p>
+<p>Escriu les expressions lògiques corresponents a:</p>
+<p>a. La mitjana de les quatre notes és superior a 5</p>
+<p>b. Les notes de mate i valencià són superiors a la mitjana de les quatre notes</p>
+<p>c. Hi ha, com a mínim, una nota superior a 5</p>
+<p>d. Totes les notes són superiors a 5</p>
+<p>e. La mitjana de les quatre notes és superior o igual a 5, i la mitjana de les notes de l'opció que ha agafat l'alumne també</p>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+        
+          
+          <a href="../PRG02/" class="md-footer__link md-footer__link--next" aria-label="Següent: UD2">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                UD2
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

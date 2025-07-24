@@ -1,0 +1,3346 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/PRG03/">
+      
+      
+        <link rel="prev" href="../PRG02/">
+      
+      
+        <link rel="next" href="../PRG04/">
+      
+      
+      <link rel="icon" href="../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.42">
+    
+    
+      
+        <title>UD3. Introducció a Python - Programació 1DAMsp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/custom.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="UD3. Introducció a Python - Programació 1DAMsp" >
+      
+        <meta  property="og:description"  content="None" >
+      
+        <meta  property="og:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG03.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://prg-eljust.github.io/prg/PRG03/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="UD3. Introducció a Python - Programació 1DAMsp" >
+      
+        <meta  name="twitter:description"  content="None" >
+      
+        <meta  name="twitter:image"  content="https://prg-eljust.github.io/prg/assets/images/social/PRG03.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ud3-introduccio-a-python" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href=".." title="Programació 1DAMsp" class="md-header__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAMsp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              UD3. Introducció a Python
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Pestanyes" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG01/" class="md-tabs__link">
+        
+  
+    
+  
+  UD1
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG02/" class="md-tabs__link">
+        
+  
+    
+  
+  UD2
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  UD3
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG04/" class="md-tabs__link">
+        
+  
+    
+  
+  UD4
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG05/" class="md-tabs__link">
+        
+  
+    
+  
+  UD5
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG06/" class="md-tabs__link">
+        
+  
+    
+  
+  UD6
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG07/" class="md-tabs__link">
+        
+  
+    
+  
+  UD7
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG08/" class="md-tabs__link">
+        
+  
+    
+  
+  UD8
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG09/" class="md-tabs__link">
+        
+  
+    
+  
+  UD9
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG10/" class="md-tabs__link">
+        
+  
+    
+  
+  UD10
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../PRG11/" class="md-tabs__link">
+        
+  
+    
+  
+  UD11
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Programació 1DAMsp" class="md-nav__button md-logo" aria-label="Programació 1DAMsp" data-md-component="logo">
+      
+  <img src="../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAMsp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG01/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD1
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG02/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    UD3
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    UD3
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristiques-basiques-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Característiques bàsiques de Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Característiques bàsiques de Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-necessitem-per-a-programar-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Què necessitem per a programar en Python?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-dun-programa-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura d'un programa en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noms-de-variable-i-funcions-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Noms de variable i funcions en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentaris
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delimitacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delimitacions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus de dades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de dades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipus-elementals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus elementals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus elementals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeros-enters-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      Números enters: int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeros-amb-decimals-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      Números amb decimals: float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logics-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lògics: bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cadenes-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cadenes: str
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cadenes: str">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequencies-descapament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seqüències d'escapament
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipus-composts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus composts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracio-de-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaració de variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Declaració de variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llenguatges-de-tipificacio-estatica-c-java-pero-no-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llenguatges de tipificació estàtica (C, Java... però no Python)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llenguatges-de-tipificacio-dinamica-python-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llenguatges de tipificació dinàmica (Python, PHP...)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambit-i-visibilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Àmbit i visibilitat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-relacionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors relacionals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-logics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors lògics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors lògics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#curtcircuit-dexpressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curtcircuit d'expressions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-dassignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operador d'assignació
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics-reduits-operadors-aritmetics-i-dassignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics reduïts (operadors aritmètics i d'assignació)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altres-operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Altres operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-sizeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      El sizeof
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-tipus-de-les-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      El tipus de les expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El tipus de les expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promocio-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció interna
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promocio-per-assignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció per assignació
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promocio-forcada-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció forçada (càsting)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedencia-i-associativitat-doperadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedència i associativitat d'operadors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eixida-de-dades-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eixida de dades: print
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eixida de dades: print">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-senzill-de-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple senzill de print
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altres-parametres-del-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres paràmetres del print
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usant-el-print-amb-format-us-de-f-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usant el print amb format (ús de f-strings)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrada-de-dades-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de dades: input
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrada de dades: input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrada-de-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrada-de-numeros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de números
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diverses-entrades-en-un-mateix-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diverses entrades en un mateix input
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercicis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG04/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG05/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD5
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG06/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD6
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG07/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD7
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG08/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD8
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG09/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG10/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD10
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../PRG11/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    UD11
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#caracteristiques-basiques-de-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Característiques bàsiques de Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Característiques bàsiques de Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#que-necessitem-per-a-programar-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Què necessitem per a programar en Python?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#estructura-dun-programa-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Estructura d'un programa en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#noms-de-variable-i-funcions-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Noms de variable i funcions en Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Variables
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comentaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      Comentaris
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delimitacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delimitacions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tipus-de-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus de dades
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus de dades">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tipus-elementals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus elementals
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Tipus elementals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numeros-enters-int" class="md-nav__link">
+    <span class="md-ellipsis">
+      Números enters: int
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#numeros-amb-decimals-float" class="md-nav__link">
+    <span class="md-ellipsis">
+      Números amb decimals: float
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logics-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lògics: bool
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cadenes-str" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cadenes: str
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cadenes: str">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sequencies-descapament" class="md-nav__link">
+    <span class="md-ellipsis">
+      Seqüències d'escapament
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tipus-composts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tipus composts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaracio-de-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Declaració de variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Declaració de variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#llenguatges-de-tipificacio-estatica-c-java-pero-no-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llenguatges de tipificació estàtica (C, Java... però no Python)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#llenguatges-de-tipificacio-dinamica-python-php" class="md-nav__link">
+    <span class="md-ellipsis">
+      Llenguatges de tipificació dinàmica (Python, PHP...)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ambit-i-visibilitat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Àmbit i visibilitat
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-relacionals" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors relacionals
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-logics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors lògics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Operadors lògics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#curtcircuit-dexpressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curtcircuit d'expressions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operador-dassignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operador d'assignació
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#operadors-aritmetics-reduits-operadors-aritmetics-i-dassignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Operadors aritmètics reduïts (operadors aritmètics i d'assignació)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altres-operadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres operadors
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Altres operadors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-sizeof" class="md-nav__link">
+    <span class="md-ellipsis">
+      El sizeof
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#el-tipus-de-les-expressions" class="md-nav__link">
+    <span class="md-ellipsis">
+      El tipus de les expressions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="El tipus de les expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#promocio-interna" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció interna
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promocio-per-assignacio" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció per assignació
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#promocio-forcada-casting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Promoció forçada (càsting)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#precedencia-i-associativitat-doperadors" class="md-nav__link">
+    <span class="md-ellipsis">
+      Precedència i associativitat d'operadors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eixida-de-dades-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eixida de dades: print
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eixida de dades: print">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-senzill-de-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple senzill de print
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#altres-parametres-del-print" class="md-nav__link">
+    <span class="md-ellipsis">
+      Altres paràmetres del print
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#usant-el-print-amb-format-us-de-f-strings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usant el print amb format (ús de f-strings)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#entrada-de-dades-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de dades: input
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Entrada de dades: input">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#entrada-de-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de text
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#entrada-de-numeros" class="md-nav__link">
+    <span class="md-ellipsis">
+      Entrada de números
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#diverses-entrades-en-un-mateix-input" class="md-nav__link">
+    <span class="md-ellipsis">
+      Diverses entrades en un mateix input
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exercicis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercicis
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="ud3-introduccio-a-python">UD3. Introducció a Python</h1>
+<p>Al tema anterior, per començar a vore els principis de la programació estructurada hem vist algorismes en ordinograma i la seua implementació en Python. En este tema aprofundirem un poc més en Python pel que fa als operadors i expressions, així com a l'entrada i eixida de dades. A més, com que més endavant es vorà el llenguatge Java, conforme anem veient coses en Python, anirem dient ja les diferències en java. Estes diferències solen ser iguals en Java i en C.</p>
+<h2 id="caracteristiques-basiques-de-python">Característiques bàsiques de Python</h2>
+<p>Python és un llenguatge creat a finals dels 80 per <em>Guido Van Rossum</em>, i deu el seu nom a l'afició pel grup còmic britànic <em>Monty Python</em>.</p>
+<p>És un llenguatge de programació <strong>interpretat</strong>, de <strong>tipificació dinàmica</strong> i <strong>multi plataforma</strong>. És de propòsit general, fins i tot per a la creació de <em>scripts</em>.</p>
+<h3 id="que-necessitem-per-a-programar-en-python">Què necessitem per a programar en Python?</h3>
+<p>Ho podem fer de diverses maneres:</p>
+<ul>
+<li>
+<p>Usar un intèrpret online (no cal instal·lar res)</p>
+<p>Per exemple, <a href="https://www.onlinegdb.com/">onlinegdb.com</a>. Caldrà seleccionar el llenguatge <em>Python 3</em>, escriure el codi i polsar <em>Run</em>.</p>
+</li>
+<li>
+<p>Instal·lar l'intèrpret de Python: <a href="https://www.python.org/downloads/">www.python.org/downloads</a></p>
+<p>Una vegada instal·lat (Linux ja el porta) podrem:</p>
+<ul>
+<li>Provar comandaments en mode interactiu: en el terminal escriurem <strong><em>python3</em></strong>. Entrarem en el mode interactiu: després de fer <em>intro</em> en cada instrucció, s'executarà.</li>
+</ul>
+<p><img alt="Intèrpret de Python" class="center" src="../img/ud3/interpretPython.png" /></p>
+<ul>
+<li>
+<p>Escriure el programa en un fitxer de text: Li direm, per exemple, <em>holaMon.py</em>, i l'executarem amb: <strong><em>python3 holaMon.py</em></strong>. No cal compilar res, perquè Python és interpretat.</p>
+</li>
+<li>
+<p>Usar un IDE (Entorn de Desenvolupament Integrat): Per exemple, <a href="https://code.visualstudio.com/download">Visual Studio Code</a>. Potser calga instal·lar l'extensió de Python. Escriurem el nostre programa, el guardarem (<strong><em>holaMon.py</em></strong>) i l'execurarem amb la icona del triangle.</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="estructura-dun-programa-en-python">Estructura d'un programa en Python</h3>
+<p>Un programa en Python té una estructura molt simple:</p>
+<ul>
+<li>No s'ha de posar punt i coma després de cada instrucció.</li>
+<li>No es posen delimitadors de bloc de programa. Simplement se sangra.</li>
+<li>No cal indicar el tipus de dades de les variables.</li>
+</ul>
+<p>Qualsevol programa escrit en Pyhton té la següent estructura:</p>
+<p><img alt="Estructura d'un programa en Python" class="center" src="../img/ud3/estructuraPython.png" /></p>
+<p>Veiem que l'única part (pràcticament) necessària en un programa és l'entrada, processament i la sortida de dades, com en qualsevol llenguatge de programació.</p>
+<p>En Python estos apartats poden variar de posició.</p>
+<p>Veiem uns exemples i els analitzem.</p>
+<p>L'exemple més simple, mostrar un missatge per pantalla:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola, Pep&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Un altre exemple més complet:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="c1"># Programa que calcula l&#39;àrea d&#39;un rectangle (1)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># Autor: Pep Garcia</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="c1"># Data: 2024/10/01</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="kn">import</span> <span class="nn">time</span>  <span class="c1">#(2)!</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="k">def</span> <span class="nf">areaRectangle</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">altura</span><span class="p">):</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a>    <span class="k">return</span> <span class="n">base</span> <span class="o">*</span> <span class="n">altura</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me la base del rectangle: &quot;</span><span class="p">))</span> <span class="c1">#(4)!</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="n">a</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me l&#39;altura del rectangle: &quot;</span><span class="p">))</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Espera 2 segons</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="n">area</span> <span class="o">=</span> <span class="n">areaRectangle</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span> <span class="c1">#(5)!</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;àrea del rectangle és&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">area</span><span class="p">))</span> <span class="c1">#(6)!</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Descripció del programa</li>
+<li>Importació de llibreries</li>
+<li>Definició de funcions</li>
+<li>Entrada de dades</li>
+<li>Processament de dades</li>
+<li>Sortida de dades</li>
+</ol>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<p>Copia i apega el codi anterior en l'IDE que tingues de Python i executa'l per vore què fa.</p>
+</div>
+<p>Comentem, per adamunt, algunes coses del programa que més endavant ampliarem:</p>
+<ul>
+<li>Descipció del programa. Son comentaris, no s'executen.</li>
+<li>A l'<em>import</em> indiquem que necessitem una llibreria: conjunt de funcions que ja estan implementades i les podem fer servir als nostres programes. En este exemple la llibreria és <em>time</em> i ens cal per a usar la funció <em>time.sleep()</em> que fa que el prgrama pare en eixe punt uns segons (2 en este cas).</li>
+<li>Desprès tenim la definició d'una funció, que comença amb la paraula reservada <em>def</em>. Tot el que es pose dins del bloc de la definició d'una funció ha d'anar sagnat (en este cas és només la instrucció <em>return</em>).</li>
+<li>Després ja tenim el nostre programa pròpiament dit, on veiem que:<ul>
+<li>Les línies no tenen cap sagnat (van just a l'esquerra)</li>
+<li>Amb els <em>input</em> aconseguim que s'introduisquen dades per teclat.</li>
+<li>Es fa la crida a la funció que hem definit abans (<em>areaRectangle</em>).</li>
+<li>Finalment mostrem a l'usuari el resultat (<em>print</em>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="noms-de-variable-i-funcions-en-python">Noms de variable i funcions en Python</h3>
+<p>Abans hem vist que hem posat noms de variable i funcions. Estos noms han de tindre unes <strong>regles</strong>, que solen ser les mateixes en tots els llenguatges, encara que poden variar un poc. En Python estes són les regles per als noms de variables i funcions:</p>
+<div class="admonition warning">
+<p class="admonition-title">Regles per a noms de variables i funcions en Python</p>
+<ul>
+<li>Son una combinació de lletres minúscules [ a...z ], majúscules [ A...Z ], dígiint [ 0...9 ] i el caràcter subratllat [ _ ].</li>
+<li>Poden tindre qualsevol longitud.</li>
+<li>S'admeten els accents, la ç i la ñ.</li>
+<li>No poden haver símbols especials ni operadors: <code>[, !, @, #, $, %, *, ...</code></li>
+<li>No poden començar amb dígit.</li>
+<li>No poden ser paraules reservades:</li>
+</ul>
+<p><img alt="Paraules reservades" class="center" src="../img/ud3/paraulesReservades.png" /></p>
+</div>
+<h3 id="variables">Variables</h3>
+<p>Les variables són els llocs on es guarda la informació (per exemple, els llocs on es guarda cada dada introduïda per teclat).</p>
+<p>Es poden classificar en globals i locals:</p>
+<ul>
+<li><strong>Variables globals</strong>: es creen fora de qualsevol funció. Es pot accedir a elles des de qualsevol part del programa.</li>
+<li><strong>Variables locals</strong>: es creen dins d'una funció. Es pot accedir a elles només des d'eixa funció.</li>
+</ul>
+<p>Més endavant vorem els tipus de dades (enter, caràcter, etc) de les variables.</p>
+<h3 id="comentaris">Comentaris</h3>
+<p>En algunes parts del programa cal que el programador pose anotacions per a:</p>
+<ul>
+<li>Recordar el que ha fet, per a futures modificacions.</li>
+<li>Indicar a altres programadors com s'ha fet alguna cosa.</li>
+<li>Indicar la data (o autor, etc.) de creació del programa.</li>
+</ul>
+<p>Tipus de comentaris:</p>
+<ul>
+<li><strong>D'una línia</strong>:<ul>
+<li>Precedit per coixinet: # soc un comentari</li>
+<li>Entre cometes simples: 'soc un comentari'</li>
+<li>Entre cometes dobles: "soc un comentari"</li>
+</ul>
+</li>
+<li><strong>De diverses línies</strong>:<ul>
+<li>entre trios de cometes simples: ' ' '</li>
+<li>entre trios de cometes dobles: " " "</li>
+</ul>
+</li>
+<li><strong>De documentació de funcions</strong>: si posem un comentari entre cometes en la primera línia dins d'una funció (per a explicar què fa) després podrem accedir a eixe comentari des d'altres parts del programa. Ara ho veurem.</li>
+</ul>
+<p>Veiem en este programa exemples dels diferents tipus de comentaris:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="sd">Programa que calcula l&#39;area d&#39;un rectangle</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="sd">Autor: Pep Garcia</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="sd">Data: 1-10-2024</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="kn">import</span> <span class="nn">time</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># -----------------------------------------</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="k">def</span> <span class="nf">areaRectangle</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="sd">    Esta funció calcula l&#39;àrea d&#39;un rectangle</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="sd">    Paràmetres:</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="sd">        b -&gt; La base del rectangle</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="sd">        a -&gt; L&#39;altura del rectangle</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="sd">    &#39;&#39;&#39;</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>    <span class="k">return</span> <span class="n">b</span><span class="o">*</span><span class="n">a</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="c1"># -----------------------------------------</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="c1"># Entrada de dades per teclat:</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="n">base</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me la base del rectangle: &quot;</span><span class="p">))</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="n">altura</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me l&#39;altura del rectangle: &quot;</span><span class="p">))</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="c1"># Càlculs</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># Espera dos segons</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="n">area</span> <span class="o">=</span> <span class="n">areaRectangle</span><span class="p">(</span><span class="n">base</span><span class="p">,</span> <span class="n">altura</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="c1"># Eixida de resultats per pantalla:</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;àrea del rectangle és&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">area</span><span class="p">))</span>
+</code></pre></div></td></tr></table></div>
+<p>Ens alguns IDE com el <em>Visual Studio Code</em>, si poses el cursor damunt del nom d'una funció et mostra els comentaris que has posat en ella:</p>
+<p><img alt="Comentari emergent en VSC" class="center" src="../img/ud3/comentarisVSC.png" /></p>
+<h3 id="delimitacions">Delimitacions</h3>
+<p>Son símbols especials que permeten al compilador reconéixer les diferents parts del programa.</p>
+<p>El més important és el finalitzador de sentències, que, en molts llenguatges de programació (com C i Java) és el pun i coma ( ; ) però Python fa servir simplement el bot de línia.</p>
+<p>Ací tenim els delimitadors que s'usen en Python.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Nom</strong></th>
+<th style="text-align: center;"><strong>Utilitat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Salt de línia</td>
+<td style="text-align: center;">;</td>
+<td style="text-align: center;">Finalitzador</td>
+<td style="text-align: center;">- Finalitzar una instrucció simple o una declaració de variables</td>
+</tr>
+<tr>
+<td style="text-align: center;">Tabulació</td>
+<td style="text-align: center;">{ }</td>
+<td style="text-align: center;">Bloc</td>
+<td style="text-align: center;">- Delimitar inici i fi d'un bloc de codi</td>
+</tr>
+<tr>
+<td style="text-align: center;">,</td>
+<td style="text-align: center;">,</td>
+<td style="text-align: center;">Separador</td>
+<td style="text-align: center;">- Separar els elements d'una llista</td>
+</tr>
+<tr>
+<td style="text-align: center;">( )</td>
+<td style="text-align: center;">( )</td>
+<td style="text-align: center;">Parèntesi</td>
+<td style="text-align: center;">- Agrupar operacions - Paràmetres de funcioins</td>
+</tr>
+<tr>
+<td style="text-align: center;">[ ]</td>
+<td style="text-align: center;">[ ]</td>
+<td style="text-align: center;">Claudàtors</td>
+<td style="text-align: center;">- Per a vectors, llistes...</td>
+</tr>
+</tbody>
+</table>
+<h2 id="tipus-de-dades">Tipus de dades</h2>
+<p>Les dades que manegen els programes són de distints <strong>tipus</strong>: lletres, números sense decimals, amb decimals...</p>
+<p>Per tant, les variables seran d'un tipus determinat. En la majoria de llenguatges de programació, abans d'utilitzar una nova variable, cal definir-la (declarar-la): indicar de quin tipus és. Però en Python no cal. Simplement el tipus de la variable serà del mateix tipus que el valor que li s'assigne.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span>
+<span class="normal"><a href="#__codelineno-3-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">edat</span> <span class="o">=</span> <span class="mi">30</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Pep&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">pes</span> <span class="o">=</span> <span class="mf">74.5</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">casat</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div></td></tr></table></div>
+<p>Veiem els distints tipus que solen tindre els llenguatges de programació.</p>
+<h3 id="tipus-elementals">Tipus elementals</h3>
+<p>En Python hi ha 4 tipus bàsics: enter, amb decimals, cadena i lògic.</p>
+<p>Altres llenguatges, com C i Java, en tenen més, per a indicar enters xicotets o grans, amb signa o sense... Igual que per a números amb decimals.</p>
+<h4 id="numeros-enters-int">Números enters: <em>int</em></h4>
+<p>Números enters (sense decimals).</p>
+<p>Quan posem un número s'interpreta que està en sistema de numeració decimal. Però podem dir-li que ho interprete com a binari, octal o hexadecimal:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
+<span class="normal"><a href="#__codelineno-4-2">2</a></span>
+<span class="normal"><a href="#__codelineno-4-3">3</a></span>
+<span class="normal"><a href="#__codelineno-4-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nb">print</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>   <span class="c1"># Número 11 en sistema decimal. Mostra 11</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="mb">0b11</span><span class="p">)</span> <span class="c1"># Numero 11 en sistema binari. Mostra 3</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nb">print</span><span class="p">(</span><span class="mo">0o11</span><span class="p">)</span> <span class="c1"># Número 11 en sistema octal. ostra 9</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="nb">print</span><span class="p">(</span><span class="mh">0x11</span><span class="p">)</span> <span class="c1"># Número 11 en sistema hexadecimal. Mostra 17</span>
+</code></pre></div></td></tr></table></div>
+<p>El <em>print</em> mostra el número en sistema decimal.</p>
+<h4 id="numeros-amb-decimals-float">Números amb decimals: <em>float</em></h4>
+<p>Números amb decimals</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nb">print</span><span class="p">(</span><span class="mf">5.2</span><span class="p">)</span>  <span class="c1"># mostra 5.2</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="mf">5.</span><span class="p">)</span>   <span class="c1"># mostra 5.0</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="nb">print</span><span class="p">(</span><span class="mf">.2</span><span class="p">)</span>   <span class="c1"># mostra 0.2</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="nb">print</span><span class="p">(</span><span class="mf">5e2</span><span class="p">)</span>  <span class="c1"># mostra 500</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="nb">print</span><span class="p">(</span><span class="mf">5e-2</span><span class="p">)</span> <span class="c1"># mostra 0.05</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="logics-bool">Lògics: <em>bool</em></h4>
+<p>Serveix per si una variable volem que tinga 2 únics estats (vertader o fols). Els únics valors que pot tindre una variable d'este tipus són <em>True</em> o <em>False</em>.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">majorEdat</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">jubilat</span> <span class="o">=</span> <span class="kc">False</span>
+</code></pre></div></td></tr></table></div>
+<p>Ens servirà per a quan usem sentències condicionals (ja entrarem en detall):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="k">if</span> <span class="n">jubilat</span><span class="p">:</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Està jubilat&quot;</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No està jubilat&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>En C++ i Java és <em>true</em> i <em>false</em> (en minúscula). C no té eixe tipus de dades com a tal (usa el 0 per a <em>false</em> i l'1 per a <em>true</em>).</p>
+</div>
+<h4 id="cadenes-str">Cadenes: <em>str</em></h4>
+<p>És el tipus de dades per a guardar una cadena de caràcters (un nom de persona, per exemple). Una dada de tipus <em>str</em> és una successió de 0 o més caràcters dins de cometes simples o dobles (encara que es recomana entre cometes dobles, ja que molts llenguatges només admeten les dobles).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Pep Garcia&quot;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">domicili</span> <span class="o">=</span> <span class="s1">&#39;Carrer La Punt, 54&#39;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nom de l&#39;alumne:&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Per a guardar cadenes els llenguatges utilitzen formes distintes:</p>
+<ul>
+<li>En <strong>C</strong> no és un tipus sinó un <strong>vector</strong> de caràcters (ja vorem els vectors).</li>
+<li>En <strong>Java</strong> no és un tipus, sinó una <strong>classe</strong> (ja vorem les classes).</li>
+<li>En <strong>Python</strong> sí que és un <strong>tipus</strong> de dades.</li>
+</ul>
+<h5 id="sequencies-descapament">Seqüències d'escapament</h5>
+<p>Per a poder posar unes cometes dobles dis d'una cadena amb cometes dobles es pot usar el caràcter d'escapament <code>\</code>. També per a cometes simples:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Podem mostrar &#39;i </span><span class="se">\&quot;</span><span class="s2"> dins de cometes dobles&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Podem mostrar </span><span class="se">\&#39;</span><span class="s1"> i &quot; dins de cometes simples&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>En una cadena de text també podem utilitzar este caràcter d'escapament per a representar diverses accions:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python, C i Java</strong></th>
+<th style="text-align: center;"><strong>Acció</strong></th>
+<th style="text-align: center;"><strong>Exemple</strong></th>
+<th style="text-align: center;"><strong>Resultat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">\n</td>
+<td style="text-align: center;">Nova línia</td>
+<td style="text-align: center;">print("Hola\nAdéu")</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">\t</td>
+<td style="text-align: center;">Tabulador</td>
+<td style="text-align: center;">print("Hola\tAdéu")</td>
+<td style="text-align: center;">Hola    Adèu</td>
+</tr>
+<tr>
+<td style="text-align: center;">\r</td>
+<td style="text-align: center;">Retorn de carro</td>
+<td style="text-align: center;">print("Hola\rTu")</td>
+<td style="text-align: center;">Tula</td>
+</tr>
+<tr>
+<td style="text-align: center;">\b</td>
+<td style="text-align: center;">Backspace</td>
+<td style="text-align: center;">print("Hola\bAdéu")</td>
+<td style="text-align: center;">HolAdéu</td>
+</tr>
+</tbody>
+</table>
+<p>Encara que les més emprades són <code>\n</code> i <code>\t</code>.</p>
+<p>Totes estes seqüències d'escapament també es poden usar en C i Java.</p>
+<h3 id="tipus-composts">Tipus composts</h3>
+<p>Els tipus simples (que acabem de veure) serveixen quan hem de guardar una informació simple. És a dir, formada per una sola dada (una temperaura, un nom, una edat...)</p>
+<p>Però si volem guardar en una variable el domicili d'un client (format per un carrer, número, codi postal...) o una data (dia, mes any), el programador haurà de definir un tipus de dades compost. Estos tipus de dades compostos els vorem més endavant.</p>
+<h3 id="declaracio-de-variables">Declaració de variables</h3>
+<p>Una variable és una porció de memòria (RAM), representada per un nom (identificador) on es guardarà un valor que pot variar al llarg de l'execució d'un programa.</p>
+<p>Declarar una variable vol dir indicar de quin tipus serà eixa variable. Depenent del llenguatge de programació caldrà declarar les variables o no. Per tant, atenent a este criteri, tenim 2 tipus de llenguatges de programació:</p>
+<h4 id="llenguatges-de-tipificacio-estatica-c-java-pero-no-python">Llenguatges de tipificació estàtica (C, Java... però no Python)</h4>
+<p>Estos llenguatges <strong>obliguen a indicar de quin tipus serà una variable</strong> abans d'usar-la. Després, al moment de fer servir les variables, el llenguatge controla que el valor que s'assigne a una variable corresponga al tipus de la variable. Si no és el cas, donarà error-</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span>
+<span class="normal"><a href="#__codelineno-10-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Pep&quot;</span><span class="p">;</span><span class="w">  </span><span class="c1">// Error perquè no és del mateix tipus.</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.7</span><span class="p">;</span><span class="w">    </span><span class="c1">// No dóna error però lleva la part decimal. Guardarà un 4.</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w">      </span><span class="c1">// Error perquè la variable z no està declarada prèviament.</span>
+</code></pre></div></td></tr></table></div>
+<h4 id="llenguatges-de-tipificacio-dinamica-python-php">Llenguatges de tipificació dinàmica (Python, PHP...)</h4>
+<p>En estos llenguatges <strong>no es declara la variable</strong> prèviament. Simplement quan se li assigna un valor, la variable agafa el tipus d'eixe valor. I pot variar de tipus cada vegada que se li assigna un nou valor.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span>
+<span class="normal"><a href="#__codelineno-11-2">2</a></span>
+<span class="normal"><a href="#__codelineno-11-3">3</a></span>
+<span class="normal"><a href="#__codelineno-11-4">4</a></span>
+<span class="normal"><a href="#__codelineno-11-5">5</a></span>
+<span class="normal"><a href="#__codelineno-11-6">6</a></span>
+<span class="normal"><a href="#__codelineno-11-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">7</span>       <span class="c1"># Primera vegada que ix la variable n. n val 7 i és int</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="n">n</span> <span class="o">=</span> <span class="mf">5.67</span>    <span class="c1"># Ara n val 5.67. Per tant, ara és float</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="n">n</span> <span class="o">=</span> <span class="mi">9</span>       <span class="c1"># Ara n val 9. Per tant, torna a ser int</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span>     <span class="c1"># Ara n val 11. Continua sent int</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">/</span><span class="mi">4</span>     <span class="c1"># Ara n val 2.75. Per tant, ara n és float</span>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="n">n</span> <span class="o">=</span> <span class="s2">&quot;Pep&quot;</span>   <span class="c1"># Ara n és str (cadena)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="n">n</span> <span class="o">=</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span>     <span class="c1"># ERROR. No li podem sumar 2 al text &quot;Pep&quot;</span>
+</code></pre></div></td></tr></table></div>
+<p>Com veiem a l'exemple, no tindrem les situacions d'error dels llenguatges de tipificació estàtica (ja que no s'ha de declarar la variable i poden canviar de tipus). Però pot ser un desavantatge ja que podria ser que volguérem que en fer la divisió de <code>11/4</code> volguérem guardar la part entera (2) i no 2.75. Ens pot portar a situacions inesperades o inconsistents. Caldrà anar en compte en estos casos.</p>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Si en algun moment parlem de "declarar" una variable en Python, ens estarem referint al primer moment del programa on li s'assigna un valor a eixa variable.</p>
+</div>
+<h3 id="ambit-i-visibilitat">Àmbit i visibilitat</h3>
+<div class="admonition note">
+<p class="admonition-title">NOTA</p>
+<p>Aquestos conceptes s'explicaran en detall quan veiem la programació modular (funcions). No obstant, veiem un avanç.</p>
+</div>
+<p>Les variables poden "declarar-se" (començar a usar-se) en qualsevol part del programa, però segons el lloc on siguen declarades, les podrem fer servir només en alguna part (<strong>variables locals</strong>) o bé en tot el programa (<strong>variables globals</strong>).</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple 1</p>
+<p>La variable <code>a</code> és <strong>local</strong> a la funció "funcioneta"</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span>
+<span class="normal"><a href="#__codelineno-12-4">4</a></span>
+<span class="normal"><a href="#__codelineno-12-5">5</a></span>
+<span class="normal"><a href="#__codelineno-12-6">6</a></span>
+<span class="normal"><a href="#__codelineno-12-7">7</a></span>
+<span class="normal"><a href="#__codelineno-12-8">8</a></span>
+<span class="normal"><a href="#__codelineno-12-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="c1"># ---------------------</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="k">def</span> <span class="nf">funcioneta</span><span class="p">():</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>    <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span> <span class="c1"># declarem la variable &#39;a&#39; com a LOCAL (dins de la &quot;funcioneta&quot;)</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="c1"># ---------------------</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El programa comença a executar-se per ací&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="n">funcioneta</span><span class="p">()</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="c1"># ERROR perquè accedim a la variable local de &quot;funcioneta&quot;</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Si una variable està declarada dins d'una funció, només podem accedir a ella dins d'eixa funció.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple 2</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span>
+<span class="normal"><a href="#__codelineno-13-4">4</a></span>
+<span class="normal"><a href="#__codelineno-13-5">5</a></span>
+<span class="normal"><a href="#__codelineno-13-6">6</a></span>
+<span class="normal"><a href="#__codelineno-13-7">7</a></span>
+<span class="normal"><a href="#__codelineno-13-8">8</a></span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1"># ------------------------</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="k">def</span> <span class="nf">funcioneta</span><span class="p">():</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="c1"># ------------------------</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El programa comença a executar-se per ací&quot;</span><span class="p">)</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>   <span class="c1"># Declarem la variable &#39;a&#39; com a GLOBAL (fora de les funcions)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="n">funcioneta</span><span class="p">()</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Si una variable "delarada" (primer ús) fora de les funcions, podrem accedir a ella des de qualsevol lloc del programa (bé, sempre després de ser declarada). Però ja vorem que no convé declarar variables globals.</p>
+<p>L'àmbit i visibilitat d'una variable són conceptes íntimament relacionats. Fan referència a des d'on es pot accedir a una variable:</p>
+<ul>
+<li>La <strong>visibilitat</strong> és la propietat que indica si es pot accedir o no a una variable en un punt determinat del programa.<ul>
+<li>En l'exemple 1:<ul>
+<li>Dins de la funció "funcioneta" sí que hi ha visibilitat de 'a'.</li>
+<li>Fora de la funció "funcioneta" no hi ha visibilitat de 'a'.</li>
+</ul>
+</li>
+<li>En l'exemple 2:<ul>
+<li>En tot el programa sí que hi ha visibilitat de 'a'.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>L'<strong>àmbit</strong> és la zona del programa on és visible una variable.<ul>
+<li>En l'exemple 1, l'àmbit de 'a' és dins de la funció "funcioneta"</li>
+<li>En l'exemple 2, l'àmbit de 'a' és a tot el programa.</li>
+</ul>
+</li>
+</ul>
+<p>En <strong>C</strong> i <strong>Java</strong>, a més de definir variables locals a una funció es poden definir locals a un bloc de codi, tancat entre claus <code>{ }</code>. En eixe cas, eixes variables només poden ser accedides dins d'eixe bloc de codi.</p>
+<p>En <strong>Python</strong> un bloc seria el trós de codi (seguit) amb el mateix sagnat (o subsagnat). Però si una variable es declara en eixe bloc, en Python sí que podem accedir des d'altres blocs, encara que no és recomanable:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span>
+<span class="normal"><a href="#__codelineno-14-2">2</a></span>
+<span class="normal"><a href="#__codelineno-14-3">3</a></span>
+<span class="normal"><a href="#__codelineno-14-4">4</a></span>
+<span class="normal"><a href="#__codelineno-14-5">5</a></span>
+<span class="normal"><a href="#__codelineno-14-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="k">if</span> <span class="p">(</span><span class="n">edat</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">):</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>    <span class="n">major</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a>    <span class="n">major</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">major</span><span class="p">)</span> <span class="c1">#(2)!</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>El primer ús de "major" es fa en este bloc</li>
+<li>Però Python em permet usar-la fora del bloc</li>
+</ol>
+<p>En canvi, és recomanable declarar la variable en el "bloc de fora":</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span>
+<span class="normal"><a href="#__codelineno-15-3">3</a></span>
+<span class="normal"><a href="#__codelineno-15-4">4</a></span>
+<span class="normal"><a href="#__codelineno-15-5">5</a></span>
+<span class="normal"><a href="#__codelineno-15-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">major</span> <span class="o">=</span> <span class="kc">False</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="k">if</span> <span class="p">(</span><span class="n">edat</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">):</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a>    <span class="n">major</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">major</span><span class="p">)</span> <span class="c1">#(2)!</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Declarem la variable en el "bloc de fora"</li>
+<li>... ja que vaig a usar-la en eixe bloc</li>
+</ol>
+<h2 id="operadors">Operadors</h2>
+<p>Anem a veure els distints operadors que solen tindre els llenguatges de programació i a contruir expressions amb elles, així com la forma d'introduir dades per teclat i mostrar resultats per pantalla.</p>
+<h3 id="operadors-aritmetics">Operadors aritmètics</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Significat</strong></th>
+<th style="text-align: center;"><strong>Observacions</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">+</td>
+<td style="text-align: center;">Suma</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">Resta o signe</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">*</td>
+<td style="text-align: center;">Multiplicació</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">/</td>
+<td style="text-align: center;">Divisió amb decimals (11/4 -&gt; 2.75)</td>
+<td style="text-align: center;">En C i Java: (11/4 -&gt; 2  -- 11/4.0 -&gt; 2.75)</td>
+</tr>
+<tr>
+<td style="text-align: center;">//</td>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">Divisió entera (11//4 -&gt; 2)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">%</td>
+<td style="text-align: center;">Residu divisió entera (21%4 -&gt; 1)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">**</td>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">Potència (2**3 -&gt; 8)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="operadors-relacionals">Operadors relacionals</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Significat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">==</td>
+<td style="text-align: center;">==</td>
+<td style="text-align: center;">Igual</td>
+</tr>
+<tr>
+<td style="text-align: center;">!= &lt;&gt;</td>
+<td style="text-align: center;">!=</td>
+<td style="text-align: center;">Distint</td>
+</tr>
+<tr>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">&lt;</td>
+<td style="text-align: center;">Menor</td>
+</tr>
+<tr>
+<td style="text-align: center;">&lt;=</td>
+<td style="text-align: center;">&lt;=</td>
+<td style="text-align: center;">Menor o igual</td>
+</tr>
+<tr>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">&gt;</td>
+<td style="text-align: center;">Major</td>
+</tr>
+<tr>
+<td style="text-align: center;">&gt;=</td>
+<td style="text-align: center;">&gt;=</td>
+<td style="text-align: center;">Major o igual</td>
+</tr>
+</tbody>
+</table>
+<p>Ja veurem que, principalment, estos operadors s'utilitzen en les condicions de les instruccions <em>if</em> i <em>while</em>.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemples</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1">1</a></span>
+<span class="normal"><a href="#__codelineno-16-2">2</a></span>
+<span class="normal"><a href="#__codelineno-16-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="k">if</span> <span class="p">(</span><span class="n">nota</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">):</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aprovat&quot;</span><span class="p">)</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="k">while</span> <span class="p">(</span><span class="n">edat</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Edat incorrecta. Torna-me-la a dir&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h3 id="operadors-logics">Operadors lògics</h3>
+<p>Ja veiérem al primer tema quins eren els operador l'ogics i com actuaven (recordeu les "taules de veritat"). Veiem ara com es representen en Python, C i Java:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Significat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">or</td>
+<td style="text-align: center;">||</td>
+<td style="text-align: center;">Vertader si algun és vertader</td>
+</tr>
+<tr>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">&amp;&amp;</td>
+<td style="text-align: center;">Vertader si els 2 són vertaders</td>
+</tr>
+<tr>
+<td style="text-align: center;">not</td>
+<td style="text-align: center;">!</td>
+<td style="text-align: center;">El contrari</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition example">
+<p class="admonition-title">Exemples d'operadors lògics</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="o">...</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="k">if</span> <span class="n">edat</span> <span class="o">&gt;=</span> <span class="mi">18</span> <span class="ow">and</span> <span class="n">edat</span> <span class="o">&lt;=</span> <span class="mi">65</span><span class="p">:</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Estàs en edat de treballar&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No estàs en edat de treballar&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a><span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span>
+<span class="normal"><a href="#__codelineno-19-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="o">...</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="k">while</span> <span class="n">nota</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">nota</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota incorrecta. Torna-la a posar&quot;</span><span class="p">)</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="o">...</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-20-1">1</a></span>
+<span class="normal"><a href="#__codelineno-20-2">2</a></span>
+<span class="normal"><a href="#__codelineno-20-3">3</a></span>
+<span class="normal"><a href="#__codelineno-20-4">4</a></span>
+<span class="normal"><a href="#__codelineno-20-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">plou</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="n">faSol</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="nb">print</span><span class="p">(</span><span class="n">plou</span> <span class="ow">or</span> <span class="n">faSol</span><span class="p">)</span>    <span class="c1"># True</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">plou</span> <span class="ow">and</span> <span class="n">faSol</span><span class="p">)</span>   <span class="c1"># False</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="nb">print</span><span class="p">(</span><span class="ow">not</span> <span class="n">plou</span><span class="p">)</span>         <span class="c1"># False</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h4 id="curtcircuit-dexpressions">Curtcircuit d'expressions</h4>
+<p>Si recordem les taules de veritat, podem afirmar que...</p>
+<ul>
+<li><em>false</em> AND ... --&gt; <strong><em>false</em></strong></li>
+<li><em>true</em> OR ... --&gt; <strong><em>true</em></strong></li>
+</ul>
+<p>Per tant, com les expressions s'avaluen d'esquerra a dreta, en el moment en què el compilador puga assegurar el valor final de l'expressió lògica (<em>True</em> o <em>False</em>), pararà d'avaluar-la. Esta manera de treballar s'anomena <em>curtcircuit d'expressions</em>. Això ens dóna un benefici pel que fa al control d'errors i a la valocitat d'execució.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemples</p>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-21-1">1</a></span>
+<span class="normal"><a href="#__codelineno-21-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1"></a><span class="k">if</span> <span class="p">(</span><span class="n">descompte1</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">descompte2</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">descompte3</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;S&#39;aplica algun descompte&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+Si el <code>descompte1</code>és major que <code>0</code>, ja no es comproven les altres 2 expressions i passa a executar-se directament el <em>print</em>.</p>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-22-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1"></a><span class="p">(</span><span class="n">x</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El valor de la variable és negatiu&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+Només mostrarà el text si el valor de x és negatiu.</p>
+</div>
+<div class="admonition question">
+<p class="admonition-title">Exercici sobre el curtcircuit d'expressions</p>
+<p>Què passarà en cada cas?</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Cas A</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-23-1">1</a></span>
+<span class="normal"><a href="#__codelineno-23-2">2</a></span>
+<span class="normal"><a href="#__codelineno-23-3">3</a></span>
+<span class="normal"><a href="#__codelineno-23-4">4</a></span>
+<span class="normal"><a href="#__codelineno-23-5">5</a></span>
+<span class="normal"><a href="#__codelineno-23-6">6</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="n">sumaNotes</span> <span class="o">=</span> <span class="mi">50</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2"></a><span class="n">quantsAlumnes</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3"></a><span class="k">if</span> <span class="p">(</span><span class="n">quantsAlumnes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">sumaNotes</span><span class="o">/</span><span class="n">quantAlumnes</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">):</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota miyjana aprovada&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5"></a><span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nota mitjana no aprovada&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Cas B: Mateix programa però amb els següent if en compte de l'anterior</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-24-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1"></a><span class="k">if</span> <span class="p">(</span><span class="n">sumaNotes</span><span class="o">/</span><span class="n">quantAlumnes</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">auntAlumnes</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<h3 id="operador-dassignacio">Operador d'assignació</h3>
+<p>Este operador ja ha aparegut en molts exemples. S'utilitza quan volem emmagatzemar un valor en una variable. En Python i en la majoria de llenguatges de programació, l'operador d'assignació és el símbol <em>igual (=)</em>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Significat</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">=</td>
+<td style="text-align: center;">Assignació</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Assignació" class="center" src="../img/assignacio2.png" width="%" /></p>
+<p>És a dir: primer s'avalua la part de la dreta, i després s'assigna eixe resultat a la variable esquerra.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-25-1">1</a></span>
+<span class="normal"><a href="#__codelineno-25-2">2</a></span>
+<span class="normal"><a href="#__codelineno-25-3">3</a></span>
+<span class="normal"><a href="#__codelineno-25-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>      <span class="c1"># x valdrà 10</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>      <span class="c1"># y valdrà 20</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>   <span class="c1"># x no valdrà 10, sinó 11</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4"></a><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>   <span class="c1"># y no valdrà 20, sinó 31</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<p>Per descomptat, l'assignació és <em>destructiva</em> (com es veu a l'exemple): sempre que es fa una assignació elimina el valor antic de la variable. És a dir, només pot guardar una dada en un moment determinat.</p>
+<p>Si volem assignar un mateix valor a moltes variables també ho podem fer així (també en C i Java):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-26-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1"></a><span class="n">a</span> <span class="o">=</span> <span class="n">b</span> <span class="o">=</span> <span class="n">c</span> <span class="o">=</span> <span class="n">d</span> <span class="o">=</span> <span class="mi">10</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="operadors-aritmetics-reduits-operadors-aritmetics-i-dassignacio">Operadors aritmètics reduïts (operadors aritmètics i d'assignació)</h3>
+<p>L'operador d'assignació que hem vist (=) assigna un valor a una variable. Però si el que volem fer és augmentar (o disminuir) el valor que ja té la variable, podem usar els operadors aritmètics reduïts.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>Python</strong></th>
+<th style="text-align: center;"><strong>C i Java</strong></th>
+<th style="text-align: center;"><strong>Significat</strong></th>
+<th style="text-align: center;"><strong>Assignació reduïda</strong></th>
+<th style="text-align: center;"><strong>Assignació equivalent</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">+=</td>
+<td style="text-align: center;">+=</td>
+<td style="text-align: center;">Suma i assignació</td>
+<td style="text-align: center;">x += y</td>
+<td style="text-align: center;">x = x + y</td>
+</tr>
+<tr>
+<td style="text-align: center;">-=</td>
+<td style="text-align: center;">-=</td>
+<td style="text-align: center;">Resta i assignació</td>
+<td style="text-align: center;">x -= y</td>
+<td style="text-align: center;">x = x - y</td>
+</tr>
+<tr>
+<td style="text-align: center;">*=</td>
+<td style="text-align: center;">*=</td>
+<td style="text-align: center;">Producte i assignació</td>
+<td style="text-align: center;">x *= y</td>
+<td style="text-align: center;">x = x * y</td>
+</tr>
+<tr>
+<td style="text-align: center;">**=</td>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">Potència i assignació</td>
+<td style="text-align: center;">x **= y</td>
+<td style="text-align: center;">x = x ** y</td>
+</tr>
+<tr>
+<td style="text-align: center;">/=</td>
+<td style="text-align: center;">/=</td>
+<td style="text-align: center;">Divisió i assignació</td>
+<td style="text-align: center;">x /= y</td>
+<td style="text-align: center;">x = x / y</td>
+</tr>
+<tr>
+<td style="text-align: center;">%=</td>
+<td style="text-align: center;">%=</td>
+<td style="text-align: center;">Residu i assignació</td>
+<td style="text-align: center;">x %= y</td>
+<td style="text-align: center;">x = x % y</td>
+</tr>
+<tr>
+<td style="text-align: center;">//=</td>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">Divisió entera i assignació</td>
+<td style="text-align: center;">x //= y</td>
+<td style="text-align: center;">x = x // y</td>
+</tr>
+<tr>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">++</td>
+<td style="text-align: center;">Autoincrement</td>
+<td style="text-align: center;">x++</td>
+<td style="text-align: center;">x = x + 1</td>
+</tr>
+<tr>
+<td style="text-align: center;">NO</td>
+<td style="text-align: center;">--</td>
+<td style="text-align: center;">Autodecrement</td>
+<td style="text-align: center;">x--</td>
+<td style="text-align: center;">x = x - 1</td>
+</tr>
+</tbody>
+</table>
+<p>Com veiem, estos dos operadors fan 2 coses: una operació aritmètica i una assignació. També es coneixen com <em>operadors d'actualització</em>. En les dos columnes de la dreta, <code>x</code> és una variable , i <code>y</code> és una expressió, constant o variable.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemple</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-27-1">1</a></span>
+<span class="normal"><a href="#__codelineno-27-2">2</a></span>
+<span class="normal"><a href="#__codelineno-27-3">3</a></span>
+<span class="normal"><a href="#__codelineno-27-4">4</a></span>
+<span class="normal"><a href="#__codelineno-27-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1"></a><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">4</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3"></a><span class="n">x</span> <span class="o">+=</span> <span class="n">y</span>      <span class="c1"># x = x + y         ---&gt; x = 5</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4"></a><span class="n">x</span> <span class="o">*=</span> <span class="mi">2</span>      <span class="c1"># x = x * 2         ---&gt; x = 10</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5"></a><span class="n">x</span> <span class="o">-=</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">y</span>  <span class="c1"># x = x - (3 - y)   ---&gt; x = 10 - (2)   ---&gt; x = 8</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<details class="question">
+<summary>Exercici 2. Assignacions</summary>
+<p>Al següent programa Python, què valdrà cada variable després de cada assignació?</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-28-1">1</a></span>
+<span class="normal"><a href="#__codelineno-28-2">2</a></span>
+<span class="normal"><a href="#__codelineno-28-3">3</a></span>
+<span class="normal"><a href="#__codelineno-28-4">4</a></span>
+<span class="normal"><a href="#__codelineno-28-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">6</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">b</span>           <span class="c1"># a =       b =</span>
+<a id="__codelineno-28-4" name="__codelineno-28-4"></a><span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>           <span class="c1"># a =       b =</span>
+<a id="__codelineno-28-5" name="__codelineno-28-5"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">//</span> <span class="n">b</span> <span class="o">+</span> <span class="n">b</span>      <span class="c1"># a =       b =</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="question">
+<summary>Exercici 3</summary>
+<p>En el següent programa Python, què valdrà cada variable després de cada assignació?</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-29-1">1</a></span>
+<span class="normal"><a href="#__codelineno-29-2">2</a></span>
+<span class="normal"><a href="#__codelineno-29-3">3</a></span>
+<span class="normal"><a href="#__codelineno-29-4">4</a></span>
+<span class="normal"><a href="#__codelineno-29-5">5</a></span>
+<span class="normal"><a href="#__codelineno-29-6">6</a></span>
+<span class="normal"><a href="#__codelineno-29-7">7</a></span>
+<span class="normal"><a href="#__codelineno-29-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1"></a><span class="n">a</span><span class="o">=</span><span class="mi">4</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">20</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3"></a><span class="n">b</span> <span class="o">+=</span> <span class="mi">23</span>     <span class="c1"># a=     b= </span>
+<a id="__codelineno-29-4" name="__codelineno-29-4"></a><span class="n">b</span> <span class="o">//=</span> <span class="mi">2</span>     <span class="c1"># a=     b= </span>
+<a id="__codelineno-29-5" name="__codelineno-29-5"></a><span class="n">a</span> <span class="o">-=</span> <span class="mi">2</span>      <span class="c1"># a=     b= </span>
+<a id="__codelineno-29-6" name="__codelineno-29-6"></a><span class="n">a</span> <span class="o">*=</span> <span class="n">b</span> <span class="o">+</span> <span class="mi">2</span>  <span class="c1"># a=     b= </span>
+<a id="__codelineno-29-7" name="__codelineno-29-7"></a><span class="n">a</span> <span class="o">%=</span> <span class="n">b</span>      <span class="c1"># a=     b= </span>
+<a id="__codelineno-29-8" name="__codelineno-29-8"></a><span class="n">a</span><span class="o">**=</span> <span class="n">b</span><span class="o">-</span><span class="mi">19</span>   <span class="c1"># a=     b= </span>
+</code></pre></div></td></tr></table></div>
+</details>
+<h3 id="altres-operadors">Altres operadors</h3>
+<h4 id="el-sizeof">El <em>sizeof</em></h4>
+<p>La quantitat de <em>bytes</em> que s'utilitza per a guardar una dada depén del tipus de dades, així com del llenguatge de programació, la varsió del compilador i del tipus de processador que s'utilitze (32 o 64 bits).</p>
+<p>Per tant, perquè el nostre programa puga ser portable, de vegades és necessari saber quants <em>bytes</em> ocupen les variables amb les quals treballarem. Per aixó alguns llenguatges tenen una funció per a tal fi:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">En Python: sys.getsizeof()</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-30-1">1</a></span>
+<span class="normal"><a href="#__codelineno-30-2">2</a></span>
+<span class="normal"><a href="#__codelineno-30-3">3</a></span>
+<span class="normal"><a href="#__codelineno-30-4">4</a></span>
+<span class="normal"><a href="#__codelineno-30-5">5</a></span>
+<span class="normal"><a href="#__codelineno-30-6">6</a></span>
+<span class="normal"><a href="#__codelineno-30-7">7</a></span>
+<span class="normal"><a href="#__codelineno-30-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1"></a><span class="kn">import</span> <span class="nn">sys</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2"></a><span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3"></a><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;10&quot;</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>            <span class="c1"># 28 bytes (1)</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>         <span class="c1"># 51 bytes (2)</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>         <span class="c1"># 28 bytes</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="s2">&quot;Hola, Pep&quot;</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>  <span class="c1"># 58 bytes</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">getsizeof</span><span class="p">(</span><span class="mf">1234.56789</span><span class="p">),</span> <span class="s2">&quot;bytes&quot;</span><span class="p">)</span>   <span class="c1"># 24 bytes (3)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Qualsevol enter ocupa 28 bytes</li>
+<li>Quantitat de caracters + 49</li>
+<li>Un float ocupa 24 bytes</li>
+</ol>
+<h2 id="expressions">Expressions</h2>
+<p>Ja hem vist les dades i els operadors. Amb ells podem formar expressions.</p>
+<p>Una expressió és una combinació de dades (operands) i operadors (seguint certes regles de construcció) i que poden estar agrupats per parèntesi per a indicar l'ordre de càlcul.</p>
+<div class="admonition example">
+<p class="admonition-title">Exemples d'expressions</p>
+<ul>
+<li>base * altura / 2</li>
+<li>(-b + sqrt(b<em><em>2 - 4</em>a</em>c))/2</li>
+<li>1000</li>
+<li>edat &gt;= 0 and edat &lt;= 100</li>
+<li>cognoms</li>
+<li>"Sr." + nom + " " + cognoms</li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Llocs on pot aparéixer una expressió</p>
+<ul>
+<li><strong>En una assignació:</strong><ul>
+<li>area = <mark>base * altura / 2</mark></li>
+<li>total += <mark>preu * quantitat</mark></li>
+</ul>
+</li>
+<li><strong>En els paràmetres d'una funció:</strong><ul>
+<li>sqrt(<mark>b ** 2 - 4 * a * c</mark>)</li>
+<li>print(<mark>"Sr." + nom + " " + cognoms</mark>)</li>
+</ul>
+</li>
+<li><strong>En una condició:</strong><ul>
+<li>if(<mark>edat &lt; 0</mark>):</li>
+<li>while (<mark>nota &lt; 0 or nota &gt; 10</mark>)</li>
+</ul>
+</li>
+</ul>
+</div>
+<h3 id="el-tipus-de-les-expressions">El tipus de les expressions</h3>
+<p>Igual que una variable (o una constant) és d'un tipus determinat, una expressió també té el seu tipus.</p>
+<p>Per exemple, tenim les variables enteres <code>a</code> i <code>b</code> i la variable <em>float</em> <code>x</code>.</p>
+<ul>
+<li>És lògic pensar que <code>a * b</code> també serà entera, i també <code>a + b</code>, etc</li>
+</ul>
+<p>Ara bé:</p>
+<ul>
+<li>De quin tipus serà una expressió amb operands de diferents tipus: <code>a * x</code>?</li>
+<li>De quin tipus serà <code>a / b</code>? Enter (sense decimals) o <em>float</em> (amb decimals)?</li>
+</ul>
+<p>En eixos casos cada llenguatge de programació fa una conversió de tipus o <em>promoció</em>. Hi ha diferents formes de <em>promoció</em>:</p>
+<h4 id="promocio-interna">Promoció interna</h4>
+<p>Si en una expressió hi ha dades amb decimals i sense, <strong>el resultat també tindrà decimals</strong>.</p>
+<p>Per tant, si tenim <code>4 + 2.3</code> el resultat serà <code>6.3</code> (<em>float</em>), no <code>6</code> (<em>int</em>).</p>
+<p>Esta norma serveix per a tots els llenguatges. Però C i Java tenen més tipus per a representar els números. En estos llenguatges, si una expressió té diferents tipus, <strong>l'expressió serà del tipus que ocupa més bytes</strong> (però si l'expressió té números decimals, l'expressió serà d'un tipus amb decimals).</p>
+<p><img alt="Promoció interna" class="center" src="../img/ud3/promoInterna.png" /></p>
+<h4 id="promocio-per-assignacio">Promoció per assignació</h4>
+<p>Esta conversió la fa el compilador quan s'intenta assignar a una variable una expressió de diferent tipus.</p>
+<p><img alt="Promoció per assignació" class="center" src="../img/ud3/promocioAssignacio.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python: la variable passarà a ser del tipus de l'expressió</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-31-1">1</a></span>
+<span class="normal"><a href="#__codelineno-31-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1"></a><span class="n">preu</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># Ara preu és int (i el seu valor és 3)</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2"></a><span class="n">preu</span> <span class="o">=</span> <span class="mf">4.6</span>  <span class="c1"># Ara preu és float (i el seu valor és 4.6)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">C, Java: el tipus de la variable no canvia. És l'expressió la que canvia al tipus de la variable perquè es faça l'assignació</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-32-1">1</a></span>
+<span class="normal"><a href="#__codelineno-32-2">2</a></span>
+<span class="normal"><a href="#__codelineno-32-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">preu</span><span class="p">;</span><span class="w">   </span><span class="c1">// Ara (i en tot el programa) preu serà int</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2"></a><span class="n">preu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">   </span><span class="c1">// preu ara val 3</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3"></a><span class="n">preu</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.6</span><span class="p">;</span><span class="w"> </span><span class="c1">// preu ara val 4 i continua sent int (en Python seria 4.6) (1)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>En este cas diem que s'ha fet una promoció per assignació: el <em>float</em> 4.6 ha "promocionat" a l'<em>int</em> 4.</li>
+</ol>
+<h4 id="promocio-forcada-casting">Promoció forçada (<em>càsting</em>)</h4>
+<p>El programador pot indicar que una expressió canvie a un tipus en concret. Eixa conversió es diu <em>càsting</em> o <em>promoció forçada</em>.</p>
+<p><img alt="Càsting" class="center" src="../img/ud3/casting.png" /></p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Exemple d'us en Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-33-1">1</a></span>
+<span class="normal"><a href="#__codelineno-33-2">2</a></span>
+<span class="normal"><a href="#__codelineno-33-3">3</a></span>
+<span class="normal"><a href="#__codelineno-33-4">4</a></span>
+<span class="normal"><a href="#__codelineno-33-5">5</a></span>
+<span class="normal"><a href="#__codelineno-33-6">6</a></span>
+<span class="normal"><a href="#__codelineno-33-7">7</a></span>
+<span class="normal"><a href="#__codelineno-33-8">8</a></span>
+<span class="normal"><a href="#__codelineno-33-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1"></a><span class="n">x</span> <span class="o">=</span> <span class="mf">4.6</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">2</span>  <span class="c1"># int(4.6) * 2 --&gt; 4 * 2    --&gt; 8 --&gt; n valdrà 8</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3"></a><span class="n">n</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># int(4.6 * 2) --&gt; int(9.2) --&gt; 9 --&gt; n valdrà 9</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4"></a>
+<a id="__codelineno-33-5" name="__codelineno-33-5"></a><span class="n">euros</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6"></a><span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">euros</span> <span class="o">*</span> <span class="mf">166.386</span><span class="p">))</span> <span class="c1"># Mostrarà 1663 (sense deimals)</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7"></a>
+<a id="__codelineno-33-8" name="__codelineno-33-8"></a><span class="n">tel</span> <span class="o">=</span> <span class="mi">962829995</span> <span class="c1"># tel és un enter i val 962829995. Podriem sumar-li números, etc.</span>
+<a id="__codelineno-33-9" name="__codelineno-33-9"></a><span class="n">tel</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">tel</span><span class="p">)</span>  <span class="c1"># tel ara és una cadena i val &quot;962829995&quot;. Podriem concatenar...</span>
+</code></pre></div></td></tr></table></div>
+<p>Els tipus possibles en Python són: <em>int</em>, <em>float</em>, <em>str</em> i <em>bool</em>.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Exemple d'ús en C i Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-34-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-34-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-34-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-34-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-34-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-34-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-34-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-34-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-34-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-34-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">;</span>
+<a id="__codelineno-34-2" name="__codelineno-34-2"></a><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.6</span><span class="p">;</span>
+<a id="__codelineno-34-3" name="__codelineno-34-3"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">int</span><span class="p">)</span><span class="n">x</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">;</span><span class="w">     </span><span class="c1">// (4*2)        --&gt; n valdrà 8</span>
+<a id="__codelineno-34-4" name="__codelineno-34-4"></a><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">x</span><span class="o">*</span><span class="mi">2</span><span class="p">));</span><span class="w">   </span><span class="c1">// (int)(9.2)   --&gt; n valdrà 9</span>
+<a id="__codelineno-34-5" name="__codelineno-34-5"></a>
+<a id="__codelineno-34-6" name="__codelineno-34-6"></a><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<a id="__codelineno-34-7" name="__codelineno-34-7"></a><span class="kt">int</span><span class="w"> </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-34-8" name="__codelineno-34-8"></a><span class="kt">float</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">4.6</span><span class="p">;</span>
+<a id="__codelineno-34-9" name="__codelineno-34-9"></a><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)(</span><span class="n">n</span><span class="o">/</span><span class="n">m</span><span class="p">);</span><span class="w">   </span><span class="c1">// (float)3         --&gt; x valdrà 3.0</span>
+<a id="__codelineno-34-10" name="__codelineno-34-10"></a><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">float</span><span class="p">)</span><span class="n">n</span><span class="o">/</span><span class="n">m</span><span class="p">;</span><span class="w">     </span><span class="c1">// (float)(10)/3    --&gt; 10.0/3  --&gt; x valdrà 3.333...</span>
+</code></pre></div></td></tr></table></div>
+<p>En este últim cas veiem que el càsting és útil per si volem fer una divisió d'emters però amb decimals en C i Java.</p>
+<h2 id="precedencia-i-associativitat-doperadors">Precedència i associativitat d'operadors</h2>
+<p>Ací tenim una relació dels operadors ordenats per <strong>procedència</strong> de major a menor. En cas d'igualtat de precedència de divers operadors en una expressió, l'<strong>associativitat</strong> ens diu per on es comença a avaluar (d'esquerra a dreta o de dreta a esquerra).</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><strong>CATEGORÍA DE L'OPERADOR</strong></th>
+<th style="text-align: center;"><strong>OPERADORS PYTHON</strong></th>
+<th style="text-align: center;"><strong>OPERADORS JAVA</strong></th>
+<th style="text-align: center;"><strong>ASSOCIATIVITAT</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">Parèntesi, vectors</td>
+<td style="text-align: center;">( )  [ ]</td>
+<td style="text-align: center;">( )  [ ]</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Operadors unaris</td>
+<td style="text-align: center;">+ -</td>
+<td style="text-align: center;">++ -- + -</td>
+<td style="text-align: center;">DRETA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Potència</td>
+<td style="text-align: center;">**</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">DRETA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Multiplicació, divisió i residu</td>
+<td style="text-align: center;">* / // %</td>
+<td style="text-align: center;">* / %</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Suma i resta</td>
+<td style="text-align: center;">+ -</td>
+<td style="text-align: center;">+ -</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Operadors relacionals</td>
+<td style="text-align: center;">&lt; &lt;= &gt; &gt;= == != &lt;&gt;</td>
+<td style="text-align: center;">&lt; &lt;= &gt; &gt;= == !=</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">'No' lògic</td>
+<td style="text-align: center;">not</td>
+<td style="text-align: center;">!</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">'i' lògic</td>
+<td style="text-align: center;">and</td>
+<td style="text-align: center;">&amp;&amp;</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">'o' lògic</td>
+<td style="text-align: center;">or</td>
+<td style="text-align: center;">||</td>
+<td style="text-align: center;">ESQUERRA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Operador condicional</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">?:</td>
+<td style="text-align: center;">DRETA</td>
+</tr>
+<tr>
+<td style="text-align: center;">Assignacions</td>
+<td style="text-align: center;">= += -= <em>= </em>*= /= //= %=</td>
+<td style="text-align: center;">= += -= *= /= %=</td>
+<td style="text-align: center;">DRETA</td>
+</tr>
+</tbody>
+</table>
+<p>No cal saber-se tot això de memòria. Simplement hem de saber que, per a avaluar les expressions, hi ha unes regles per vore què s'avalua primer. Davant del dubte, farem ús dels <strong>parèntesis</strong> per a indicar quines operacions volem que es facen primer.</p>
+<details class="question">
+<summary>Exercici 5. Expressions i tipus</summary>
+<p>Suposem que tenim estes variables en un programa en Python:</p>
+<ul>
+<li><code>a = 12</code></li>
+<li><code>x = 2.5</code></li>
+<li><code>y = 0.6</code></li>
+</ul>
+<p>Indica de quin és el valor de cadascuna de les següents expressions:</p>
+<ul>
+<li><code>a + x</code></li>
+<li><code>x + y</code></li>
+<li><code>int(x) + y</code></li>
+<li><code>int(x) + int(y)</code></li>
+<li><code>int(x + y)</code></li>
+<li><code>a / 4</code></li>
+<li><code>a // 4</code></li>
+<li><code>a % 4</code></li>
+<li><code>a + x * 2</code></li>
+<li><code>a / a - 2</code></li>
+<li><code>a ** 2 + 1</code></li>
+<li><code>a &lt; x or y &lt; x</code></li>
+<li><code>not(a &lt; x)</code></li>
+<li><code>(a &gt;= x) and (y &lt;= a)</code></li>
+</ul>
+</details>
+<h2 id="eixida-de-dades-print">Eixida de dades: <em>print</em></h2>
+<p>Les instruccions d'entrada i eixida permeten la construcció de programes interactius. És a dir, amb elles podrem mostrar dades en pantalla i introduir dades per teclat.</p>
+<p>En Python:</p>
+<ul>
+<li>Eixida de dades: <em>print</em></li>
+<li>Entrada de dades: <em>input</em></li>
+</ul>
+<h3 id="exemple-senzill-de-print">Exemple senzill de <em>print</em></h3>
+<p>Esta funció mostra per pantalla allò que se li passa com a paràmetre. Ja ha aparegut anteriorment. Anem a detallar el seu funcionament.</p>
+<p>Veiem estos exemples:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-35-1">1</a></span>
+<span class="normal"><a href="#__codelineno-35-2">2</a></span>
+<span class="normal"><a href="#__codelineno-35-3">3</a></span>
+<span class="normal"><a href="#__codelineno-35-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1"></a><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Pep&quot;</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2"></a><span class="n">cognoms</span><span class="o">=</span> <span class="s2">&quot;Garcia&quot;</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola,&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">cognoms</span><span class="p">)</span>    <span class="c1"># Mostra: Hola, Pep Garcia</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola,&quot;</span> <span class="o">+</span> <span class="n">nom</span> <span class="o">+</span> <span class="n">cognoms</span><span class="p">)</span>  <span class="c1"># Mostra: Hola,PepGarcia</span>
+</code></pre></div></td></tr></table></div>
+<p>Com podem vore:</p>
+<ul>
+<li><em>print</em> pot rebre una o més dades com a arguments (separats per comes).</li>
+<li>Si els arguments són textos han d'anar entre cometes (simples o dobles).</li>
+<li>Es mostren els textos separats per 1 espai. Al final es posa un salt de línia.</li>
+<li>Les cadenes de text poden concatenar-se amb l'operador '+' però no posa espais entre elles. I no podem concatenar un text amb un número. Donaria error.</li>
+</ul>
+<h3 id="altres-parametres-del-print">Altres paràmetres del <em>print</em></h3>
+<p><code class="center">print(objecte/s, sep=separador, end=finalitzador, file=fitxer)</code></p>
+<ul>
+<li><strong>objecte/s</strong> --&gt; textos, números, variables o expressions que volem mostrar (separats er comes).</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-36-1">1</a></span>
+<span class="normal"><a href="#__codelineno-36-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1"></a><span class="n">dies</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;En&quot;</span><span class="p">,</span> <span class="n">dies</span><span class="p">,</span> <span class="s2">&quot;dies hi ha&quot;</span><span class="p">,</span> <span class="n">dies</span><span class="o">*</span><span class="mi">24</span><span class="p">,</span> <span class="s2">&quot;hores&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Print amb objectes" class="center" src="../img/ud3/printObjectes.png" /></p>
+<ul>
+<li><strong>sep=separador</strong> --&gt; Ací indicarem amb una cadena de caràcters com volem que apareguen separats els objectes que mostrem. Si no posem res, el separador és un espai en blanc.</li>
+</ul>
+<p><div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-37-1">1</a></span>
+<span class="normal"><a href="#__codelineno-37-2">2</a></span>
+<span class="normal"><a href="#__codelineno-37-3">3</a></span>
+<span class="normal"><a href="#__codelineno-37-4">4</a></span>
+<span class="normal"><a href="#__codelineno-37-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LÍNIA&quot;</span><span class="p">,</span> <span class="s2">&quot;ARTÍCLE &quot;</span><span class="p">,</span> <span class="s2">&quot;QUANT.&quot;</span><span class="p">,</span> <span class="s2">&quot;PREU&quot;</span><span class="p">,</span> <span class="s2">&quot;IMPORT&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;------- --------------- ------- ------- ------&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3"></a><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;Tomaques&quot;</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4"></a><span class="nb">print</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;Peres   &quot;</span><span class="p">,</span> <span class="mf">12.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mi">12</span><span class="o">*</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5"></a><span class="nb">print</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;Plàtans &quot;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<img alt="Print amb separador" class="center" src="../img/ud3/printSep.png" /></p>
+<ul>
+<li><strong>end=finalitzador</strong> --&gt; Cadena que es mostrarà al final del text. Si no posem res, el finalitzador és el fi de línia (caràcter '\n').</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
+<span class="normal"><a href="#__codelineno-38-2">2</a></span>
+<span class="normal"><a href="#__codelineno-38-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span> <span class="c1"># Amb eixe end aconseguim que print NO faça intro sinó espai.</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3"></a><span class="nb">print</span><span class="p">()</span> <span class="c1"># En acabar fem un print() per a fer un únic intro al final.</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Bucle on <strong>n</strong> va d'1 a 4 (ja ho veurem)</li>
+</ol>
+<p><img alt="Print amb end" class="center" src="../img/ud3/printEnd.png" /></p>
+<ul>
+<li><strong>file=fitxer</strong> --&gt; Si no volem que es mostre per pantalla sinó a un fitxer.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-39-1">1</a></span>
+<span class="normal"><a href="#__codelineno-39-2">2</a></span>
+<span class="normal"><a href="#__codelineno-39-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1"></a><span class="n">fitxer</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s2">&quot;nomFitxer.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span>   <span class="c1">#(1)!</span>
+<a id="__codelineno-39-2" name="__codelineno-39-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola, Pep&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">fitxer</span><span class="p">)</span>
+<a id="__codelineno-39-3" name="__codelineno-39-3"></a><span class="n">fitxer</span><span class="o">.</span><span class="n">close</span><span class="p">()</span> <span class="c1">#(2)!</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>El mode "a" afig el text al final del fitxer. El mode "w" reescriu el fitxer.</li>
+<li>Fins que no es "tanca" el fitxer, no s'escriu el <em>buffer</em> en ell.</li>
+</ol>
+<h3 id="usant-el-print-amb-format-us-de-f-strings">Usant el <em>print</em> amb format (ús de <em>f-strings</em>)</h3>
+<p>Suposem que volem mostrar els articles comprats, en forma de taula:</p>
+<p><img alt="Taula d'articles" class="center" src="../img/ud3/taulaProductes.png" /></p>
+<p>Què passaria si cada part de cada línia la separem amb un tabulador?</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-40-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-40-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-40-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-40-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-40-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-40-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-40-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-40-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-40-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-40-10">10</a></span>
+<span class="normal"><a href="#__codelineno-40-11">11</a></span>
+<span class="normal"><a href="#__codelineno-40-12">12</a></span>
+<span class="normal"><a href="#__codelineno-40-13">13</a></span>
+<span class="normal"><a href="#__codelineno-40-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;LIN&quot;</span><span class="p">,</span> <span class="s2">&quot;ARTICLE            &quot;</span><span class="p">,</span> <span class="s2">&quot;KILOS&quot;</span><span class="p">,</span> <span class="s2">&quot;PREU/KG&quot;</span><span class="p">,</span> <span class="s2">&quot;IMPORT&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;---&quot;</span><span class="p">,</span> <span class="s2">&quot;-------------------&quot;</span><span class="p">,</span> <span class="s2">&quot;-----&quot;</span><span class="p">,</span> <span class="s2">&quot;-------&quot;</span><span class="p">,</span> <span class="s2">&quot;------&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3"></a>
+<a id="__codelineno-40-4" name="__codelineno-40-4"></a><span class="n">linia</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5"></a><span class="n">article</span> <span class="o">=</span> <span class="s2">&quot;Tomaques del Mareny&quot;</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6"></a><span class="n">quantitat</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-40-7" name="__codelineno-40-7"></a><span class="n">preu</span> <span class="o">=</span> <span class="mf">2.5</span>
+<a id="__codelineno-40-8" name="__codelineno-40-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">linia</span><span class="p">,</span> <span class="n">article</span><span class="p">,</span> <span class="n">quantitat</span><span class="p">,</span> <span class="n">preu</span><span class="p">,</span> <span class="n">quantitat</span><span class="o">*</span><span class="n">preu</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-40-9" name="__codelineno-40-9"></a>
+<a id="__codelineno-40-10" name="__codelineno-40-10"></a><span class="n">linia</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-40-11" name="__codelineno-40-11"></a><span class="n">article</span> <span class="o">=</span> <span class="s2">&quot;Safrà iraní&quot;</span>
+<a id="__codelineno-40-12" name="__codelineno-40-12"></a><span class="n">quantitat</span> <span class="o">=</span> <span class="mf">0.0004</span>
+<a id="__codelineno-40-13" name="__codelineno-40-13"></a><span class="n">preu</span> <span class="o">=</span> <span class="mf">4266.67</span>
+<a id="__codelineno-40-14" name="__codelineno-40-14"></a><span class="nb">print</span><span class="p">(</span><span class="n">linia</span><span class="p">,</span> <span class="n">article</span><span class="p">,</span> <span class="n">quantitat</span><span class="p">,</span> <span class="n">preu</span><span class="p">,</span> <span class="n">quantitat</span><span class="o">*</span><span class="n">preu</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Segons les dades que tinguen les variables, podria ser que ens desquadrara tot:</p>
+<p><img alt="Taula desquadrada" class="center" src="../img/ud3/taulaProductes2.png" /></p>
+<p>Això és degut a que els noms dels articles són de distinta llargària i els números no sempre tenen els mateixos decimals, etc.</p>
+<p>Per a evitar això (a partir de la versió 3.6 de Python) tenim els <em>f-strings</em>, és a dir: "cadenes amb format", on podrem especificar el format que tindrà cada variable que posem en la cadena. Recordem que volíem que l'aspecte fora este:</p>
+<p><img alt="Taula ben formatada" class="center" src="../img/ud3/taulaFormatada.png" /></p>
+<p>Per tant, li haurem de dir que en cada línia d'articles:</p>
+<ul>
+<li>El número de línia ocupe 3 posicions</li>
+<li>El nom de l'article ocupe 20 posicions</li>
+<li>Els kilos ocupen 7 posicions (4 d'elles que siguen decimals)</li>
+<li>El preu que ocupe 7 posicions (2 d'elles que siguen decimals)</li>
+<li>L'import que ocupe 6 posicions (2 d'elles decimals)</li>
+</ul>
+<p>I la forma de fer-ho amb el <em>f-string</em> és així:</p>
+<p><code class="center">print(f"{linia:3} {article:20} {quantitat:7.4f} {preu:7.2f} {quantitat*preu:6.2f}")</code></p>
+<p>És a dir, abans de la cadena es posa una <em>f</em> (o <em>F</em>), i cada variable o expressió es posa dins les claus i especificant el format després dels dos punts. Exemples:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-41-1">1</a></span>
+<span class="normal"><a href="#__codelineno-41-2">2</a></span>
+<span class="normal"><a href="#__codelineno-41-3">3</a></span>
+<span class="normal"><a href="#__codelineno-41-4">4</a></span>
+<span class="normal"><a href="#__codelineno-41-5">5</a></span>
+<span class="normal"><a href="#__codelineno-41-6">6</a></span>
+<span class="normal"><a href="#__codelineno-41-7">7</a></span>
+<span class="normal"><a href="#__codelineno-41-8">8</a></span>
+<span class="normal"><a href="#__codelineno-41-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1"></a><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Pep&quot;</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2"></a><span class="n">edat</span> <span class="o">=</span> <span class="mi">30</span>
+<a id="__codelineno-41-3" name="__codelineno-41-3"></a><span class="n">pi</span> <span class="o">=</span> <span class="mf">3.14159265359</span>
+<a id="__codelineno-41-4" name="__codelineno-41-4"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;El meu nom és </span><span class="si">{</span><span class="n">nom</span><span class="si">}</span><span class="s2"> i tinc </span><span class="si">{</span><span class="n">edat</span><span class="si">}</span><span class="s2"> anys&quot;</span><span class="p">)</span>
+<a id="__codelineno-41-5" name="__codelineno-41-5"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tinc </span><span class="si">{</span><span class="n">edat</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> anys&quot;</span><span class="p">)</span>  <span class="c1"># Posa el número a l&#39;esquerra dins de 10 caràcters</span>
+<a id="__codelineno-41-6" name="__codelineno-41-6"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tinc </span><span class="si">{</span><span class="n">edat</span><span class="si">:</span><span class="s2">&gt;10</span><span class="si">}</span><span class="s2"> anys&quot;</span><span class="p">)</span>  <span class="c1"># Posa el número a la dreta dins de 10 caràcters</span>
+<a id="__codelineno-41-7" name="__codelineno-41-7"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tinc </span><span class="si">{</span><span class="n">edat</span><span class="si">:</span><span class="s2">^10</span><span class="si">}</span><span class="s2"> anys&quot;</span><span class="p">)</span>  <span class="c1"># Posa el número centrat dins de 10 caràcters</span>
+<a id="__codelineno-41-8" name="__codelineno-41-8"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi és </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> aprox&quot;</span><span class="p">)</span>  <span class="c1"># Mostra 2 decimals</span>
+<a id="__codelineno-41-9" name="__codelineno-41-9"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Pi és </span><span class="si">{</span><span class="n">pi</span><span class="si">:</span><span class="s2">10.2f</span><span class="si">}</span><span class="s2"> aprox&quot;</span><span class="p">)</span>    <span class="c1"># Mostra 2 decimals, a la dreta dins de 10 car.</span>
+</code></pre></div></td></tr></table></div>
+<p>El resultat seria:</p>
+<p><img alt="Formatant Strings: f-strings" class="center" src="../img/ud3/fStrings.png" /></p>
+<p>Observem que emprem <code>&lt;</code>, <code>&gt;</code> i <code>^</code> per a posar el valor a l'esquerra, dreta o centrat. I per als <em>float</em> indiquem també quants decimals volem (i li posem una <code>f</code>).</p>
+<p>Realment els <em>f-strings</em> no tenen res a vore amb el <em>print</em>, sinó que serveix per a crear una cadena amb dades amb el format que volem. Per exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-42-1">1</a></span>
+<span class="normal"><a href="#__codelineno-42-2">2</a></span>
+<span class="normal"><a href="#__codelineno-42-3">3</a></span>
+<span class="normal"><a href="#__codelineno-42-4">4</a></span>
+<span class="normal"><a href="#__codelineno-42-5">5</a></span>
+<span class="normal"><a href="#__codelineno-42-6">6</a></span>
+<span class="normal"><a href="#__codelineno-42-7">7</a></span>
+<span class="normal"><a href="#__codelineno-42-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1"></a><span class="n">base</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Base: &quot;</span><span class="p">))</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2"></a><span class="n">altura</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Altura: &quot;</span><span class="p">))</span>
+<a id="__codelineno-42-3" name="__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4"></a><span class="n">area</span> <span class="o">=</span> <span class="p">(</span><span class="n">base</span> <span class="o">*</span> <span class="n">altura</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+<a id="__codelineno-42-5" name="__codelineno-42-5"></a>
+<a id="__codelineno-42-6" name="__codelineno-42-6"></a><span class="hll"><span class="n">missatge</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;L&#39;àrea del triangle de base </span><span class="si">{</span><span class="n">base</span><span class="si">}</span><span class="s2"> i altura </span><span class="si">{</span><span class="n">altura</span><span class="si">}</span><span class="s2"> és </span><span class="si">{</span><span class="n">area</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><a id="__codelineno-42-7" name="__codelineno-42-7"></a>
+<a id="__codelineno-42-8" name="__codelineno-42-8"></a><span class="nb">print</span><span class="p">(</span><span class="n">missatge</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>A més, Python disposa de moltes <strong>operacions que podem fer en una cadena</strong>: passar-la a minúscules, a majúscules, obtindre una subcadena... I algunes de les operacions són alineació a dreta, esquerra, centrat.</p>
+<p>En <em>VSCode</em> (i altre IDEs), si posem el punt al costat d'una variable (o constant) de tipus <em>str</em>, vorem les operacions que podem fer amb ella:</p>
+<p><img alt="Ajuda del VSCode" class="center" src="../img/ud3/ajudaVSCode.png" /></p>
+<p>Per tant, podem fer altres coses en les cadenes sense usar els <em>f-strings</em>. Ací tenim uns exemples:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-43-1">1</a></span>
+<span class="normal"><a href="#__codelineno-43-2">2</a></span>
+<span class="normal"><a href="#__codelineno-43-3">3</a></span>
+<span class="normal"><a href="#__codelineno-43-4">4</a></span>
+<span class="normal"><a href="#__codelineno-43-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1"></a><span class="n">nom</span> <span class="o">=</span> <span class="s2">&quot;Pep&quot;</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="o">.</span><span class="n">upper</span><span class="p">(),</span> <span class="s2">&quot;com va?&quot;</span><span class="p">)</span>           <span class="c1"># Hola PEP com va?</span>
+<a id="__codelineno-43-3" name="__codelineno-43-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="o">.</span><span class="n">ljust</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="s2">&quot;com va?&quot;</span><span class="p">)</span>    <span class="c1"># Hola Pep_______ com va?</span>
+<a id="__codelineno-43-4" name="__codelineno-43-4"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="s2">&quot;com va?&quot;</span><span class="p">)</span>   <span class="c1"># Hola ___Pep____ com va?</span>
+<a id="__codelineno-43-5" name="__codelineno-43-5"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola&quot;</span><span class="p">,</span> <span class="n">nom</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="p">),</span> <span class="s2">&quot;com va?&quot;</span><span class="p">)</span>    <span class="c1"># Hola _______Pep com va? (1)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>En compte d'eixe '_' podem posar qualsevol caràcter, com per exemple un espai.</li>
+</ol>
+<h2 id="entrada-de-dades-input">Entrada de dades: <em>input</em></h2>
+<p>Serveix per a que un programa puga demanar dades per teclat. Serà un poc diferent segons els tipus de dades que volem introduir.</p>
+<p>Vegem-ho amb exemples:</p>
+<h3 id="entrada-de-text">Entrada de text</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-44-1">1</a></span>
+<span class="normal"><a href="#__codelineno-44-2">2</a></span>
+<span class="normal"><a href="#__codelineno-44-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Com et diuen?&quot;</span><span class="p">)</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2"></a><span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">()</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-44-3" name="__codelineno-44-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">nom</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Ací l'execució espera que li posem per teclat un valor i polsem "INTRO". El valor introduït es guardarà a la variable <em>nom</em>.</li>
+</ol>
+<p><img alt="Ús de input" class="center" src="../img/ud3/input.png" /></p>
+<p>Ara bé, l'<em>input</em> de Python també permet indicar el que estem demanant, sense haver de fer abans el <em>print</em>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-45-1">1</a></span>
+<span class="normal"><a href="#__codelineno-45-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1"></a><span class="n">nom</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Com et diuen?&quot;</span><span class="p">)</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hola, &quot;</span> <span class="o">+</span> <span class="n">nom</span> <span class="o">+</span> <span class="s2">&quot;!&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Ací mostrarà el text, i farà l'<em>input</em> normal.</li>
+</ol>
+<p><img alt="Ús de input 2" class="center" src="../img/ud3/input2.png" /></p>
+<h3 id="entrada-de-numeros">Entrada de números</h3>
+<p>El problema és si, en compte de demanar un text per teclat, volem demanar un número, ja que l'agafarà com a text i no podrem fer operacions aritmètiques amb ell:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-46-1">1</a></span>
+<span class="normal"><a href="#__codelineno-46-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1"></a><span class="n">num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me un número: &quot;</span><span class="p">)</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El següent número és el &quot;</span><span class="p">,</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># ERROR!</span>
+</code></pre></div></td></tr></table></div>
+<p>Això provoca l'error:</p>
+<p><code class="center">TypeError: can only concatenate str (not "int") to str</code></p>
+<p>Això és degut  a que <em>input</em> sempre retorna un <em>str</em>. Per això, en l'expressió <em>num + 1</em> intenta concatenar en compte de sumar. I dona error perquè no es poden concatenar números sinó textos.</p>
+<p>Per tant, si volem tractar-lo com a enter caldrà fer un <em>càsting</em> (conversió de tipus):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-47-1">1</a></span>
+<span class="normal"><a href="#__codelineno-47-2">2</a></span>
+<span class="normal"><a href="#__codelineno-47-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1"></a><span class="n">num</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me un número: &quot;</span><span class="p">)</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2"></a><span class="hll"><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</span><a id="__codelineno-47-3" name="__codelineno-47-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El següent número és el &quot;</span><span class="p">,</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><img alt="Casting" class="center" src="../img/ud3/casting2.png" /></p>
+<p>O bé es podria fer l'<em>input</em> i el <em>càsting</em> en la mateixa instrucció:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-48-1">1</a></span>
+<span class="normal"><a href="#__codelineno-48-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1"></a><span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me un número: &quot;</span><span class="p">))</span>  <span class="c1">#(1)!</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;El següent número és el &quot;</span><span class="p">,</span> <span class="n">num</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Es fa <em>càsting</em> sobre l'entrada de dades</li>
+</ol>
+<p>En compte d'<em>int</em> també es pot fer casting a <em>float</em>, si fora el cas.</p>
+<h3 id="diverses-entrades-en-un-mateix-input">Diverses entrades en un mateix <em>input</em></h3>
+<p>En un <em>input</em> podem demanar diverses dades separades per un espai en blanc (o pel caràcter que volem). Ara bé: això no té res a vore amb l'<em>input</em>, sinó amb el mètode <strong><em>split</em></strong> del tipus de dades <em>str</em>. Veiem uns exemples:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-49-1">1</a></span>
+<span class="normal"><a href="#__codelineno-49-2">2</a></span>
+<span class="normal"><a href="#__codelineno-49-3">3</a></span>
+<span class="normal"><a href="#__codelineno-49-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1"></a><span class="n">horaCompleta</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me quina hora és (en format h:m:s): &quot;</span><span class="p">)</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2"></a><span class="n">hores</span><span class="p">,</span> <span class="n">minuts</span><span class="p">,</span> <span class="n">segons</span> <span class="o">=</span> <span class="n">horaCompleta</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;:&quot;</span><span class="p">)</span> <span class="c1">#(1)!</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3"></a>
+<a id="__codelineno-49-4" name="__codelineno-49-4"></a><span class="n">pes</span><span class="p">,</span> <span class="n">altura</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Dis-me el pes i altura (seprats per blanc): &quot;</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Fem 3 assignacions alhora. <em>split</em> separa una cadena en una llista de cadenes.</li>
+</ol>
+<p><img alt="Assignacions amb split" class="center" src="../img/ud3/split.png" /></p>
+<p>Veiem que quan fem <em>split</em>, en l'assignació cal posar tantes variables com dades s'espera que s'introduïsquen. Si no, donarà error.</p>
+<p>Cal tindre en compte que després caldria fer els càstings corresponents a <em>int</em> o <em>float</em> de cada variable.</p>
+<details class="question">
+<summary>Exercici 6. Entrada i eixida de dades</summary>
+<p>Fes un programa que pregunte quants anys té algú i que mostre per pantalla la quantitat d'anys que falten per a la majoria d'edat i per a jubilar-se.</p>
+</details>
+<details class="question">
+<summary>Exercici 7</summary>
+<p>Programa que pregunte per la base i l'altura d'un triangle i mostre per pantalla l'àrea d'eixe triangle</p>
+</details>
+<details class="question">
+<summary>Exercici 8</summary>
+<p>Demana per teclat les dades de 2 llibres: títol, autor i preu (permet decimals). Després cal mostrar les dades en forma de taula: 30 caràcters per al títol, 20 per a l'autor i 10 per al preu (incloent 2 decimals i alineat a la dreta)</p>
+</details>
+<details class="question">
+<summary>Exercici 9</summary>
+<p>Demana per teclat només un valor: una data (per exemple 6/9/2024). Després escriu eixa data però amb el format: "6 del 9 de 2024".</p>
+</details>
+<h2 id="exercicis">Exercicis</h2>
+<details class="question">
+<summary>Exercici 10</summary>
+<p>Escriu el resultat de les següents expressions:</p>
+<ul>
+<li><code>5 / 2 + 17 % 3</code></li>
+<li><code>3 * 6 / 2 + 18 / 3 * 2</code></li>
+<li><code>42 * 2 / 3 / (5 + 2)</code></li>
+<li><code>((5 + 3) / 2 * 3) / 2 - int(28.7) // 4 + 29 % 3 * 4</code></li>
+<li><code>3 &lt;= 4</code></li>
+<li><code>45 &lt;= 7 or not (5 &gt;= 7)</code></li>
+<li><code>(8 * 2 &lt; 5 or 7 + 2 &gt; 9) and 8 - 5 &lt; 18</code></li>
+<li><code>(2 * 7 &gt; 5 or 7 / 2 == 3) and (7 &gt; 25 or not True) and True</code></li>
+<li><code>35 &gt; 47 and 9 == 9 or 35 != 3 + 2 and 3 &gt;= 3</code></li>
+<li><code>9 == 15 or 8 != 5 and 7 == 4</code></li>
+<li><code>8 &gt; 8 or 7 == 7 and not(5 &lt; 5)</code></li>
+<li><code>4 + 2 &lt; 8 and 24 + 1 == 25 or True</code></li>
+</ul>
+</details>
+<details class="question">
+<summary>Exercici 11</summary>
+<p>Escriu una expressió on s'especifique que una variable numèrica de nom <strong><em>quant</em></strong> siga menor o igual que 500 i múltiple de 5 però distinta de 100.</p>
+</details>
+<details class="question">
+<summary>Exercici 12</summary>
+<p>Troba els errors en el següent programa que calcula l'àrea d'un cercle a partir del radi. Després copia'l amb les correccions i executa'l.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-50-1">1</a></span>
+<span class="normal"><a href="#__codelineno-50-2">2</a></span>
+<span class="normal"><a href="#__codelineno-50-3">3</a></span>
+<span class="normal"><a href="#__codelineno-50-4">4</a></span>
+<span class="normal"><a href="#__codelineno-50-5">5</a></span>
+<span class="normal"><a href="#__codelineno-50-6">6</a></span>
+<span class="normal"><a href="#__codelineno-50-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1"></a>print(&quot;pi=&quot;, pi)
+<a id="__codelineno-50-2" name="__codelineno-50-2"></a>pi = 3,14
+<a id="__codelineno-50-3" name="__codelineno-50-3"></a>print(Programa de càlcul de l&#39;àrea d&#39;un cercle)
+<a id="__codelineno-50-4" name="__codelineno-50-4"></a>radi = input(&#39;Dis-me el radi&#39;);
+<a id="__codelineno-50-5" name="__codelineno-50-5"></a>&#39;&#39;&#39;Calcular i imprimir l&#39;area
+<a id="__codelineno-50-6" name="__codelineno-50-6"></a>area = PI * radio**2;
+<a id="__codelineno-50-7" name="__codelineno-50-7"></a>print(&#39;\n\nL&#39;àrea del cercle és: {aera:5.2}\n&#39;);
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="question">
+<summary>Exercici 13</summary>
+<p>Sense executar el programa, digues què mostrarà per pantalla:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-51-1">1</a></span>
+<span class="normal"><a href="#__codelineno-51-2">2</a></span>
+<span class="normal"><a href="#__codelineno-51-3">3</a></span>
+<span class="normal"><a href="#__codelineno-51-4">4</a></span>
+<span class="normal"><a href="#__codelineno-51-5">5</a></span>
+<span class="normal"><a href="#__codelineno-51-6">6</a></span>
+<span class="normal"><a href="#__codelineno-51-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1"></a><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2"></a><span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<a id="__codelineno-51-3" name="__codelineno-51-3"></a><span class="n">c</span> <span class="o">=</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span>
+<a id="__codelineno-51-4" name="__codelineno-51-4"></a><span class="n">d</span> <span class="o">=</span> <span class="n">a</span><span class="o">&lt;</span><span class="n">b</span> <span class="ow">and</span> <span class="n">b</span><span class="o">&lt;</span><span class="n">c</span>
+<a id="__codelineno-51-5" name="__codelineno-51-5"></a><span class="n">a</span> <span class="o">+=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<a id="__codelineno-51-6" name="__codelineno-51-6"></a><span class="n">b</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="o">//</span><span class="n">b</span><span class="p">)</span>
+<a id="__codelineno-51-7" name="__codelineno-51-7"></a><span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<details class="question">
+<summary>Exercici 14</summary>
+<p>Contesta les següents qüestions tipus test:</p>
+<ol>
+<li>Els tipus primitius en Python són:<ul>
+<li>bool, char, short, int, long, float, double</li>
+<li>int, float, boo, str</li>
+<li>caràcters, variables i constants</li>
+</ul>
+</li>
+<li>Es defineix <code>a = 5</code>, <code>b = 2</code> i <code>c = 0</code>. Quin serà el valor de <code>c</code> després d'esta instrucció: <code>c = a &gt; b</code><ul>
+<li>3</li>
+<li>2</li>
+<li>True</li>
+<li>False</li>
+<li>Error</li>
+</ul>
+</li>
+<li>Quin és el valor d'esta expressió: <code>10 / int(4.5)</code><ul>
+<li>2</li>
+<li>2.5</li>
+<li>3</li>
+<li>Altra cosa</li>
+</ul>
+</li>
+</ol>
+</details>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Torna a l'inici
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+        
+      
+      <nav class="md-footer__inner md-grid" aria-label="Peu de pàgina" >
+        
+          
+          <a href="../PRG02/" class="md-footer__link md-footer__link--prev" aria-label="Anterior: UD2">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Anterior
+              </span>
+              <div class="md-ellipsis">
+                UD2
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../PRG04/" class="md-footer__link md-footer__link--next" aria-label="Següent: UD4">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Següent
+              </span>
+              <div class="md-ellipsis">
+                UD4
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+    
+  
+
+
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" checked>
+          <span class="task-list-indicator"></span>
+          Google Analytics
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "navigation.footer", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
