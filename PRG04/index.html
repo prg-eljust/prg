@@ -1036,7 +1036,7 @@
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;L&#39;arrel de 25 és&quot;</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">25</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li><strong>Declaratives</strong>: No és el cas de Python, però en C i Java vorem que per a emprar una variable primer cal declarar-la o definir-la (indicar el tipus). Això es fa en sentències declaratives. Ara bé, també entre en este grup les declaracions de funcions.</li>
+<li><strong>Declaratives</strong>: No és el cas de Python, però en C i Java vorem que per a emprar una variable primer cal declarar-la o definir-la (indicar el tipus). Això es fa en sentències declaratives. Ara bé, també entren en este grup les declaracions de funcions.</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
@@ -1058,7 +1058,7 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Nasqueres en&quot;</span><span class="p">,</span> <span class="n">any_naix</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li><strong>De control</strong>: Són les que vorem en este tema. Permeten, sepenent d'una condició, executar unes instruccions o altres (<strong>bifurcacions</strong>) o repetir un conjunt d'instruccions (<strong>bucles</strong>).</li>
+<li><strong>De control</strong>: Son les que vorem en este tema. Permeten, depenent d'una condició, executar unes instruccions o altres (<strong>bifurcacions</strong>) o repetir un conjunt d'instruccions (<strong>bucles</strong>).</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
 <span class="normal"><a href="#__codelineno-3-2">2</a></span>
@@ -1074,7 +1074,7 @@
 <p>Les instruccions de bifurcació (o selecció) serveixen per a quan volem executar un conjunt d'ordres <strong>només</strong> si es compleix alguna condició determinada.</p>
 <p>La instrucció que s'usa en tots els llenguatges és <em>if</em>, però cada llenguatge té la seua sintaxi. Veiem la de Python.</p>
 <h3 id="21-bifurcacio-simple-if">2.1. Bifurcació simple: <em>if</em></h3>
-<p>S'executen unes instruccions només si es compleix una condició. Si no es compleix la condició no s'executa res en particular. Usarem:</p>
+<p>S'executen unes instruccions només si es compleix una condició. Si no es compleix la condició, no s'executa res en particular. Usarem:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span>
 <span class="normal"><a href="#__codelineno-4-2">2</a></span>
 <span class="normal"><a href="#__codelineno-4-3">3</a></span>
@@ -1101,7 +1101,7 @@
 <a id="__codelineno-5-5" name="__codelineno-5-5"></a>    <span class="n">acció_n</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="22-bifurcacio-doble-if-else">2.2. Bifurcació doble: <em>if-else</em></h3>
-<p>Si es compleix una condició s'executen unes instruccions. Si no es compleix, s'executen unes altres. Usarem <em>if</em> i <em>else</em>:</p>
+<p>Si es compleix una condició, s'executen unes instruccions. Si no es compleix, s'executen unes altres. Usarem <em>if</em> i <em>else</em>:</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
 <span class="normal"><a href="#__codelineno-6-2">2</a></span>
 <span class="normal"><a href="#__codelineno-6-3">3</a></span>
@@ -1154,13 +1154,13 @@
 <ul>
 <li>S'ha de demanar per teclat quins valors tenen <code>a</code>, <code>b</code> i <code>c</code>.</li>
 <li>Cal comprovar si té solució (allò que està dins l'arrel ha de ser possitiu).</li>
-<li>Ha de mostrar les 2 solucions de la <code>x</code> (una amb el <code>+</code> i altra amb el <code>-</code>). O bé, només 1 solució si les 2 són la mateixa.</li>
+<li>Ha de mostrar les 2 solucions de la <code>x</code> (una amb el <code>+</code> i altra amb el <code>-</code>). O bé, només 1 solució si les 2 son la mateixa.</li>
 <li>Per calcular l'arrel usarem la funció <code>math.sqrt()</code>. de la llibreria <em>math</em>.</li>
 </ul>
 </details>
 <h3 id="23-bifurcacio-multiple-if-elif-else">2.3. Bifurcació múltiple: <em>if-elif-...-else</em></h3>
 <p>Podem pendre diferents accions en base a diferents condicions.</p>
-<p>Emprarem 1 o diversos <em>elif</em>, que és una contracció d'<em>else if</em>.</p>
+<p>Emprarem un o diversos <em>elif</em>, que és una contracció d'<em>else if</em>.</p>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
@@ -1214,7 +1214,7 @@
 </details>
 <details class="question">
 <summary>Exercici 3</summary>
-<p>Calculadora. Fes un programa que llija de teclat 2 números i una operació aritmètica (S/R/P/D). El prgrama farà el càlcul i imprimirà el resultat.</p>
+<p>Calculadora. Fes un programa que llija de teclat 2 números i una operació aritmètica (S/R/P/D). El programa farà el càlcul i imprimirà el resultat.</p>
 </details>
 <h3 id="24-altres-consideracions-sobre-les-bifurcacions">2.4. Altres consideracions sobre les bifurcacions</h3>
 <h4 id="241-ifs-niuats">2.4.1. <em>ifs</em> niuats</h4>
@@ -1315,7 +1315,7 @@
 </ul>
 </details>
 <h2 id="3-bucles">3. Bucles</h2>
-<p>A voltes necessitarem que un conjunt d'instruccions s'executen diverses vegades. Quantes vegades? Potser se sàpiga a priori o potser no. Per tant, tindrem dos tipus de bucles:</p>
+<p>De vegades necessitarem que un conjunt d'instruccions s'executen diverses vegades. Quantes vegades? Potser se sàpiga a priori o potser no. Per tant, tindrem dos tipus de bucles:</p>
 <ul>
 <li><strong>Bucles condicionals</strong>: es repetirà mentre es complisca una condició.</li>
 <li><strong>Bucles incondicionals</strong>: es repetirà un nombre determinat de vegades.</li>
@@ -1366,7 +1366,7 @@
 <p>És a dir, <strong>mentre</strong> es complisca la <strong>condició</strong> de si el valor <em>num</em> és negatiu, s'executaran les instruccions de dins del bucle (les sagnades) i es tornarà a comprovar si <em>num</em> és negatiu. Quan ja no siga negatiu, eixirà del bucle i el programa continuarà fent les instruccions de fora del bucle.</p>
 <p>A la vista d'este exemple veiem que:</p>
 <ul>
-<li>Usarem un bucle condicional <em>while</em> quan el programador <strong>no sap quantes</strong> vegades s'ahurà de repetir un conjunt d'instruccions.</li>
+<li>Usarem un bucle condicional <em>while</em> quan el programador <strong>no sap quantes</strong> vegades s'haurà de repetir un conjunt d'instruccions.</li>
 <li>La variable (o variables) de la condició hauran de tindre <strong>un valor abans</strong> d'entrar al bucle.</li>
 <li>Dins del bucle ha d'haver alguna instrucció que permeta <strong>canviar el valor</strong> d'eixa variable (o variables) de la condició.</li>
 </ul>
@@ -1396,7 +1396,7 @@
 </ul>
 <details class="question">
 <summary>Exercici 8: Bucles condicionals</summary>
-<p>Fes un programa per controlar la temperatura d'un lloc que, <strong>repetidament</strong>, mostre un menú amb 4 opcions (Demanar temperatura / Pujar 1 grau / Baixar un grau / Eixir), que demane per teclat una opció i l'execute. Cada vegada que s'augmente o es disminuïsca, també es mostrarà la nova temperatura. Després del bucle es mostrarà quantes vegades s'ha canviat la temperatura.</p>
+<p>Fes un programa per controlar la temperatura d'un lloc que, <strong>repetidament</strong>, mostre un menú amb 4 opcions (Demanar temperatura / Pujar 1 grau / Baixar un grau / Eixir), que demane per teclat una opció i l'execute. Cada vegada que s'augmente o es disminuïsca la temperatura, també es mostrarà la nova temperatura. Després del bucle es mostrarà quantes vegades s'ha canviat la temperatura.</p>
 </details>
 <h3 id="32-bucles-incondicionals-for">3.2. Bucles incondicionals: <em>for</em></h3>
 <p>Este tipus de bucles es fa quan el programadr ja sap <strong>quantes vegades</strong> s'han de repetir un conjunt d'instruccions (o bé eixa quantitat està guardada en una variable)</p>
@@ -1439,7 +1439,7 @@
 <span class="normal"><a href="#__codelineno-20-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Ací la variable <strong><em>i</em></strong> anirà agafant tots els valors que hi ha en la llista de valors representats en <em>range(1, 10)</em>. Per a entendre-ho, veiem com dunciona <em>range</em>:</p>
+<p>Ací la variable <strong><em>i</em></strong> anirà agafant tots els valors que hi ha en la llista de valors representats en <em>range(1, 10)</em>. Per a entendre-ho, veiem com funciona <em>range</em>:</p>
 <div class="admonition note">
 <p class="admonition-title">La funció <em>range</em> de Python</p>
 <p>Amb el <em>range</em> obtenim un conjunt de valors anomenat <em>llista</em> (ja parlarem més endavant de les llistes).</p>
@@ -1488,7 +1488,7 @@
 </details>
 <details class="example">
 <summary>Exemples de <em>for</em> de Python sense <em>range</em></summary>
-<p>Per a cada passada del <em>for</em> s'gafarà un element de la <strong>lista</strong> especificada:</p>
+<p>Per a cada passada del <em>for</em> s'agafarà un element de la <strong>llista</strong> especificada:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Exemple 1</label><label for="__tabbed_3_2">Exemple 2</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1642,17 +1642,17 @@
 <a id="__codelineno-33-12" name="__codelineno-33-12"></a><span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <ol>
-<li>Si passa perl <em>continue</em>, el flux de control seguirà a l'inici del bucle. Si la <em>i</em> valia 7, ara valdrà 8.</li>
+<li>Si passa pel <em>continue</em>, el flux de control seguirà a l'inici del bucle. Si la <em>i</em> valia 7, ara valdrà 8.</li>
 <li>Si passa pel <em>break</em>, el flux de control seguirà a la següent instrucció de fora del bucle.</li>
 </ol>
 <p>És a dir:</p>
 <ul>
 <li><strong><em>break</em></strong> interromp l'execució del bucle i seguim per la instrucció següent de fora del bucle.</li>
-<li><strong><em>continue</em></strong> fa que el programa comence altra iteració, encara que no s'haja acabat l'actual. Per tant, les línies que hi ha dins d'un bucle a continuació del <em>continue</em> no s'executen en eixa iteració. Si el bucle és un <em>for</em>, anirem a l'increment e la variable comptadora o al següent element de la llista. Si és un <em>while</em>, es torna a comprovar la condició per a entrar altra vegada al bucle.</li>
+<li><strong><em>continue</em></strong> fa que el programa comence altra iteració, encara que no s'haja acabat l'actual. Per tant, les línies que hi ha dins d'un bucle a continuació del <em>continue</em> no s'executen en eixa iteració. Si el bucle és un <em>for</em>, anirem a l'increment de la variable comptadora o al següent element de la llista. Si és un <em>while</em>, es torna a comprovar la condició per a entrar altra vegada al bucle.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>En cas de tindre estes instruccions dins de bucles niuats, nomñes afecten al bucle on estan firectament. Per exemple: si tenim un <em>break</em> en un bucle (pare) i este està dins d'un altre bucle (iaio), eixiríem del bucle pare però no del iaio.</p>
+<p>En cas de tindre estes instruccions dins de bucles niuats, només afecten al bucle on estan directament. Per exemple: si tenim un <em>break</em> en un bucle (pare) i este està dins d'un altre bucle (iaio), eixiríem del bucle pare però no del iaio.</p>
 </div>
 <details class="success">
 <summary>Exercici 17 RESOLT. Bucles amb <em>break</em> i <em>continue</em></summary>
@@ -1819,7 +1819,12 @@
 <a id="__codelineno-37-4" name="__codelineno-37-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Error en nota&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <ol>
-<li>Si no es posa el <em>pass</em>, donaria error sintàctic.</li>
+<li>
+<p>Si no es posa el <em>pass</em>, donaria error sintàctic.</p>
+</li>
+<li>
+<p>Perquè en un <em>if</em> o <em>else</em> no volem fer res en particular:</p>
+</li>
 </ol>
 <div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Python</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-38-1">1</a></span>
 <span class="normal"><a href="#__codelineno-38-2">2</a></span>
