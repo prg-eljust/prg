@@ -20,15 +20,15 @@
       
       
       <link rel="icon" href="../img/logojaume.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
-        <title>UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1DAM/DAWsp</title>
+        <title>UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1r DAM</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -71,7 +71,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1DAM/DAWsp" >
+        <meta  property="og:title"  content="UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1r DAM" >
       
         <meta  property="og:description"  content="None" >
       
@@ -87,7 +87,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1DAM/DAWsp" >
+        <meta  name="twitter:title"  content="UD2. Programació estructurada. Disseny d'algorismes en Python - Programació 1r DAM" >
       
         <meta  name="twitter:description"  content="None" >
       
@@ -130,7 +130,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Capçalera">
-    <a href=".." title="Programació 1DAM/DAWsp" class="md-header__button md-logo" aria-label="Programació 1DAM/DAWsp" data-md-component="logo">
+    <a href=".." title="Programació 1r DAM" class="md-header__button md-logo" aria-label="Programació 1r DAM" data-md-component="logo">
       
   <img src="../img/logojaume.png" alt="logo">
 
@@ -143,7 +143,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            Programació 1DAM/DAWsp
+            Programació 1r DAM
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -253,12 +253,12 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Programació 1DAM/DAWsp" class="md-nav__button md-logo" aria-label="Programació 1DAM/DAWsp" data-md-component="logo">
+    <a href=".." title="Programació 1r DAM" class="md-nav__button md-logo" aria-label="Programació 1r DAM" data-md-component="logo">
       
   <img src="../img/logojaume.png" alt="logo">
 
     </a>
-    Programació 1DAM/DAWsp
+    Programació 1r DAM
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -599,6 +599,15 @@
   <a href="#6-exercicis" class="md-nav__link">
     <span class="md-ellipsis">
       6. Exercicis
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-activitat-obligatoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Activitat obligatòria
     </span>
   </a>
   
@@ -1144,6 +1153,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#7-activitat-obligatoria" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Activitat obligatòria
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1243,7 +1261,7 @@
 <ul>
 <li><strong>Instruccions d'entrada i d'eixida</strong>: per a interaccionar amb l'usuari (introduir dades al programa o que aquest mostre resultats).</li>
 <li><strong>Instruccions d'assignació</strong>: per a decidir si s'executen un conjunt d'instruccions o unes altres.</li>
-<li><strong>Instruccions de bifurcació</strong>: per a decidir si s'executen un conjunt d'instruccions o unes altres.</li>
+<li><strong>Instruccions de bifurcació</strong>: per a <em>desviar</em> o <em>seleccionar</em> entre possibles camins del fluxe d'execució.</li>
 <li><strong>Instruccions de repetició</strong>: per a repetir un conjunt d'instruccions.</li>
 </ul>
 <p>Anem a vore en detall en què consisteix cadascuna d'aquestes instruccions.</p>
@@ -1413,12 +1431,12 @@
 </details>
 <h4 id="331-instruccions-de-bifurcacio-multiple">3.3.1. Instruccions de bifurcació múltiple</h4>
 <p>En la bifurcació doble, el programa executava un bloc d'instruccions d'entre 2 possibles, depenent del vaor d'una condició. Amb una instrucció de bifurcació múltiple, el programa executarà un bloc d'entre molts possibles, depenent del valor d'una variable (o expressió) entrea (o de tipus caràcter).</p>
-<p><img alt="Bifurcació múltiple" class="center" src="../img/bifurcaci%C3%B3M%C3%BAltiple.png" /></p>
+<p><img alt="Bifurcació múltiple" class="center" src="img/bifurcacióMúltiple.png" /></p>
 <p>A l'exemple, si el valor <em>numEstacio</em> és 1, s'executarà la instrucció (o conjunt d'instruccions) corresponent. Si fóra 2, les instruccions del 2, etc. I si no fóra ni 1, ni 2, ni 3 , ni 4, s'executaria el bloc d'instruccions de l'apartat <em>De Otro Modo</em>.</p>
 <p>Ara bé: la bifurcació múltiple de <em>Python</em> no té eixa estructura. En compte de triar el bloc d'instruccions a executar segons el valor d'una sola variable (o expressió), en <em>Python</em> cada bloc d'instruccions té la seua condició per a poder executar-se.</p>
 <p><em>Java</em> sí que té una estructura semblant a la del <em>PSeInt</em> (anomenada <strong><em>switch</em></strong>) però ja la veurem més endavant. Veiem ara com implementar la bifurcació múltiple en <em>Python</em>.</p>
 <p>En <em>Python</em> s'utilitza l'estructura <strong><em>if-elif-else</em></strong>, que és com si tinguérem dins d'un <em>else</em> una estructura <em>if-else</em>. I dins d'eixe <em>else</em>, una altra estructura <em>if-else</em>, etc.</p>
-<p><img alt="Bifurcació múltiple en Python" class="center" src="../img/bifurcaci%C3%B3MultiplePython.png" /></p>
+<p><img alt="Bifurcació múltiple en Python" class="center" src="img/bifurcacióMultiplePython.png" /></p>
 <p>Fixeu-vos que:</p>
 <ul>
 <li>Un <em>elif</em> ve a ser la contracció de <em>el(se)+if</em>, amb l'avantatge que no has d'anar sagnant cap a la dreta en cada condició (i no ocupa tantes línies).</li>
@@ -1458,7 +1476,7 @@
 <li><strong>La condició és just la contrària</strong> que <em>MENTRE</em>, ja que no hem de posar la condició per a continuar en el bucle, sinó la condició per a eixir d'ell. No és el mateix dir <em>"Mentre (no em donen la paga, la demanaré)"</em> que <em>"Repeteix demanar la paga fins que (sí que em donen la paga)"</em>.</li>
 </ul>
 <p><em>Python</em> no té esta estructura de posar la condició al final del bucle (no al principi), però podem simular eixe comportament (i <em>Java</em> té el <strong><em>do-while</em></strong>, que és una cosa intermitja entre un <em>MENTRE</em> i un <em>FINS</em>):</p>
-<p><img alt="Repetició condicional do-while" class="center" src="../img/repetici%C3%B3CondicionalDo-While.png" /></p>
+<p><img alt="Repetició condicional do-while" class="center" src="img/repeticióCondicionalDo-While.png" /></p>
 <p>En <em>Python</em> veiem que tenim un bucle infinit (en principi) ja que hem posat un <em>while true</em>. Però després, podem eixir del bucle <strong><em>a la força</em></strong> amb el <em>break</em>.</p>
 <p>En canvi, en <em>Java</em> vorem que tenim l'estructura <em>do-while</em>, que és pareguda al <em>FINS</em> del <em>PSeInt</em> perquè la condició està al final però es diferencia en que la condició que posem és per a continuar en el bucle, no per a eixir.</p>
 <p>Com sabem si cal usar la condició al principi o bé usar el <em>while true</em> i el <em>break</em>? Per regla general, si és una condició senzilla, cal posar la condició al principi. Si usem el <em>while true</em> i no posem els <em>break</em> que toquen, podriem provocar un <strong>bucle infinit</strong>.</p>
@@ -1491,7 +1509,7 @@
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
 <p>Volem mostrar 5 vegades <em>"Hola, món!"</em></p>
-<p><img alt="Repetició incondicional For" class="center" src="../img/repetici%C3%B3IncondicionalFor.png" /></p>
+<p><img alt="Repetició incondicional For" class="center" src="img/repeticióIncondicionalFor.png" /></p>
 </div>
 <div class="admonition example">
 <p class="admonition-title">Exemple</p>
@@ -1771,7 +1789,7 @@
 <span class="normal"><a href="#__codelineno-13-6">6</a></span>
 <span class="normal"><a href="#__codelineno-13-7">7</a></span>
 <span class="normal"><a href="#__codelineno-13-8">8</a></span>
-<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="hll"><span class="k">for</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+<span class="normal"><a href="#__codelineno-13-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="hll"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
 </span><a id="__codelineno-13-2" name="__codelineno-13-2"></a>    <span class="n">num</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">input</span><span class="p">(</span><span class="s2">&quot;Núm. imparell:&quot;</span><span class="p">))</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3"></a>
 <a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="hll">    <span class="k">while</span> <span class="n">num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1955,55 +1973,63 @@
 <summary>Exercici 55</summary>
 <p>Mostra els números primers menors de 100.</p>
 </details>
-<!--
-## 7. Activitat obligatòria
-
-???danger "Partit de bàsquet"
-
-    A l'institut es realitzarà un partit de bàsquet, i volem anar anotant en temps real els punts de cada cistella que es fa.
-
-    Així podrem saber com van en cada moment i podrem traure una xicoteta estadística després de cada quart i en acabar el partit.
-
-    **Activitat**
-
-    Fes un programa que faça el que es detalla a continuació, tenint en compte que has d'usar, on calga, sentències de bifurcació doble o múltiple, bucles de tipus condicional i incondicional, i comptadors i acumuladors.
-
-    **L'algorisme és el següent**
-
-    - Demana per teclat els noms dels 2 equips
-
-    - Per cadascun dels 4 quarts del partit caldrà fer:
-
-        - Mostrar informació del quart que comença. Per exemple: `-- COMENÇA EL QUART NÚMERO 1 --`
-
-        - Bucle que registre cadascuna de les cistelles anotades en eixe quart. S'aniran demanant punts de les cistelles efectuades fins que s'introduïsca la puntuació de 0 (que servirà per acabar el quart). És a dir: per cada cistella efectuada caldrà fer el següent:
-
-            - Preguntar de quants punts ha sigut la cistella (o bé, un 0 per a acabar el quart). Caldrà controlar que el valor introduït estiga entre 0 i 3.
-
-            - Preguntar quin equip ha fet la cistella (A o B). Caldrà controlar que el valor introduït siga una A o una B.
-
-            - Mostrar com va la puntuació del partit.
-
-            ![Exemple de cistella](img/altres/cistella.png){.center}
-
-        - En acabar cada quart es mostrarà l'estadística **d'eixe quart**.
-
-        ![Resum del quart](img/altres/resum_quart.png){.center}
-
-        - En acabar el partit es mostrarà el resum del partit.
-
-        ![Resum del partit](img/altres/resum_partit.png){.center}
-
-    **NOTES:**
-
-    - Per si no ha quedat clar què ha de fer el programa, [ací teniui al nostre company Abdó](https://youtu.be/JXxlvOHk4fQ), explicant-vos l'execució d'aquest.
-    - El treball és individual. Podeu consultar-me a mi tot el que vullgau, però no als companys ni a *ChatGPT* ni similar. Si detectem que algú s'ha copiat alguna part, tindran un 0 els dos (copiat i copiador). El treball està pensat més que res perquè aneu ben preparats a l'examen. De fet, a l'examen podria preguntar-vos alguna modificació del vostre programa, etc.
-    - Cal fer l'algorisme en *Python*. El nom del fitxer es dirà:
-        - ***basquetGarciaPep.py*** (si et digueren Pep Garcia, clar)
-    - Posa el teu nom complet com a comentari al principi del programa
-    - Posa algún comentari més pel programa (sense passar-te'n).
-    - Puja el fitxer a Aules.
--->
+<h2 id="7-activitat-obligatoria">7. Activitat obligatòria</h2>
+<details class="danger">
+<summary>Partit de bàsquet</summary>
+<p>A l'institut es realitzarà un partit de bàsquet, i volem anar anotant en temps real els punts de cada cistella que es fa.</p>
+<p>Així podrem saber com van en cada moment i podrem traure una xicoteta estadística després de cada quart i en acabar el partit.</p>
+<p><strong>Activitat</strong></p>
+<p>Fes un programa que faça el que es detalla a continuació, tenint en compte que has d'usar, on calga, sentències de bifurcació doble o múltiple, bucles de tipus condicional i incondicional, i comptadors i acumuladors.</p>
+<p><strong>L'algorisme és el següent</strong></p>
+<ul>
+<li>
+<p>Demana per teclat els noms dels 2 equips</p>
+</li>
+<li>
+<p>Per cadascun dels 4 quarts del partit caldrà fer:</p>
+<ul>
+<li>
+<p>Mostrar informació del quart que comença. Per exemple: <code>-- COMENÇA EL QUART NÚMERO 1 --</code></p>
+</li>
+<li>
+<p>Bucle que registre cadascuna de les cistelles anotades en eixe quart. S'aniran demanant punts de les cistelles efectuades fins que s'introduïsca la puntuació de 0 (que servirà per acabar el quart). És a dir: per cada cistella efectuada caldrà fer el següent:</p>
+<ul>
+<li>
+<p>Preguntar de quants punts ha sigut la cistella (o bé, un 0 per a acabar el quart). Caldrà controlar que el valor introduït estiga entre 0 i 3.</p>
+</li>
+<li>
+<p>Preguntar quin equip ha fet la cistella (A o B). Caldrà controlar que el valor introduït siga una A o una B.</p>
+</li>
+<li>
+<p>Mostrar com va la puntuació del partit.</p>
+</li>
+</ul>
+<p><img alt="Exemple de cistella" class="center" src="../img/altres/cistella.png" /></p>
+</li>
+<li>
+<p>En acabar cada quart es mostrarà l'estadística <strong>d'eixe quart</strong>.</p>
+</li>
+</ul>
+<p><img alt="Resum del quart" class="center" src="../img/altres/resum_quart.png" /></p>
+<ul>
+<li>En acabar el partit es mostrarà el resum del partit.</li>
+</ul>
+<p><img alt="Resum del partit" class="center" src="../img/altres/resum_partit.png" /></p>
+</li>
+</ul>
+<p><strong>NOTES:</strong></p>
+<ul>
+<li>Per si no ha quedat clar què ha de fer el programa, <a href="https://youtu.be/JXxlvOHk4fQ">ací teniui al nostre company Abdó</a>, explicant-vos l'execució d'aquest.</li>
+<li>El treball és individual. Podeu consultar-me a mi tot el que vullgau, però no als companys ni a <em>ChatGPT</em> ni similar. Si detectem que algú s'ha copiat alguna part, tindran un 0 els dos (copiat i copiador). El treball està pensat més que res perquè aneu ben preparats a l'examen. De fet, a l'examen podria preguntar-vos alguna modificació del vostre programa, etc.</li>
+<li>Cal fer l'algorisme en <em>Python</em>. El nom del fitxer es dirà:<ul>
+<li><strong><em>basquetGarciaPep.py</em></strong> (si et digueren Pep Garcia, clar)</li>
+</ul>
+</li>
+<li>Posa el teu nom complet com a comentari al principi del programa</li>
+<li>Posa algún comentari més pel programa (sense passar-te'n).</li>
+<li>Puja el fitxer a Aules.</li>
+</ul>
+</details>
 
 
 
@@ -2049,14 +2075,15 @@
   
 </div>
       
-        <div class="md-social">
+        
+<div class="md-social">
   
     
     
     
     
     <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.8l167.6-182.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
     </a>
   
 </div>
@@ -2133,12 +2160,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "content.code.annotate", "content.code.annotate"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
-      
-        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
