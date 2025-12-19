@@ -1,0 +1,1626 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/activitats/scrabble/Scrabble/">
+      
+      
+        <link rel="prev" href="../../../PRG12/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Scrabble - Programació 1DAM/DAWsp</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Scrabble - Programació 1DAM/DAWsp" />
+<meta property="og:image" content="https://prg-eljust.github.io/prg/assets/images/social/activitats/scrabble/Scrabble.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://prg-eljust.github.io/prg/activitats/scrabble/Scrabble/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="Scrabble - Programació 1DAM/DAWsp" />
+<meta property="twitter:image" content="https://prg-eljust.github.io/prg/assets/images/social/activitats/scrabble/Scrabble.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-construir-el-tauler-i-mostrar-lo" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../../.." title="Programació 1DAM/DAWsp" class="md-header__button md-logo" aria-label="Programació 1DAM/DAWsp" data-md-component="logo">
+      
+  <img src="../../../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAM/DAWsp
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Scrabble
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Programació 1DAM/DAWsp" class="md-nav__button md-logo" aria-label="Programació 1DAM/DAWsp" data-md-component="logo">
+      
+  <img src="../../../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAM/DAWsp
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1. Dades simples. Instruccions seqüencials
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2. Programació estructurada. Disseny d'algorismes en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3. Introducció a Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4. Estructures de control en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5. Introducció a Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD6. Arrays en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD7. Programació modular. Funcions en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD8. Programació Orientada a Objectes. Classes amb atributs.
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD9. Programació Orientada a Objectes. Classes amb mètodes
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD10. Interfícies
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD11. Fitxers
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../PRG12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD12. Bases de Dades
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pràctiques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scrabble
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scrabble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-demanar-dimensions-del-tauler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Demanar dimensions del tauler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-calen-2-matrius-per-al-joc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Calen 2 matrius per al joc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-posar-els-colors-de-les-caselles-de-la-matriu-mpunts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Posar els colors de les caselles de la matriu mPunts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Posar els colors de les caselles de la matriu mPunts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-inicialitza-cada-casella-del-tauler-amb-un-espai-en-blanc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1. Inicialitza cada casella del tauler amb un espai en blanc.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-posar-les-pfent-una-x-gegant-al-tauler-des-del-centre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2. Posar les pfent una X gegant al tauler des del centre.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-posar-les-p-als-4-cantons-i-a-la-meitat-dels-4-costats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3. Posar les P: als 4 cantons i a la meitat dels 4 costats.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-posar-5-l-i-les-seues-simetriques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4. Posar 5 l i les seues simètriques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-posar-les-l-sen-posara-una-cada-4-files-i-cada-4-columnes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5. Posar les L. Se'n posarà una cada 4 files i cada 4 columnes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-es-mostrara-el-tauler-de-punts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Es mostrarà el tauler de punts.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#11-demanar-dimensions-del-tauler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Demanar dimensions del tauler
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-calen-2-matrius-per-al-joc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Calen 2 matrius per al joc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-posar-els-colors-de-les-caselles-de-la-matriu-mpunts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Posar els colors de les caselles de la matriu mPunts
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3. Posar els colors de les caselles de la matriu mPunts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#131-inicialitza-cada-casella-del-tauler-amb-un-espai-en-blanc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.1. Inicialitza cada casella del tauler amb un espai en blanc.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#132-posar-les-pfent-una-x-gegant-al-tauler-des-del-centre" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.2. Posar les pfent una X gegant al tauler des del centre.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#133-posar-les-p-als-4-cantons-i-a-la-meitat-dels-4-costats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.3. Posar les P: als 4 cantons i a la meitat dels 4 costats.
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#134-posar-5-l-i-les-seues-simetriques" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.4. Posar 5 l i les seues simètriques
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#135-posar-les-l-sen-posara-una-cada-4-files-i-cada-4-columnes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3.5. Posar les L. Se'n posarà una cada 4 files i cada 4 columnes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-es-mostrara-el-tauler-de-punts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.4. Es mostrarà el tauler de punts.
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<p><img alt="Scrabble" class="al75" src="../img/image1.jpeg" /></p>
+<p><img alt="Scrabble" class="al75" src="../img/image2.png" /></p>
+<p>Cal fer un programa en Java que faça una variant del joc de l'<em>Scrabble</em>, on només participarà 1 jugador. En nom del fitxer serà <code>scrabbleCognomNom.java</code></p>
+<div class="admonition note important">
+<p class="admonition-title">Note</p>
+<p>Només és obligatori el <strong>primer punt</strong> (construir el tauler i mostrar-lo). No obstant, és una bona pràctica de cara l'examen que intenteu fer-ho tot.
+Si alguna part no saps com fer-la, consulta  l professor en compte de ChatGPT.</p>
+</div>
+<h1 id="1-construir-el-tauler-i-mostrar-lo">1. Construir el tauler i mostrar-lo</h1>
+<h2 id="11-demanar-dimensions-del-tauler">1.1. Demanar dimensions del tauler</h2>
+<p>Per a fer el tauler, primer caldrà demanar per teclat quantes files i quantes columnes tindrà el tauler (recorda que habitualment el tauler és quadrat però ací pot ser que siga rectangular. </p>
+<blockquote>
+<p><strong>Cal controlar que files i columnes siguen imparells.</strong></p>
+</blockquote>
+<h2 id="12-calen-2-matrius-per-al-joc">1.2. Calen 2 matrius per al joc</h2>
+<p>Per al tauler caldrà definir 2 matrius (de caràcters) <strong>paral·leles</strong>, ja que en cada casella voldrem poder guardar 2 coses: 
+- el tipus de casella que és (de doble tant de
+paraula, triple, etc)
+- quina lletra té la fitxa que hem posat allí. Per
+tant</p>
+<p>Com que son dos conceptes distints en una mateixa casella, crearem 2 matrius</p>
+<div class="admonition info">
+<p class="admonition-title">Matriu de Punts</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">mPunts</label><label for="__tabbed_1_2">Exemple real</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Per a guarda quants <em>punts</em> val cada casella. Bé, més que "punts, guardarà el tipus de casella que és. Aquesta caseella pot tenir els següeents valors:</p>
+<ul>
+<li>'l' → doble tant de lletra</li>
+<li>'L' → triple tant de lletra</li>
+<li>'p' → doble tant de paraula</li>
+<li>'P' → triple tant de paraula</li>
+<li>' ' → casella normal (sense cap bonus)</li>
+</ul>
+<p>De moment crea la matriu iniciant-la sols al caracter blanc. Més endavant ja l'omplirem.</p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tauler de punts" class="al100" src="../img/image3.jpeg" /></p>
+</div>
+</div>
+</div>
+</div>
+<div class="admonition info">
+<p class="admonition-title">Matriu de Fitxers</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">mFitxes</label><label for="__tabbed_2_2">Exemple real</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Per a guardar quina lletra (fitxa) hi ha en cada casella. Realment, esta matriu només s'utilitzarà a partir del punt 3 de l'exercici.</p>
+<p>De moment crea la matriu iniciant-la sols al caracter blanc. Més endavant ja l'omplirem.</p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Tauler de punts" class="al100" src="../img/image4.jpeg" /></p>
+</div>
+</div>
+</div>
+</div>
+<p>Les coordenades de les files i de les columnes seran números que començaran per 1 (i acabaran en la quantitat de files i columnes que
+s'havien indicat per teclat).</p>
+<h2 id="13-posar-els-colors-de-les-caselles-de-la-matriu-mpunts">1.3. Posar els <strong>colors</strong> de les caselles de la matriu <code>mPunts</code></h2>
+<p>En compte de colors, posarem un caràcter en cada casella per a indicar de quin tipus és cadascuna (<code></code>, <code>l</code>, <code>L</code>, <code>p</code>, <code>P</code>). Anem a vore com posar-les.</p>
+<h3 id="131-inicialitza-cada-casella-del-tauler-amb-un-espai-en-blanc">1.3.1. Inicialitza cada casella del tauler amb un espai en blanc.</h3>
+<p>Hauas de fer el recorregut assignant els valors</p>
+<h3 id="132-posar-les-pfent-una-x-gegant-al-tauler-des-del-centre">1.3.2. Posar les <code>p</code>fent una X gegant al tauler des del centre.</h3>
+<p><img alt="alt text" class="al50" src="../image.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">Consells</p>
+</div>
+<ol>
+<li>Busca la posició del centre (fila i columna).</li>
+<li>Tria de quina d'estes formes vols fer-ho:</li>
+<li><strong>Opció a</strong>) Fer les aspes de la <code>X</code> una a una:<ul>
+<li>Fer un bucle per a l'aspa <em>dreta-baix</em> (mirar imatge anterior). En cada passada del bucle anirà canviant la fila i columna i es marcarà la posició corresponent, fins que <em>entropesse</em> en una vora (de baix o de la dreta, segons el tauler).</li>
+<li>Fes el mateix per a les altres 3 aspes. Un bucle per a cada aspa, clar:</li>
+<li><em>dreta_baix</em></li>
+<li><em>esquerra_baix</em></li>
+<li><em>dreta_amunt</em></li>
+<li><em>esquerra_amunt</em></li>
+</ul>
+</li>
+<li>Fer les aspes de la <code>X</code> totes alhora: Amb un sol bucle, posa 4 <code>p</code> en cada passada, des del centre cap a les vores.</li>
+</ol>
+<h3 id="133-posar-les-p-als-4-cantons-i-a-la-meitat-dels-4-costats">1.3.3. Posar les <code>P</code>: als 4 cantons i a la meitat dels 4 costats.</h3>
+<p><img alt="alt text" class="al50" src="../image-1.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Vigila!!!</p>
+<ul>
+<li>No passa res si alguna <code>P</code> sobreescriu alguna lletra posada abans. </li>
+<li>"No ho faces amb bucles."</li>
+<li>Fes una instrucció per a cada <code>P</code>. (pensa que sols hi han 6 )</li>
+</ul>
+</div>
+<h3 id="134-posar-5-l-i-les-seues-simetriques">1.3.4. Posar 5 <code>l</code> i les seues simètriques</h3>
+<p>És a dir fer <strong>5 voltes</strong> estos passos:</p>
+<ol>
+<li><strong>Triar posició aleatòria</strong>. Per a buscar un número aleatori entre 1 i N:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">  </span><span class="n">num</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span><span class="o">*</span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>Si la posició ja estava ocupada per una lletra, caldrà buscar altra posició traient altre numero aleaotori fins que es trobe una buida.
+2.  Es posarà eixe color (lletra <code>l</code>) en eixa posició triada.</p>
+</blockquote>
+<p><img alt="alt text" class="al50" src="../image-2.png" /></p>
+<ul>
+<li>També es posarà eixe color en les parts <strong>simètriques</strong> del tauler, tant en horitzontal com en vertical.</li>
+<li>Caldrà calcular les coordenades d'eixes altres 3 caselles i posar allí també la <code>l</code>.</li>
+</ul>
+<p><img alt="alt text" class="al50" src="../image-3.png" /></p>
+<h3 id="135-posar-les-l-sen-posara-una-cada-4-files-i-cada-4-columnes">1.3.5. Posar les <code>L</code>. Se'n posarà una cada 4 files i cada 4 columnes</h3>
+<p>Les <code>L</code> han de quedar en posicions concèntriques, com en l'exemple. Això vol dir que les 4 <code>L</code> més
+interiors estàn a la maateixa distància del centre, les 4 següents més exteriors estan a una distància major, i així successivament.</p>
+<p>Per a este exemple de les <code>L</code> hem suposat un tauler més gran.</p>
+<p><img alt="alt text" class="al75" src="../image-4.png" /></p>
+<h2 id="14-es-mostrara-el-tauler-de-punts">1.4. Es mostrarà el tauler de punts.</h2>
+<p>Mostrarem per pantalla el tauler generat, indicant els índexs de files i columnes. Sols cal mostrar la matriu <code>mPunts</code>, ja que la matriu <code>mFitxes</code> està buida en este moment.</p>
+<p>Mostrarem sols l'últim dígit dels índexs de files i columnes per a que quede quadrat</p>
+<p>Exemples:</p>
+<p><img alt="punts1" class="al75" src="../img/image5.png" /><hr></p>
+<p><img alt="punts1" class="al75" src="../img/image6.png" /><hr></p>
+<p><img alt="punts1" class="al75" src="../img/image7.png" /><h></p>
+<p>Cal guardar les proporcions. Per exemple, si el tauler té la mateixa quantitat de files que de columnes, no ha de semblar un rectangle.</p>
+<h1 id="2-puntuacions-de-lletres-i-quantitat-de-fitxes-de-cada-opcional">2. Puntuacions de lletres i quantitat de fitxes de cada [OPCIONAL]</h1>
+<p><img alt="" class="al50" src="../img/image8.jpeg" /></p>
+<p>Les fitxes que disposem, que haurem de guardar, son les següents. Conta quee cada fitxa (lletra) té un valor en punts i que hi ha una quantitat limitada de fitxes de cada lletra:</p>
+<table>
+<thead>
+<tr>
+<th>Puntuació</th>
+<th>Lletra</th>
+<th>Quantitat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 punts</td>
+<td>blanc</td>
+<td>2</td>
+</tr>
+<tr>
+<td>1 punt</td>
+<td>E</td>
+<td>13</td>
+</tr>
+<tr>
+<td></td>
+<td>A</td>
+<td>12</td>
+</tr>
+<tr>
+<td></td>
+<td>I</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>R</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>S</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>N</td>
+<td>6</td>
+</tr>
+<tr>
+<td></td>
+<td>O</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>T</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>L</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>U</td>
+<td>4</td>
+</tr>
+<tr>
+<td>2 punts</td>
+<td>C</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>D</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>M</td>
+<td>3</td>
+</tr>
+<tr>
+<td>3 punts</td>
+<td>B</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>G</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>P</td>
+<td>2</td>
+</tr>
+<tr>
+<td>4 punts</td>
+<td>F</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>V</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>Y</td>
+<td>1</td>
+</tr>
+<tr>
+<td>5 punts</td>
+<td>K</td>
+<td>1</td>
+</tr>
+<tr>
+<td>8 punts</td>
+<td>H</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>J</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>Q</td>
+<td>1</td>
+</tr>
+<tr>
+<td></td>
+<td>Z</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10 punts</td>
+<td>Ç</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>X</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Per a guardar això, caldrà definir 2 <em>HashMap</em>, amb estos noms:</p>
+<h2 id="21-qpunts-amb-quants-punts-te-cada-lletra">2.1. <code>qpunts</code>, amb quants punts té cada lletra.</h2>
+<p>Caldrà afegir al <em>HashMap</em> <strong><em>qpunts</em></strong> les parelles corresponents de
+lletra - quantitat de punts.</p>
+<table>
+<thead>
+<tr>
+<th>Lletra</th>
+<th>Punts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E</td>
+<td>1</td>
+</tr>
+<tr>
+<td>A</td>
+<td>1</td>
+</tr>
+<tr>
+<td>I</td>
+<td>1</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>X</td>
+<td>10</td>
+</tr>
+</tbody>
+</table>
+<h1 id="3-qfitxes-amb-quantes-fitxes-hi-ha-de-cada-lletra">3. <code>qfitxes</code>, amb quantes fitxes hi ha de cada lletra.</h1>
+<p>Caldrà afegir al <em>HashMap</em> <strong><em>qfitxes</em></strong> les parelles corresponents de lletra - quantitat de fitxes.</p>
+<table>
+<thead>
+<tr>
+<th>Lletra</th>
+<th>Quantitat</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E</td>
+<td>13</td>
+</tr>
+<tr>
+<td>A</td>
+<td>12</td>
+</tr>
+<tr>
+<td>I</td>
+<td>8</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>X</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h1 id="4-jugar">4. Jugar</h1>
+<p>Ara ja podem començar a jugar. El joc consistirà en un bucle que es repetirà fins que el jugador no puga posar cap paraula més.</p>
+<h2 id="41-bucle-amb-les-seguents-parts">4.1. Bucle amb les següents parts:</h2>
+<ul>
+<li>Mostrar el tauler de fitxes</li>
+<li>El jugador agafa fitxes noves</li>
+<li>El jugador posa una paraula (si no es pot posar, acaba la partida)</li>
+<li>Mostrar puntuació</li>
+</ul>
+<p>Ara es detallarà què ha de fer cadascuna de les accions d\'este bucle.</p>
+<h3 id="411-mostrar-el-tauler-de-fitxes">4.1.1. Mostrar el tauler de fitxes</h3>
+<p>Recorda que el tauler el tenim representat en 2 matrius: la matriu on estan els punts (<em>mPunts</em>) i la matriu on estan les fitxes (<em>mFitxes</em>).</p>
+<p>La matriu de punts l'hem mostrada al principi del programa. Ara, dins del bucle caldrà mostrar la matriu de fitxes (es mostrarà per a cada paraula que pose el jugador).</p>
+<p><strong>Exemples</strong></p>
+<p>A l'inici de la partida
+<img alt="p1" class="al50" src="../img/image9.png" /><h></p>
+<p>Durant la partidoa</p>
+<p><img alt="p1" class="al50" src="../img/image10.png" /><h></p>
+<h3 id="412-el-jugador-agafa-fitxes-noves">4.1.2. El jugador agafa fitxes noves</h3>
+<p><img alt="p1" class="al50" src="../img/image11.jpeg" /></p>
+<p>Caldrà guardar en una estructura de dades les fitxes que té el jugador en cada moment.</p>
+<div class="admonition note">
+<p class="admonition-title">Quina estructura de dades seria la millor?</p>
+</div>
+<ul>
+<li>
+<p><strong>Vector</strong> de 7 components? L'inconvenient és que per afegir lletres al vector haurem de buscar posicions buides.</p>
+</li>
+<li>
+<p><strong>HashSet</strong> Esta estructura de conjunt seria apropiada ja que no importa l'ordre en el qual tenim les nostres fitxes, però no ens serveix ja que en un conjunt no es poden repetir els elements (i podríem tindre diverses lletres B, per exemple).</p>
+</li>
+<li>
+<p><strong>HashMap</strong> Podríem tindre un diccionari lletra-quantitat, però per a afegir o llevar alguna lletra caldria vore primer si està, vore la quantitat i, després, modificar eixa quantitat.</p>
+</li>
+<li>
+<p><strong>ArrayList</strong> Esta serà la millor opció ja que, encara que les lletres estan ordenades, podem llevar o posar lletres en qualsevol lloc, i no hem de fer cap altra operació.</p>
+</li>
+</ul>
+<h4 id="4121-la-ma-de-lletres">4.1.2.1. La ma de lletres</h4>
+<p>Per tant, fora del bucle declararem un ArrayList de caràcters, anomenat <code>meues</code>, ja que guardarà les <em>meues fitxes</em>.</p>
+<h4 id="4122-assignacio">4.1.2.2. Assignació</h4>
+<p>Automàticament s'assignaran al jugador les fitxes que li falten fins arribar a 7. Per exemple, si en un moment determinat el jugador té 3 fitxes, se li n'assignaran 4 (no es pregunta res per teclat).</p>
+<p>Per cada fitxa que haja de ser assignada:</p>
+<ol>
+<li>Obtenim una lletra aleatòria.</li>
+</ol>
+<p>Per a això tindrem en un String totes les lletres disponibles. Triarem un número aleatori entre eixes posicions i agafarem la lletra corresponent:
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">String</span><span class="w"> </span><span class="n">lletres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;ABCÇDEFGHIJKLMNOPQRSTUVXYZ&quot;</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kt">char</span><span class="w"> </span><span class="n">lletra</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lletres</span><span class="p">.</span><span class="na">charAt</span><span class="p">((</span><span class="kt">int</span><span class="p">)(</span><span class="n">Math</span><span class="p">.</span><span class="na">floor</span><span class="p">(</span><span class="n">Math</span><span class="p">.</span><span class="na">random</span><span class="p">()</span><span class="o">*</span><span class="n">lletres</span><span class="p">.</span><span class="na">length</span><span class="p">())));</span>
+</code></pre></div></td></tr></table></div></p>
+<ol>
+<li>Assignem la fitxa al jugador:</li>
+</ol>
+<p>2.1 Si queden fitxes d'eixa lletra:</p>
+<ul>
+<li>L'afegim a l'ArrayList <em>meues</em>.</li>
+<li>Descomptem en 1 la quantitat de fitxes que queden d'eixa lletra.</li>
+</ul>
+<p>2.2 Si no, tornem a agafar altra lletra aleatòria.</p>
+<p>2.3 Es mostren les 7 fitxes del jugador.
+Per exemple: Les meues lletres: <code>A B D O G A R</code></p>
+<h3 id="413-el-jugador-posa-una-paraula">4.1.3. El jugador posa una paraula</h3>
+<p>Es demana per teclat:</p>
+<ul>
+<li>La paraula que es vol posar.</li>
+<li>La posició inicial de la paraula en el tauler (fila, columna).</li>
+<li>La direcció: (d)reta / (b)aix / (a)munt</li>
+</ul>
+<blockquote>
+<p>S'imagina que la paraula que vol posar el jugador existeix al diccionari.</p>
+</blockquote>
+<ul>
+<li>Es posa la paraula al tauler. Si no és possible, acaba la partida.</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span>
+<span class="normal"><a href="#__codelineno-2-16">16</a></span>
+<span class="normal"><a href="#__codelineno-2-17">17</a></span>
+<span class="normal"><a href="#__codelineno-2-18">18</a></span>
+<span class="normal"><a href="#__codelineno-2-19">19</a></span>
+<span class="normal"><a href="#__codelineno-2-20">20</a></span>
+<span class="normal"><a href="#__codelineno-2-21">21</a></span>
+<span class="normal"><a href="#__codelineno-2-22">22</a></span>
+<span class="normal"><a href="#__codelineno-2-23">23</a></span>
+<span class="normal"><a href="#__codelineno-2-24">24</a></span>
+<span class="normal"><a href="#__codelineno-2-25">25</a></span>
+<span class="normal"><a href="#__codelineno-2-26">26</a></span>
+<span class="normal"><a href="#__codelineno-2-27">27</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>// Iniciem acumuladors:
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a>puntsParaula = 0;
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a>q2tp = 0; // quantitat de doble tants de paraula que ens trobem
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a>q3tp = 0; // quantitat de triple tants de paraula que ens trobem
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a>for (cada lletra de la paraula a posar) {
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a>  Caldrà implementar en Java este algoritme (o similar).
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a>  si (la posició en tauler està fora dels límits) o
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>    (en tauler hi ha lletra distinta en eixa posició) o
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a>     (en tauler la pos està buida i no tenim la fitxa) {
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a>        fi partida
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>  sino {
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a>    si (en tauler la pos està buida i la tenim nosaltres){
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a>      la llevem de &quot;meues&quot;
+<a id="__codelineno-2-16" name="__codelineno-2-16"></a>      la posem en eixa posició
+<a id="__codelineno-2-17" name="__codelineno-2-17"></a>      // (si en tauler ja està la fitxa no haurem de fer res)
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a>    }  
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>    Avancem posició en tauler (Compte! Segons la direcció triada)
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>    Avancem posició en la paraula
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a>    Calculem puntsLletra (tenint en compte doble o triple tants de lletra)
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a>    Acumulem puntsParaula
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a>    Si cal, incrementem q2tp
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a>    Si cal, incrementem q3tp
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a>}
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>Calculem puntsJugada amb puntsParaula, q2tp i q3tp
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>Acumulem puntsPartida amb els punts de la jugada.
+</code></pre></div></td></tr></table></div>
+<div class="admonition question">
+<p class="admonition-title">Problema</p>
+<p><strong>I si no volguérem acabar la partida si no cap la paraula?</strong> Caldria desfer les lletres posades de la paraula que estàvem posant i tornar a posar-les a la llista "meues".</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Solució</p>
+<ul>
+<li>
+<p>Abans d'intentar posar la paraula, fer una còpia de seguretat (en altres variables, amb altra zona de memòria) del tauler de fitxes (<code>tfixes</code>) i de les fitxes nostres (<code>meues</code>).</p>
+</li>
+<li>
+<p>Si veiem que no cap la paraula, tornarem a deixar-ho com estava (fent que les variables originals <em>apunten</em> a les de la còpia de seguretat).</p>
+</li>
+</ul>
+</div>
+<h3 id="mostrar-puntuacio">Mostrar puntuació</h3>
+<ol>
+<li>
+<p>Es mostraran els punts de la jugada que s'acaba de fer i els punts acumulats de totes les jugades fins a eixe moment. Per exemple:</p>
+</li>
+<li>
+<p>Punts de la jugada: 20</p>
+</li>
+<li>Punts acumulats: 87</li>
+</ol>
+<p>Opcionalment també es podrien detallar els punts de la jugada indicant quants dobles tants de paraula hi havia, etc.</p>
+<p>I, si hem fet la millora de puntuar també les altres paraules que formem amb la jugada, també es podrien mostrar eixes paraules i la puntuació obtinguda per cadascuna d'elles.</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera & Joan Gerard Camarena es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["content.code.copy", "content.code.annotate", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
