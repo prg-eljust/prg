@@ -13,6 +13,8 @@
         <link rel="canonical" href="https://prg-eljust.github.io/prg/activitats/agenda/agenda/">
       
       
+        <link rel="prev" href="../../pescamines/Pescamines/">
+      
       
       
         
@@ -612,18 +614,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" checked>
         
           
           <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
@@ -644,7 +648,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_13">
             <span class="md-nav__icon md-icon"></span>
             
@@ -711,6 +715,103 @@
 
               
             
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda de qualificacions
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda de qualificacions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visio-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visió general
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-ha-de-fer-cada-opcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què ha de fer cada opció?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -740,6 +841,36 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#visio-general" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Visió general
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#que-ha-de-fer-cada-opcio" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Què ha de fer cada opció?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -759,27 +890,43 @@
 
 <h1 id="agenda-de-qualificacions">Agenda de qualificacions</h1>
 <p><img alt="Agenda" class="al90" src="../agenda.png" /></p>
+<h2 id="visio-general">Visió general</h2>
 <p>Cal fer una aplicació (de nom <code>registreNotesVostreNom</code>) per a guardar les notes dels alumnes, de diverses assignatures i avaluacions. </p>
 <p>Per cada alumne cal saber el nom, telèfon, adreça (carrer, número i codi postal) i qualificacions: notes que ha tret en cada avaluació de cada assignatura. Hi ha 3 avaluacions i les assignatures són PRG, BDA i EDD (pots posar una matriu de 3x3 dins la classe Alumne).</p>
-<p>Fes un programa amb un bucle que mostre el següent menú i execute l’acció que li vages indicant:
-(1) Alta alumne
-(2) Posar nota alumnes
-(3) Buscar alumne
-(4) Modificar dades alumne
-(5) Modificar una nota d'un alumne
-(6) Esborrar un alumne
-(7) Esborrar tots els alumnes
-(8) Estadístiques
-(0) Finalitzar</p>
-<p>Què ha de fer cada opció?
-Cada opció cridarà a la funció corresponent passant com a paràmetre el vector d’alumnes.
-(1) Demanarà les dades personals d'un alumne (no les notes) i les guardarà. Caldrà buscar una posició lliure del vector on posar l’alumne.
-(2) Preguntarà quina avaluació i assignatura i anirà demanant per teclat les notes corresponents de cada alumne donat d'alta (anirà mostrant el nom) i guardarà eixes notes.
-(3) Preguntarà pel nom de l’alumne i mostrarà totes les seues dades. S’imagina que els alumnes tenen tots un nom diferent.
-(4) Pregunta el nom d'un alumne, mostrarà les seues dades, demanarà les noves dades a modificar (nom, telèfon i adreça) i modificarà eixe alumne en la llista.
-(5) Pregunta el nom d'un alumne, mostrarà les seues dades, preguntarà quina assignatura i quina avaluació, quina nota i la modificarà.
-(6) Pregunta el nom d'un alumne, mostrarà les seues dades, preguntarà si està segur d'esborrar i, si és així, l'esborrarà de la llista.
-(7) Pregunta si està segur i, si és així, esborrarà tota la llista. (8) Mostrarà els percentatges d'aprovats, així:</p>
+<p>Fes un programa amb un bucle que mostre el següent menú i execute l’acció que li vages indicant:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Bash</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span>
+<span class="normal"><a href="#__codelineno-0-6">6</a></span>
+<span class="normal"><a href="#__codelineno-0-7">7</a></span>
+<span class="normal"><a href="#__codelineno-0-8">8</a></span>
+<span class="normal"><a href="#__codelineno-0-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>Alta<span class="w"> </span>alumne
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="o">(</span><span class="m">2</span><span class="o">)</span><span class="w"> </span>Posar<span class="w"> </span>nota<span class="w"> </span>alumnes
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="o">(</span><span class="m">3</span><span class="o">)</span><span class="w"> </span>Buscar<span class="w"> </span>alumne
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="o">(</span><span class="m">4</span><span class="o">)</span><span class="w"> </span>Modificar<span class="w"> </span>dades<span class="w"> </span>alumne
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="o">(</span><span class="m">5</span><span class="o">)</span><span class="w"> </span>Modificar<span class="w"> </span>una<span class="w"> </span>nota<span class="w"> </span>d<span class="err">&#39;</span>un<span class="w"> </span>alumne
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="o">(</span><span class="m">6</span><span class="o">)</span><span class="w"> </span>Esborrar<span class="w"> </span>un<span class="w"> </span>alumne
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="o">(</span><span class="m">7</span><span class="o">)</span><span class="w"> </span>Esborrar<span class="w"> </span>tots<span class="w"> </span>els<span class="w"> </span>alumnes
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="o">(</span><span class="m">8</span><span class="o">)</span><span class="w"> </span>Estadístiques
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="o">(</span><span class="m">0</span><span class="o">)</span><span class="w"> </span>Finalitzar
+</code></pre></div></td></tr></table></div>
+<h2 id="que-ha-de-fer-cada-opcio">Què ha de fer cada opció?</h2>
+<p>Cada opció cridarà a la funció corresponent passant com a paràmetre el vector d’alumnes.</p>
+<ol>
+<li>Demanarà les dades personals d'un alumne (no les notes) i les guardarà. Caldrà buscar una posició lliure del vector on posar l’alumne.<blockquote>
+<p>Això vol dir que no es crearan els alumnes a priori, sinó que es crearà un alumne cada vegada que es demanen les dades d’un nou alumne. Per tant, el vector d’alumnes serà un vector inicialment buit. Es crearan en donar-los d'alta.</p>
+</blockquote>
+</li>
+<li>Preguntarà quina avaluació i assignatura i anirà demanant per teclat les notes corresponents de cada alumne donat d'alta (anirà mostrant el nom) i guardarà eixes notes.</li>
+<li>Preguntarà pel nom de l’alumne i mostrarà totes les seues dades. S’imagina que els alumnes tenen tots un nom diferent.</li>
+<li>Pregunta el nom d'un alumne, mostrarà les seues dades, demanarà les noves dades a modificar (nom, telèfon i adreça) i modificarà eixe alumne en la llista.</li>
+<li>Pregunta el nom d'un alumne, mostrarà les seues dades, preguntarà quina assignatura i quina avaluació, quina nota i la modificarà.</li>
+<li>Pregunta el nom d'un alumne, mostrarà les seues dades, preguntarà si està segur d'esborrar i, si és així, l'esborrarà de la llista.</li>
+<li>Pregunta si està segur i, si és així, esborrarà tota la llista.</li>
+<li>Mostrarà els percentatges d'aprovats, així:</li>
+</ol>
 <table>
 <thead>
 <tr>
@@ -822,7 +969,7 @@ Cada opció cridarà a la funció corresponent passant com a paràmetre el vecto
 </tbody>
 </table>
 <p>Per exemple, el valor 70 per a PRG-AV1 vol dir que el 70% dels alumnes matriculats han aprovat l’assignatura de PRG en l’avaluació 1.
-(0) El programa acaba</p>
+1. El programa acaba</p>
 
 
 
