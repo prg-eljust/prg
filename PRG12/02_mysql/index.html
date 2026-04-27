@@ -1,0 +1,2292 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/PRG12/02_mysql/">
+      
+      
+        <link rel="prev" href="../01_introduccio/">
+      
+      
+        <link rel="next" href="../03_mongodb/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>MySQL des de Java amb JDBC - Programació 1DAM/DAWsp Curs 2025-2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MySQL des de Java amb JDBC - Programació 1DAM/DAWsp Curs 2025-2026" />
+<meta property="og:image" content="https://prg-eljust.github.io/prg/assets/images/social/PRG12/02_mysql.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://prg-eljust.github.io/prg/PRG12/02_mysql/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="MySQL des de Java amb JDBC - Programació 1DAM/DAWsp Curs 2025-2026" />
+<meta property="twitter:image" content="https://prg-eljust.github.io/prg/assets/images/social/PRG12/02_mysql.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-que-es-jdbc" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Programació 1DAM/DAWsp Curs 2025-2026" class="md-header__button md-logo" aria-label="Programació 1DAM/DAWsp Curs 2025-2026" data-md-component="logo">
+      
+  <img src="../../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAM/DAWsp Curs 2025-2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MySQL des de Java amb JDBC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació 1DAM/DAWsp Curs 2025-2026" class="md-nav__button md-logo" aria-label="Programació 1DAM/DAWsp Curs 2025-2026" data-md-component="logo">
+      
+  <img src="../../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAM/DAWsp Curs 2025-2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1. Dades simples. Instruccions seqüencials
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2. Programació estructurada. Disseny d'algorismes en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3. Introducció a Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4. Estructures de control en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5. Introducció a Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD6. Arrays en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD7. Programació modular. Funcions en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD8. Programació Orientada a Objectes. Classes amb atributs.
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD9. Programació Orientada a Objectes. Classes amb mètodes
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD10. Interfícies
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD11. Tractament de Fitxers
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD12. Bases de dades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD12. Bases de dades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduccio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducció a les bases de dades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL des de Java amb JDBC
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL des de Java amb JDBC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-jdbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és JDBC?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-la-base-de-dades-de-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. La Base de Dades de Pràctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connexio-a-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connexió a MySQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-read-consultar-dades-amb-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. READ: Consultar Dades amb SELECT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. READ: Consultar Dades amb SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-el-resultset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. El ResultSet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exemple-llistar-totes-les-publicacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Exemple: Llistar totes les publicacions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preparedstatement-consultes-amb-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. PreparedStatement: Consultes amb Paràmetres
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. PreparedStatement: Consultes amb Paràmetres">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-exemple-buscar-publicacions-per-paraula-clau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Exemple: Buscar publicacions per paraula clau
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-inserir-dades-amb-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CREATE: Inserir Dades amb INSERT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-update-modificar-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. UPDATE: Modificar Dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-delete-eliminar-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. DELETE: Eliminar Dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-consulta-amb-join-publicacio-i-els-seus-comentaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Consulta amb JOIN: Publicació i els seus Comentaris
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-resum-dels-metodes-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Resum dels Mètodes Principals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Resum dels Mètodes Principals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1. Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-preparedstatement-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2. PreparedStatement / Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-resultset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3. ResultSet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03_mongodb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MongoDB des de Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pràctiques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/scrabble/Scrabble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scrabble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/pescamines/Pescamines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joc del pescamines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/agenda/agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda de qualificacions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-jdbc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és JDBC?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-la-base-de-dades-de-practica" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. La Base de Dades de Pràctica
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connexio-a-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connexió a MySQL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-read-consultar-dades-amb-select" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. READ: Consultar Dades amb SELECT
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. READ: Consultar Dades amb SELECT">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-el-resultset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. El ResultSet
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-exemple-llistar-totes-les-publicacions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Exemple: Llistar totes les publicacions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-preparedstatement-consultes-amb-parametres" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. PreparedStatement: Consultes amb Paràmetres
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. PreparedStatement: Consultes amb Paràmetres">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-exemple-buscar-publicacions-per-paraula-clau" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Exemple: Buscar publicacions per paraula clau
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-inserir-dades-amb-insert" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CREATE: Inserir Dades amb INSERT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-update-modificar-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. UPDATE: Modificar Dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-delete-eliminar-dades" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. DELETE: Eliminar Dades
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-consulta-amb-join-publicacio-i-els-seus-comentaris" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Consulta amb JOIN: Publicació i els seus Comentaris
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-resum-dels-metodes-principals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Resum dels Mètodes Principals
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. Resum dels Mètodes Principals">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#101-connection" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.1. Connection
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#102-preparedstatement-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.2. PreparedStatement / Statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#103-resultset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10.3. ResultSet
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>MySQL des de Java amb JDBC</h1>
+
+<h2 id="1-que-es-jdbc">1. Què és JDBC?</h2>
+<p><strong>JDBC</strong> (Java Database Connectivity) és l'API estàndard de Java per connectar-se a bases de dades relacionals. Forma part del JDK i defineix un conjunt d'interfícies que tots els drivers de BD relacionals implementen.</p>
+<p>Gràcies a JDBC, el codi que escriviu per a MySQL és molt similar al que usaríeu per a PostgreSQL o Oracle: canviant el driver i la URL de connexió, la resta del codi gairebé no canvia.</p>
+<p>Les classes principals de JDBC estan al paquet <code>java.sql</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Classe/Interfície</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DriverManager</code></td>
+<td>Gestiona els drivers i crea connexions</td>
+</tr>
+<tr>
+<td><code>Connection</code></td>
+<td>Representa una connexió activa a la BD</td>
+</tr>
+<tr>
+<td><code>Statement</code></td>
+<td>Executa sentències SQL simples</td>
+</tr>
+<tr>
+<td><code>PreparedStatement</code></td>
+<td>Executa sentències SQL parametritzades (recomanat)</td>
+</tr>
+<tr>
+<td><code>ResultSet</code></td>
+<td>Conté els resultats d'una consulta SELECT</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-la-base-de-dades-de-practica">2. La Base de Dades de Pràctica</h2>
+<p>Treballarem amb una base de dades d'un <strong>fòrum</strong> amb dues taules relacionades:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span>
+<span class="normal"><a href="#__codelineno-0-3">3</a></span>
+<span class="normal"><a href="#__codelineno-0-4">4</a></span>
+<span class="normal"><a href="#__codelineno-0-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">-- Taula principal: publicacions del fòrum</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">publicacio</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nick_que_publica</span><span class="p">,</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="n">data_publicacio</span><span class="p">,</span><span class="w"> </span><span class="n">paraules_clau</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="c1">-- Taula relacionada: comentaris a cada publicació</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="n">comentari</span><span class="w"> </span><span class="p">(</span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nick_comenta</span><span class="p">,</span><span class="w"> </span><span class="nb">text</span><span class="p">,</span><span class="w"> </span><span class="n">valoracio</span><span class="p">,</span><span class="w"> </span><span class="n">data_comentari</span><span class="p">,</span><span class="w"> </span><span class="n">publicacio_id</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>La relació és <strong>1:M</strong> (una publicació pot tenir molts comentaris).</p>
+<p>Per crear i poblar la base de dades, executeu a MySQL:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">SQL</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-1-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-1-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-1-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-1-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-1-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-1-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-1-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-1-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-1-10">10</a></span>
+<span class="normal"><a href="#__codelineno-1-11">11</a></span>
+<span class="normal"><a href="#__codelineno-1-12">12</a></span>
+<span class="normal"><a href="#__codelineno-1-13">13</a></span>
+<span class="normal"><a href="#__codelineno-1-14">14</a></span>
+<span class="normal"><a href="#__codelineno-1-15">15</a></span>
+<span class="normal"><a href="#__codelineno-1-16">16</a></span>
+<span class="normal"><a href="#__codelineno-1-17">17</a></span>
+<span class="normal"><a href="#__codelineno-1-18">18</a></span>
+<span class="normal"><a href="#__codelineno-1-19">19</a></span>
+<span class="normal"><a href="#__codelineno-1-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">DATABASE</span><span class="w"> </span><span class="n">forum</span><span class="p">;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="n">USE</span><span class="w"> </span><span class="n">forum</span><span class="p">;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">publicacio</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="n">nick_que_publica</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nb">text</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="n">data_publicacio</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="n">paraules_clau</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">200</span><span class="p">)</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="p">);</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">comentari</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="n">AUTO_INCREMENT</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="n">nick_comenta</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">50</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="nb">text</span><span class="w"> </span><span class="nb">TEXT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="n">valoracio</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">CHECK</span><span class="w"> </span><span class="p">(</span><span class="n">valoracio</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="n">data_comentari</span><span class="w"> </span><span class="n">DATETIME</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="n">publicacio_id</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">    </span><span class="k">FOREIGN</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">publicacio_id</span><span class="p">)</span><span class="w"> </span><span class="k">REFERENCES</span><span class="w"> </span><span class="n">publicacio</span><span class="p">(</span><span class="n">id</span><span class="p">)</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<p>I després executeu el fitxer <code>import.sql</code> per inserir les dades de prova. Tens enllaçats els arxius ací: <a href="../crearBBDD.sql">crearBBDD.sql</a> i <a href="../import.sql">import.sql</a> </p>
+<h2 id="3-connexio-a-mysql">3. Connexió a MySQL</h2>
+<p>La URL de connexió JDBC per a MySQL té aquest format:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>jdbc:mysql://host:port/nom_base_de_dades?opcions
+</code></pre></div></td></tr></table></div>
+<p>Exemple:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span>
+<span class="normal"><a href="#__codelineno-3-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;la_vostra_contrasenya&quot;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">serverTimezone</p>
+<p>L'opció <code>serverTimezone=UTC</code> evita errors de zona horària que apareixen amb versions recents del connector MySQL.</p>
+</div>
+<h2 id="4-read-consultar-dades-amb-select">4. READ: Consultar Dades amb SELECT</h2>
+<h3 id="41-el-resultset">4.1. El ResultSet</h3>
+<p>Quan executem un <code>SELECT</code>, JDBC ens retorna un <code>ResultSet</code>. Penseu-lo com un <strong>cursor</strong> que apunta inicialment <strong>abans</strong> de la primera fila. Hem d'anar avançant fila a fila amb <code>next()</code>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Al obrir el ResultSet</label><label for="__tabbed_1_2">Quan cridem <code>rs.next()</code></label><label for="__tabbed_1_3">Altre <code>rs.next()</code></label><label for="__tabbed_1_4">Desprès de l'últim <code>rs.next()</code></label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>ResultSet:
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a>┌──────────────────────────────────────────┐
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>│  → (cursor inicial, abans de la 1a fila) │
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a>│  fila 1: id=1, nick=&quot;usuari_joan&quot;, ...   │
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a>│  fila 2: id=2, nick=&quot;maria_dev&quot;, ...     │
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>│  fila 3: ...                             │
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a>└──────────────────────────────────────────┘
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span>
+<span class="normal"><a href="#__codelineno-5-2">2</a></span>
+<span class="normal"><a href="#__codelineno-5-3">3</a></span>
+<span class="normal"><a href="#__codelineno-5-4">4</a></span>
+<span class="normal"><a href="#__codelineno-5-5">5</a></span>
+<span class="normal"><a href="#__codelineno-5-6">6</a></span>
+<span class="normal"><a href="#__codelineno-5-7">7</a></span>
+<span class="normal"><a href="#__codelineno-5-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>ResultSet:
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a>┌──────────────────────────────────────────┐
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>│  → fila 1: id=1, nick=&quot;usuari_joan&quot;, ... │
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a>│  fila 2: id=2, nick=&quot;maria_dev&quot;, ...     │
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a>│  fila 3: ...                             │
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a>└──────────────────────────────────────────┘
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span>
+<span class="normal"><a href="#__codelineno-6-2">2</a></span>
+<span class="normal"><a href="#__codelineno-6-3">3</a></span>
+<span class="normal"><a href="#__codelineno-6-4">4</a></span>
+<span class="normal"><a href="#__codelineno-6-5">5</a></span>
+<span class="normal"><a href="#__codelineno-6-6">6</a></span>
+<span class="normal"><a href="#__codelineno-6-7">7</a></span>
+<span class="normal"><a href="#__codelineno-6-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>ResultSet:
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a>┌──────────────────────────────────────────┐
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a>│  fila 1: id=1, nick=&quot;usuari_joan&quot;, ...   │
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>│  → fila 2: id=2, nick=&quot;maria_dev&quot;, ...   │
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a>│  fila 3: ...                             │
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>└──────────────────────────────────────────┘
+</code></pre></div></td></tr></table></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Text Only</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a>ResultSet:
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>┌──────────────────────────────────────────┐
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>│  fila 1: id=1, nick=&quot;usuari_joan&quot;, ...   │
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>│  fila 2: id=2, nick=&quot;maria_dev&quot;, ...     │
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>│  fila 3: ...                             │
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>├──────────────────────────────────────────┤
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a>│  → (cursor final, fora de les dades)     │
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a>└──────────────────────────────────────────┘
+</code></pre></div></td></tr></table></div>
+</div>
+</div>
+</div>
+<p>Cada crida a <code>rs.next()</code> avança el cursor una posició i retorna <code>true</code> si hi ha fila, o <code>false</code> si hem arribat al final.</p>
+<p>Per llegir els valors de cada columna usem mètodes <code>get...()</code> indicant el nom de la columna o la seva posició (1-indexada):</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span>
+<span class="normal"><a href="#__codelineno-8-2">2</a></span>
+<span class="normal"><a href="#__codelineno-8-3">3</a></span>
+<span class="normal"><a href="#__codelineno-8-4">4</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nick_que_publica&quot;</span><span class="p">)</span><span class="w">  </span><span class="c1">// per nom de columna</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w">                   </span><span class="c1">// per posició (la 2a columna)</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">rs</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;valoracio&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="n">rs</span><span class="p">.</span><span class="na">getTimestamp</span><span class="p">(</span><span class="s">&quot;data_publicacio&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="42-exemple-llistar-totes-les-publicacions">4.2. Exemple: Llistar totes les publicacions</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-9-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-9-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-9-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-9-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-9-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-9-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-9-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-9-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-9-10">10</a></span>
+<span class="normal"><a href="#__codelineno-9-11">11</a></span>
+<span class="normal"><a href="#__codelineno-9-12">12</a></span>
+<span class="normal"><a href="#__codelineno-9-13">13</a></span>
+<span class="normal"><a href="#__codelineno-9-14">14</a></span>
+<span class="normal"><a href="#__codelineno-9-15">15</a></span>
+<span class="normal"><a href="#__codelineno-9-16">16</a></span>
+<span class="normal"><a href="#__codelineno-9-17">17</a></span>
+<span class="normal"><a href="#__codelineno-9-18">18</a></span>
+<span class="normal"><a href="#__codelineno-9-19">19</a></span>
+<span class="normal"><a href="#__codelineno-9-20">20</a></span>
+<span class="normal"><a href="#__codelineno-9-21">21</a></span>
+<span class="normal"><a href="#__codelineno-9-22">22</a></span>
+<span class="normal"><a href="#__codelineno-9-23">23</a></span>
+<span class="normal"><a href="#__codelineno-9-24">24</a></span>
+<span class="normal"><a href="#__codelineno-9-25">25</a></span>
+<span class="normal"><a href="#__codelineno-9-26">26</a></span>
+<span class="normal"><a href="#__codelineno-9-27">27</a></span>
+<span class="normal"><a href="#__codelineno-9-28">28</a></span>
+<span class="normal"><a href="#__codelineno-9-29">29</a></span>
+<span class="normal"><a href="#__codelineno-9-30">30</a></span>
+<span class="normal"><a href="#__codelineno-9-31">31</a></span>
+<span class="normal"><a href="#__codelineno-9-32">32</a></span>
+<span class="normal"><a href="#__codelineno-9-33">33</a></span>
+<span class="normal"><a href="#__codelineno-9-34">34</a></span>
+<span class="normal"><a href="#__codelineno-9-35">35</a></span>
+<span class="normal"><a href="#__codelineno-9-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LlistarPublicacions</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">        </span><span class="c1">// Dades de connexió</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10"></a>
+<a id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">        </span><span class="c1">// SQL que volem executar</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT id, nick_que_publica, text, data_publicacio FROM publicacio ORDER BY data_publicacio&quot;</span><span class="p">;</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13"></a>
+<a id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">        </span><span class="c1">// try-with-resources: tanca Connection i Statement automàticament</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-9-16" name="__codelineno-9-16"></a><span class="w">             </span><span class="n">Statement</span><span class="w">  </span><span class="n">stmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">createStatement</span><span class="p">();</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17"></a><span class="w">             </span><span class="n">ResultSet</span><span class="w">  </span><span class="n">rs</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">stmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18"></a>
+<a id="__codelineno-9-19" name="__codelineno-9-19"></a><span class="w">            </span><span class="c1">// Iterem fila a fila pel ResultSet</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20"></a><span class="w">            </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21"></a><span class="w">                </span><span class="kt">int</span><span class="w">    </span><span class="n">id</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">nick</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nick_que_publica&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;data_publicacio&quot;</span><span class="p">);</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25"></a>
+<a id="__codelineno-9-26" name="__codelineno-9-26"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;[%d] %s (%s)%n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">id</span><span class="p">,</span><span class="w"> </span><span class="n">nick</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;     &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32"></a><span class="w">            </span><span class="c1">// Mostrem el codi d&#39;error SQL i el missatge</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error SQL &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getErrorCode</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="5-preparedstatement-consultes-amb-parametres">5. PreparedStatement: Consultes amb Paràmetres</h2>
+<p>Quan la consulta depèn de valors que provenen de l'usuari (o de variables), <strong>mai</strong> hem de concatenar strings directament. Això podria causar un <strong>SQL Injection</strong> (atac de seguretat).</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span>
+<span class="normal"><a href="#__codelineno-10-4">4</a></span>
+<span class="normal"><a href="#__codelineno-10-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="c1">// MAL: vulnerable a SQL Injection!</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM publicacio WHERE nick_que_publica = &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nick</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;&quot;</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">// BÉ: usar PreparedStatement amb paràmetres (?)</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM publicacio WHERE nick_que_publica = ?&quot;</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>El <code>PreparedStatement</code> usa <code>?</code> com a marcadors de posició i després omplim els valors amb els mètodes <code>set...()</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM publicacio WHERE nick_que_publica = ?&quot;</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">     </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">    </span><span class="c1">// Posem el valor al primer &#39;?&#39; (posició 1)</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;maria_dev&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="c1">// Executem i processem el ResultSet</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ResultSet</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">        </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">));</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="51-exemple-buscar-publicacions-per-paraula-clau">5.1. Exemple: Buscar publicacions per paraula clau</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span>
+<span class="normal"><a href="#__codelineno-12-23">23</a></span>
+<span class="normal"><a href="#__codelineno-12-24">24</a></span>
+<span class="normal"><a href="#__codelineno-12-25">25</a></span>
+<span class="normal"><a href="#__codelineno-12-26">26</a></span>
+<span class="normal"><a href="#__codelineno-12-27">27</a></span>
+<span class="normal"><a href="#__codelineno-12-28">28</a></span>
+<span class="normal"><a href="#__codelineno-12-29">29</a></span>
+<span class="normal"><a href="#__codelineno-12-30">30</a></span>
+<span class="normal"><a href="#__codelineno-12-31">31</a></span>
+<span class="normal"><a href="#__codelineno-12-32">32</a></span>
+<span class="normal"><a href="#__codelineno-12-33">33</a></span>
+<span class="normal"><a href="#__codelineno-12-34">34</a></span>
+<span class="normal"><a href="#__codelineno-12-35">35</a></span>
+<span class="normal"><a href="#__codelineno-12-36">36</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BuscarPerParaulaClau</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">        </span><span class="c1">// Busquem publicacions que continguin &quot;spring&quot; a les paraules clau</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">paraula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;spring&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">        </span><span class="c1">// LIKE amb % per buscar que contingui la paraula</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT id, nick_que_publica, text FROM publicacio WHERE paraules_clau LIKE ?&quot;</span><span class="p">;</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">             </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">            </span><span class="c1">// Establim el paràmetre: %spring% (qualsevol cosa, spring, qualsevol cosa)</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;%&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paraula</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;%&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ResultSet</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publicacions amb paraula clau &#39;&quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">paraula</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;&#39;:&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">50</span><span class="p">));</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25"></a>
+<a id="__codelineno-12-26" name="__codelineno-12-26"></a><span class="w">                </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27"></a><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;  [%d] %s%n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;id&quot;</span><span class="p">),</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nick_que_publica&quot;</span><span class="p">));</span>
+<a id="__codelineno-12-28" name="__codelineno-12-28"></a><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;       &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">));</span>
+<a id="__codelineno-12-29" name="__codelineno-12-29"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-12-30" name="__codelineno-12-30"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-12-31" name="__codelineno-12-31"></a>
+<a id="__codelineno-12-32" name="__codelineno-12-32"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-33" name="__codelineno-12-33"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-12-34" name="__codelineno-12-34"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-12-35" name="__codelineno-12-35"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-36" name="__codelineno-12-36"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="6-create-inserir-dades-amb-insert">6. CREATE: Inserir Dades amb INSERT</h2>
+<p>Per inserir dades usem <code>executeUpdate()</code> en lloc de <code>executeQuery()</code>. Aquest mètode retorna el nombre de files afectades.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-13-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-13-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-13-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-13-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-13-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-13-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-13-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-13-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-13-10">10</a></span>
+<span class="normal"><a href="#__codelineno-13-11">11</a></span>
+<span class="normal"><a href="#__codelineno-13-12">12</a></span>
+<span class="normal"><a href="#__codelineno-13-13">13</a></span>
+<span class="normal"><a href="#__codelineno-13-14">14</a></span>
+<span class="normal"><a href="#__codelineno-13-15">15</a></span>
+<span class="normal"><a href="#__codelineno-13-16">16</a></span>
+<span class="normal"><a href="#__codelineno-13-17">17</a></span>
+<span class="normal"><a href="#__codelineno-13-18">18</a></span>
+<span class="normal"><a href="#__codelineno-13-19">19</a></span>
+<span class="normal"><a href="#__codelineno-13-20">20</a></span>
+<span class="normal"><a href="#__codelineno-13-21">21</a></span>
+<span class="normal"><a href="#__codelineno-13-22">22</a></span>
+<span class="normal"><a href="#__codelineno-13-23">23</a></span>
+<span class="normal"><a href="#__codelineno-13-24">24</a></span>
+<span class="normal"><a href="#__codelineno-13-25">25</a></span>
+<span class="normal"><a href="#__codelineno-13-26">26</a></span>
+<span class="normal"><a href="#__codelineno-13-27">27</a></span>
+<span class="normal"><a href="#__codelineno-13-28">28</a></span>
+<span class="normal"><a href="#__codelineno-13-29">29</a></span>
+<span class="normal"><a href="#__codelineno-13-30">30</a></span>
+<span class="normal"><a href="#__codelineno-13-31">31</a></span>
+<span class="normal"><a href="#__codelineno-13-32">32</a></span>
+<span class="normal"><a href="#__codelineno-13-33">33</a></span>
+<span class="normal"><a href="#__codelineno-13-34">34</a></span>
+<span class="normal"><a href="#__codelineno-13-35">35</a></span>
+<span class="normal"><a href="#__codelineno-13-36">36</a></span>
+<span class="normal"><a href="#__codelineno-13-37">37</a></span>
+<span class="normal"><a href="#__codelineno-13-38">38</a></span>
+<span class="normal"><a href="#__codelineno-13-39">39</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AfegirPublicacio</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5"></a>
+<a id="__codelineno-13-6" name="__codelineno-13-6"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-9" name="__codelineno-13-9"></a>
+<a id="__codelineno-13-10" name="__codelineno-13-10"></a><span class="w">        </span><span class="c1">// INSERT amb paràmetres per a cada valor que volem inserir</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;INSERT INTO publicacio (nick_que_publica, text, data_publicacio, paraules_clau) &quot;</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12"></a><span class="w">                   </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;VALUES (?, ?, NOW(), ?)&quot;</span><span class="p">;</span>
+<a id="__codelineno-13-13" name="__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14"></a><span class="w">        </span><span class="c1">// Statement.RETURN_GENERATED_KEYS indica que volem obtenir l&#39;id generat</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-13-16" name="__codelineno-13-16"></a><span class="w">             </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">,</span><span class="w"> </span><span class="n">Statement</span><span class="p">.</span><span class="na">RETURN_GENERATED_KEYS</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-17" name="__codelineno-13-17"></a>
+<a id="__codelineno-13-18" name="__codelineno-13-18"></a><span class="w">            </span><span class="c1">// Omplim els paràmetres en ordre (posicions 1, 2, 3)</span>
+<a id="__codelineno-13-19" name="__codelineno-13-19"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;nou_usuari&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-20" name="__codelineno-13-20"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Primera publicació al fòrum! Hola a tothom.&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-21" name="__codelineno-13-21"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;presentacio,java&quot;</span><span class="p">);</span>
+<a id="__codelineno-13-22" name="__codelineno-13-22"></a>
+<a id="__codelineno-13-23" name="__codelineno-13-23"></a><span class="w">            </span><span class="c1">// executeUpdate() retorna el nombre de files inserides</span>
+<a id="__codelineno-13-24" name="__codelineno-13-24"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">filesAfectades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">();</span>
+<a id="__codelineno-13-25" name="__codelineno-13-25"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Files inserides: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">filesAfectades</span><span class="p">);</span>
+<a id="__codelineno-13-26" name="__codelineno-13-26"></a>
+<a id="__codelineno-13-27" name="__codelineno-13-27"></a><span class="w">            </span><span class="c1">// Recuperem l&#39;ID generat automàticament per MySQL (AUTO_INCREMENT)</span>
+<a id="__codelineno-13-28" name="__codelineno-13-28"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ResultSet</span><span class="w"> </span><span class="n">claus</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">getGeneratedKeys</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-29" name="__codelineno-13-29"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">claus</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-30" name="__codelineno-13-30"></a><span class="w">                    </span><span class="kt">int</span><span class="w"> </span><span class="n">idNou</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">claus</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-13-31" name="__codelineno-13-31"></a><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Nova publicació creada amb id: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idNou</span><span class="p">);</span>
+<a id="__codelineno-13-32" name="__codelineno-13-32"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-13-33" name="__codelineno-13-33"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-13-34" name="__codelineno-13-34"></a>
+<a id="__codelineno-13-35" name="__codelineno-13-35"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-13-36" name="__codelineno-13-36"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error en inserir: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-13-37" name="__codelineno-13-37"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-13-38" name="__codelineno-13-38"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-13-39" name="__codelineno-13-39"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="7-update-modificar-dades">7. UPDATE: Modificar Dades</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span>
+<span class="normal"><a href="#__codelineno-14-26">26</a></span>
+<span class="normal"><a href="#__codelineno-14-27">27</a></span>
+<span class="normal"><a href="#__codelineno-14-28">28</a></span>
+<span class="normal"><a href="#__codelineno-14-29">29</a></span>
+<span class="normal"><a href="#__codelineno-14-30">30</a></span>
+<span class="normal"><a href="#__codelineno-14-31">31</a></span>
+<span class="normal"><a href="#__codelineno-14-32">32</a></span>
+<span class="normal"><a href="#__codelineno-14-33">33</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ActualitzarParaulesClau</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a><span class="w">        </span><span class="c1">// Actualitzem les paraules clau d&#39;una publicació concreta</span>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;UPDATE publicacio SET paraules_clau = ? WHERE id = ?&quot;</span><span class="p">;</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">             </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">            </span><span class="c1">// Primer paràmetre: el nou valor</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setString</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;spring,java,backend,tutorial&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">            </span><span class="c1">// Segon paràmetre: l&#39;id de la publicació a modificar</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setInt</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">filesAfectades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">();</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">filesAfectades</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Publicació actualitzada correctament.&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-26" name="__codelineno-14-26"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;No s&#39;ha trobat cap publicació amb aquest id.&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-27" name="__codelineno-14-27"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-14-28" name="__codelineno-14-28"></a>
+<a id="__codelineno-14-29" name="__codelineno-14-29"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-30" name="__codelineno-14-30"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error en actualitzar: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-14-31" name="__codelineno-14-31"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-14-32" name="__codelineno-14-32"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-33" name="__codelineno-14-33"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="8-delete-eliminar-dades">8. DELETE: Eliminar Dades</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-15-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-15-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-15-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-15-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-15-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-15-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-15-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-15-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-15-10">10</a></span>
+<span class="normal"><a href="#__codelineno-15-11">11</a></span>
+<span class="normal"><a href="#__codelineno-15-12">12</a></span>
+<span class="normal"><a href="#__codelineno-15-13">13</a></span>
+<span class="normal"><a href="#__codelineno-15-14">14</a></span>
+<span class="normal"><a href="#__codelineno-15-15">15</a></span>
+<span class="normal"><a href="#__codelineno-15-16">16</a></span>
+<span class="normal"><a href="#__codelineno-15-17">17</a></span>
+<span class="normal"><a href="#__codelineno-15-18">18</a></span>
+<span class="normal"><a href="#__codelineno-15-19">19</a></span>
+<span class="normal"><a href="#__codelineno-15-20">20</a></span>
+<span class="normal"><a href="#__codelineno-15-21">21</a></span>
+<span class="normal"><a href="#__codelineno-15-22">22</a></span>
+<span class="normal"><a href="#__codelineno-15-23">23</a></span>
+<span class="normal"><a href="#__codelineno-15-24">24</a></span>
+<span class="normal"><a href="#__codelineno-15-25">25</a></span>
+<span class="normal"><a href="#__codelineno-15-26">26</a></span>
+<span class="normal"><a href="#__codelineno-15-27">27</a></span>
+<span class="normal"><a href="#__codelineno-15-28">28</a></span>
+<span class="normal"><a href="#__codelineno-15-29">29</a></span>
+<span class="normal"><a href="#__codelineno-15-30">30</a></span>
+<span class="normal"><a href="#__codelineno-15-31">31</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>
+<a id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EliminarComentari</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5"></a>
+<a id="__codelineno-15-6" name="__codelineno-15-6"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9"></a>
+<a id="__codelineno-15-10" name="__codelineno-15-10"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idComentariAEliminar</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11"></a>
+<a id="__codelineno-15-12" name="__codelineno-15-12"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sql</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;DELETE FROM comentari WHERE id = ?&quot;</span><span class="p">;</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13"></a>
+<a id="__codelineno-15-14" name="__codelineno-15-14"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">);</span>
+<a id="__codelineno-15-15" name="__codelineno-15-15"></a><span class="w">             </span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sql</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-16" name="__codelineno-15-16"></a>
+<a id="__codelineno-15-17" name="__codelineno-15-17"></a><span class="w">            </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">idComentariAEliminar</span><span class="p">);</span>
+<a id="__codelineno-15-18" name="__codelineno-15-18"></a>
+<a id="__codelineno-15-19" name="__codelineno-15-19"></a><span class="w">            </span><span class="kt">int</span><span class="w"> </span><span class="n">filesAfectades</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeUpdate</span><span class="p">();</span>
+<a id="__codelineno-15-20" name="__codelineno-15-20"></a>
+<a id="__codelineno-15-21" name="__codelineno-15-21"></a><span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">filesAfectades</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-22" name="__codelineno-15-22"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Comentari &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idComentariAEliminar</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; eliminat.&quot;</span><span class="p">);</span>
+<a id="__codelineno-15-23" name="__codelineno-15-23"></a><span class="w">            </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-24" name="__codelineno-15-24"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;No s&#39;ha trobat el comentari &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">idComentariAEliminar</span><span class="p">);</span>
+<a id="__codelineno-15-25" name="__codelineno-15-25"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-15-26" name="__codelineno-15-26"></a>
+<a id="__codelineno-15-27" name="__codelineno-15-27"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-15-28" name="__codelineno-15-28"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error en eliminar: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-15-29" name="__codelineno-15-29"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-15-30" name="__codelineno-15-30"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-15-31" name="__codelineno-15-31"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="9-consulta-amb-join-publicacio-i-els-seus-comentaris">9. Consulta amb JOIN: Publicació i els seus Comentaris</h2>
+<p>Un dels punts forts de les bases de dades relacionals és poder unir taules. Veiem com obtenir una publicació amb tots els seus comentaris:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span>
+<span class="normal"><a href="#__codelineno-16-16">16</a></span>
+<span class="normal"><a href="#__codelineno-16-17">17</a></span>
+<span class="normal"><a href="#__codelineno-16-18">18</a></span>
+<span class="normal"><a href="#__codelineno-16-19">19</a></span>
+<span class="normal"><a href="#__codelineno-16-20">20</a></span>
+<span class="normal"><a href="#__codelineno-16-21">21</a></span>
+<span class="normal"><a href="#__codelineno-16-22">22</a></span>
+<span class="normal"><a href="#__codelineno-16-23">23</a></span>
+<span class="normal"><a href="#__codelineno-16-24">24</a></span>
+<span class="normal"><a href="#__codelineno-16-25">25</a></span>
+<span class="normal"><a href="#__codelineno-16-26">26</a></span>
+<span class="normal"><a href="#__codelineno-16-27">27</a></span>
+<span class="normal"><a href="#__codelineno-16-28">28</a></span>
+<span class="normal"><a href="#__codelineno-16-29">29</a></span>
+<span class="normal"><a href="#__codelineno-16-30">30</a></span>
+<span class="normal"><a href="#__codelineno-16-31">31</a></span>
+<span class="normal"><a href="#__codelineno-16-32">32</a></span>
+<span class="normal"><a href="#__codelineno-16-33">33</a></span>
+<span class="normal"><a href="#__codelineno-16-34">34</a></span>
+<span class="normal"><a href="#__codelineno-16-35">35</a></span>
+<span class="normal"><a href="#__codelineno-16-36">36</a></span>
+<span class="normal"><a href="#__codelineno-16-37">37</a></span>
+<span class="normal"><a href="#__codelineno-16-38">38</a></span>
+<span class="normal"><a href="#__codelineno-16-39">39</a></span>
+<span class="normal"><a href="#__codelineno-16-40">40</a></span>
+<span class="normal"><a href="#__codelineno-16-41">41</a></span>
+<span class="normal"><a href="#__codelineno-16-42">42</a></span>
+<span class="normal"><a href="#__codelineno-16-43">43</a></span>
+<span class="normal"><a href="#__codelineno-16-44">44</a></span>
+<span class="normal"><a href="#__codelineno-16-45">45</a></span>
+<span class="normal"><a href="#__codelineno-16-46">46</a></span>
+<span class="normal"><a href="#__codelineno-16-47">47</a></span>
+<span class="normal"><a href="#__codelineno-16-48">48</a></span>
+<span class="normal"><a href="#__codelineno-16-49">49</a></span>
+<span class="normal"><a href="#__codelineno-16-50">50</a></span>
+<span class="normal"><a href="#__codelineno-16-51">51</a></span>
+<span class="normal"><a href="#__codelineno-16-52">52</a></span>
+<span class="normal"><a href="#__codelineno-16-53">53</a></span>
+<span class="normal"><a href="#__codelineno-16-54">54</a></span>
+<span class="normal"><a href="#__codelineno-16-55">55</a></span>
+<span class="normal"><a href="#__codelineno-16-56">56</a></span>
+<span class="normal"><a href="#__codelineno-16-57">57</a></span>
+<span class="normal"><a href="#__codelineno-16-58">58</a></span>
+<span class="normal"><a href="#__codelineno-16-59">59</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.sql.*</span><span class="p">;</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">PublicacioAmbComentaris</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">url</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;jdbc:mysql://localhost:3306/forum?useSSL=false&amp;serverTimezone=UTC&quot;</span><span class="p">;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">user</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;root&quot;</span><span class="p">;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">pass</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;1234&quot;</span><span class="p">;</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a><span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">idPublicacio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a><span class="w">        </span><span class="c1">// Primer obtenim la publicació</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlPub</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM publicacio WHERE id = ?&quot;</span><span class="p">;</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a><span class="w">        </span><span class="c1">// Després obtenim tots els comentaris d&#39;aquesta publicació, ordenats per data</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">sqlCom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SELECT * FROM comentari WHERE publicacio_id = ? ORDER BY data_comentari&quot;</span><span class="p">;</span>
+<a id="__codelineno-16-16" name="__codelineno-16-16"></a>
+<a id="__codelineno-16-17" name="__codelineno-16-17"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">Connection</span><span class="w"> </span><span class="n">conn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DriverManager</span><span class="p">.</span><span class="na">getConnection</span><span class="p">(</span><span class="n">url</span><span class="p">,</span><span class="w"> </span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="n">pass</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-18" name="__codelineno-16-18"></a>
+<a id="__codelineno-16-19" name="__codelineno-16-19"></a><span class="w">            </span><span class="c1">// --- Llegim la publicació ---</span>
+<a id="__codelineno-16-20" name="__codelineno-16-20"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sqlPub</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-21" name="__codelineno-16-21"></a><span class="w">                </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">idPublicacio</span><span class="p">);</span>
+<a id="__codelineno-16-22" name="__codelineno-16-22"></a><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ResultSet</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-23" name="__codelineno-16-23"></a><span class="w">                    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-24" name="__codelineno-16-24"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=== PUBLICACIÓ ===&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-25" name="__codelineno-16-25"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Nick: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nick_que_publica&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-26" name="__codelineno-16-26"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Data: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;data_publicacio&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-27" name="__codelineno-16-27"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Text: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-28" name="__codelineno-16-28"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Tags: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;paraules_clau&quot;</span><span class="p">));</span>
+<a id="__codelineno-16-29" name="__codelineno-16-29"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-16-30" name="__codelineno-16-30"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-16-31" name="__codelineno-16-31"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-16-32" name="__codelineno-16-32"></a>
+<a id="__codelineno-16-33" name="__codelineno-16-33"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+<a id="__codelineno-16-34" name="__codelineno-16-34"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;--- COMENTARIS ---&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-35" name="__codelineno-16-35"></a>
+<a id="__codelineno-16-36" name="__codelineno-16-36"></a><span class="w">            </span><span class="c1">// --- Llegim els comentaris ---</span>
+<a id="__codelineno-16-37" name="__codelineno-16-37"></a><span class="w">            </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">PreparedStatement</span><span class="w"> </span><span class="n">pstmt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">conn</span><span class="p">.</span><span class="na">prepareStatement</span><span class="p">(</span><span class="n">sqlCom</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-38" name="__codelineno-16-38"></a><span class="w">                </span><span class="n">pstmt</span><span class="p">.</span><span class="na">setInt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">idPublicacio</span><span class="p">);</span>
+<a id="__codelineno-16-39" name="__codelineno-16-39"></a><span class="w">                </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">ResultSet</span><span class="w"> </span><span class="n">rs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pstmt</span><span class="p">.</span><span class="na">executeQuery</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-40" name="__codelineno-16-40"></a><span class="w">                    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">rs</span><span class="p">.</span><span class="na">next</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-41" name="__codelineno-16-41"></a><span class="w">                        </span><span class="n">String</span><span class="w"> </span><span class="n">nick</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nick_comenta&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-42" name="__codelineno-16-42"></a><span class="w">                        </span><span class="n">String</span><span class="w"> </span><span class="n">text</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;text&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-43" name="__codelineno-16-43"></a><span class="w">                        </span><span class="kt">int</span><span class="w">    </span><span class="n">valoracio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getInt</span><span class="p">(</span><span class="s">&quot;valoracio&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-44" name="__codelineno-16-44"></a><span class="w">                        </span><span class="n">String</span><span class="w"> </span><span class="n">data</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="n">rs</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;data_comentari&quot;</span><span class="p">);</span>
+<a id="__codelineno-16-45" name="__codelineno-16-45"></a>
+<a id="__codelineno-16-46" name="__codelineno-16-46"></a><span class="w">                        </span><span class="c1">// Representem la valoració amb estrelles</span>
+<a id="__codelineno-16-47" name="__codelineno-16-47"></a><span class="w">                        </span><span class="n">String</span><span class="w"> </span><span class="n">estrelles</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;★&quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="n">valoracio</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot;☆&quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">5</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">valoracio</span><span class="p">);</span>
+<a id="__codelineno-16-48" name="__codelineno-16-48"></a>
+<a id="__codelineno-16-49" name="__codelineno-16-49"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%s  [%s] (%s)%n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">estrelles</span><span class="p">,</span><span class="w"> </span><span class="n">nick</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="p">);</span>
+<a id="__codelineno-16-50" name="__codelineno-16-50"></a><span class="w">                        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;  &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">text</span><span class="p">);</span>
+<a id="__codelineno-16-51" name="__codelineno-16-51"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-16-52" name="__codelineno-16-52"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-16-53" name="__codelineno-16-53"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-16-54" name="__codelineno-16-54"></a>
+<a id="__codelineno-16-55" name="__codelineno-16-55"></a><span class="w">        </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="n">SQLException</span><span class="w"> </span><span class="n">e</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-56" name="__codelineno-16-56"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">err</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Error: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">e</span><span class="p">.</span><span class="na">getMessage</span><span class="p">());</span>
+<a id="__codelineno-16-57" name="__codelineno-16-57"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-16-58" name="__codelineno-16-58"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-59" name="__codelineno-16-59"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="10-resum-dels-metodes-principals">10. Resum dels Mètodes Principals</h2>
+<h3 id="101-connection">10.1. Connection</h3>
+<table>
+<thead>
+<tr>
+<th>Mètode</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createStatement()</code></td>
+<td>Crea un Statement per a SQL sense paràmetres</td>
+</tr>
+<tr>
+<td><code>prepareStatement(sql)</code></td>
+<td>Crea un PreparedStatement per a SQL amb <code>?</code></td>
+</tr>
+<tr>
+<td><code>close()</code></td>
+<td>Tanca la connexió (automàtic amb try-with-resources)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="102-preparedstatement-statement">10.2. PreparedStatement / Statement</h3>
+<table>
+<thead>
+<tr>
+<th>Mètode</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>executeQuery()</code></td>
+<td>Executa SELECT, retorna <code>ResultSet</code></td>
+</tr>
+<tr>
+<td><code>executeUpdate()</code></td>
+<td>Executa INSERT/UPDATE/DELETE, retorna files afectades</td>
+</tr>
+<tr>
+<td><code>setString(pos, val)</code></td>
+<td>Estableix un paràmetre de tipus String</td>
+</tr>
+<tr>
+<td><code>setInt(pos, val)</code></td>
+<td>Estableix un paràmetre de tipus int</td>
+</tr>
+<tr>
+<td><code>setDouble(pos, val)</code></td>
+<td>Estableix un paràmetre de tipus double</td>
+</tr>
+<tr>
+<td><code>setTimestamp(pos, val)</code></td>
+<td>Estableix un paràmetre de tipus data/hora</td>
+</tr>
+</tbody>
+</table>
+<h3 id="103-resultset">10.3. ResultSet</h3>
+<table>
+<thead>
+<tr>
+<th>Mètode</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>next()</code></td>
+<td>Avança al següent registre. Retorna <code>false</code> al final</td>
+</tr>
+<tr>
+<td><code>getString(col)</code></td>
+<td>Llegeix una columna com a String</td>
+</tr>
+<tr>
+<td><code>getInt(col)</code></td>
+<td>Llegeix una columna com a int</td>
+</tr>
+<tr>
+<td><code>getDouble(col)</code></td>
+<td>Llegeix una columna com a double</td>
+</tr>
+<tr>
+<td><code>getTimestamp(col)</code></td>
+<td>Llegeix una columna com a Timestamp</td>
+</tr>
+<tr>
+<td><code>wasNull()</code></td>
+<td>Comprova si el darrer valor llegit era NULL</td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera & Joan Gerard Camarena es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

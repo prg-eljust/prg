@@ -1,0 +1,2280 @@
+
+<!doctype html>
+<html lang="ca" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Abdó Garcia, Paco Galera i Joan Gerard Camarena">
+      
+      
+        <link rel="canonical" href="https://prg-eljust.github.io/prg/PRG12/03_mongodb/">
+      
+      
+        <link rel="prev" href="../02_mysql/">
+      
+      
+        <link rel="next" href="../../activitats/scrabble/Scrabble/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../img/logojaume.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>MongoDB des de Java - Programació 1DAM/DAWsp Curs 2025-2026</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/custom.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-GJ8MB56SLW"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-GJ8MB56SLW",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-GJ8MB56SLW",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="MongoDB des de Java - Programació 1DAM/DAWsp Curs 2025-2026" />
+<meta property="og:image" content="https://prg-eljust.github.io/prg/assets/images/social/PRG12/03_mongodb.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://prg-eljust.github.io/prg/PRG12/03_mongodb/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="MongoDB des de Java - Programació 1DAM/DAWsp Curs 2025-2026" />
+<meta property="twitter:image" content="https://prg-eljust.github.io/prg/assets/images/social/PRG12/03_mongodb.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-que-es-mongodb" class="md-skip">
+          Salta el contingut
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Capçalera">
+    <a href="../.." title="Programació 1DAM/DAWsp Curs 2025-2026" class="md-header__button md-logo" aria-label="Programació 1DAM/DAWsp Curs 2025-2026" data-md-component="logo">
+      
+  <img src="../../img/logojaume.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Programació 1DAM/DAWsp Curs 2025-2026
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MongoDB des de Java
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="grey" data-md-color-accent="indigo"  aria-label="Mode oscur"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Mode oscur" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo"  aria-label="Mode clar"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Mode clar" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Cerca" placeholder="Cerca" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Cerca">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Neteja" aria-label="Neteja" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Inicialitzant cerca
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navegació" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Programació 1DAM/DAWsp Curs 2025-2026" class="md-nav__button md-logo" aria-label="Programació 1DAM/DAWsp Curs 2025-2026" data-md-component="logo">
+      
+  <img src="../../img/logojaume.png" alt="logo">
+
+    </a>
+    Programació 1DAM/DAWsp Curs 2025-2026
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG01/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD1. Dades simples. Instruccions seqüencials
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG02/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD2. Programació estructurada. Disseny d'algorismes en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG03/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD3. Introducció a Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG04/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD4. Estructures de control en Python
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG05/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD5. Introducció a Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG06/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD6. Arrays en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG07/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD7. Programació modular. Funcions en Java
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG08/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD8. Programació Orientada a Objectes. Classes amb atributs.
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG09/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD9. Programació Orientada a Objectes. Classes amb mètodes
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD10. Interfícies
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../PRG11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD11. Tractament de Fitxers
+  
+
+    
+      <br>
+      <small>1DAM - PRG</small>
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_12" id="__nav_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UD12. Bases de dades
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    UD12. Bases de dades
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_introduccio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introducció a les bases de dades
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_mysql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MySQL des de Java amb JDBC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MongoDB des de Java
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MongoDB des de Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és MongoDB?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Què és MongoDB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-comparacio-amb-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Comparació amb MySQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-exemple-de-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Exemple de document
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracio-el-driver-de-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuració: El Driver de MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connexio-a-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connexió a MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-la-classe-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. La Classe Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-read-consultar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. READ: Consultar Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. READ: Consultar Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-obtenir-tots-els-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Obtenir tots els documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-filtrar-documents-amb-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Filtrar documents amb Filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-exemple-buscar-estudiants-per-cicle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Exemple: Buscar estudiants per cicle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-obtenir-un-sol-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Obtenir un sol document
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-inserir-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CREATE: Inserir Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. CREATE: Inserir Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-inserir-un-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Inserir un document
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-inserir-multiples-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Inserir múltiples documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-update-modificar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. UPDATE: Modificar Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. UPDATE: Modificar Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-exemple-actualitzar-la-nota-dun-modul" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Exemple: Actualitzar la nota d'un mòdul
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-delete-eliminar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. DELETE: Eliminar Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-accedir-a-documents-imbricats-i-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Accedir a Documents Imbricats i Arrays
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-comparativa-final-mysql-vs-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Comparativa Final: MySQL vs MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_13" >
+        
+          
+          <label class="md-nav__link" for="__nav_13" id="__nav_13_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pràctiques
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pràctiques
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/scrabble/Scrabble/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scrabble
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/pescamines/Pescamines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Joc del pescamines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../activitats/agenda/agenda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agenda de qualificacions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Taula de continguts">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Taula de continguts
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-que-es-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Què és MongoDB?
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Què és MongoDB?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-comparacio-amb-mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Comparació amb MySQL
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-exemple-de-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. Exemple de document
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-configuracio-el-driver-de-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Configuració: El Driver de MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-connexio-a-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Connexió a MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-la-classe-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. La Classe Document
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-read-consultar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. READ: Consultar Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. READ: Consultar Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-obtenir-tots-els-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. Obtenir tots els documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-filtrar-documents-amb-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. Filtrar documents amb Filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-exemple-buscar-estudiants-per-cicle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.3. Exemple: Buscar estudiants per cicle
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54-obtenir-un-sol-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.4. Obtenir un sol document
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-create-inserir-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. CREATE: Inserir Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. CREATE: Inserir Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61-inserir-un-document" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.1. Inserir un document
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62-inserir-multiples-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6.2. Inserir múltiples documents
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-update-modificar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. UPDATE: Modificar Documents
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7. UPDATE: Modificar Documents">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71-exemple-actualitzar-la-nota-dun-modul" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7.1. Exemple: Actualitzar la nota d'un mòdul
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-delete-eliminar-documents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. DELETE: Eliminar Documents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-accedir-a-documents-imbricats-i-arrays" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. Accedir a Documents Imbricats i Arrays
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-comparativa-final-mysql-vs-mongodb" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Comparativa Final: MySQL vs MongoDB
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>MongoDB des de Java</h1>
+
+<h2 id="1-que-es-mongodb">1. Què és MongoDB?</h2>
+<p>MongoDB és una base de dades <strong>documental</strong>: en lloc de guardar dades en taules amb files i columnes, guarda <strong>documents</strong> en format similar a JSON (concretament BSON, Binary JSON).</p>
+<p>Això la fa molt flexible: cada document d'una col·lecció pot tenir camps diferents, i els camps poden contenir valors simples, arrays o documents imbricats.</p>
+<h3 id="11-comparacio-amb-mysql">1.1. Comparació amb MySQL</h3>
+<table>
+<thead>
+<tr>
+<th>Concepte MySQL</th>
+<th>Concepte MongoDB</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Base de dades</td>
+<td>Base de dades</td>
+</tr>
+<tr>
+<td>Taula</td>
+<td>Col·lecció (<em>collection</em>)</td>
+</tr>
+<tr>
+<td>Fila</td>
+<td>Document</td>
+</tr>
+<tr>
+<td>Columna</td>
+<td>Camp (<em>field</em>)</td>
+</tr>
+<tr>
+<td>Clau primària</td>
+<td><code>_id</code></td>
+</tr>
+<tr>
+<td>JOIN</td>
+<td><code>$lookup</code> (o documents imbricats)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="12-exemple-de-document">1.2. Exemple de document</h3>
+<p>Un estudiant a MongoDB es pot representar així:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">JSON</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="p">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">  </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ObjectId(&#39;64a1b2c3...&#39;)&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">  </span><span class="nt">&quot;nom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Ana Pérez&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">  </span><span class="nt">&quot;edat&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">22</span><span class="p">,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">  </span><span class="nt">&quot;cicle&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enginyeria de Sistemes&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">  </span><span class="nt">&quot;contacte&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nt">&quot;email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ana.perez@uni.edu&quot;</span><span class="p">,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nt">&quot;telefon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;555-1234&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">  </span><span class="nt">&quot;moduls&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;nom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Bases de Dades&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;credits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.5</span><span class="w"> </span><span class="p">},</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;nom&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Programació Avançada&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;credits&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;nota&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">9.0</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">  </span><span class="p">]</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Observeu que un document pot contenir <strong>documents imbricats</strong> (<code>contacte</code>) i <strong>arrays</strong> (<code>moduls</code>). Això és molt diferent del model relacional.</p>
+<p>Disposes de l'arxiu <a href="../estudiants.json">estudiants.json</a> amb exemples de documents d'estudiants per practicar a les nostres consultes MongoDB.</p>
+<h2 id="2-configuracio-el-driver-de-mongodb">2. Configuració: El Driver de MongoDB</h2>
+<p>Afegiu la dependència al vostre <code>pom.xml</code>:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">XML</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span>
+<span class="normal"><a href="#__codelineno-1-4">4</a></span>
+<span class="normal"><a href="#__codelineno-1-5">5</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">&lt;dependency&gt;</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.mongodb<span class="nt">&lt;/groupId&gt;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>mongodb-driver-sync<span class="nt">&lt;/artifactId&gt;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">&lt;version&gt;</span>4.11.1<span class="nt">&lt;/version&gt;</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div></td></tr></table></div>
+<p>Les classes principals que usarem:</p>
+<table>
+<thead>
+<tr>
+<th>Classe</th>
+<th>Descripció</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>MongoClient</code></td>
+<td>Gestiona la connexió amb el servidor MongoDB</td>
+</tr>
+<tr>
+<td><code>MongoDatabase</code></td>
+<td>Representa una base de dades</td>
+</tr>
+<tr>
+<td><code>MongoCollection&lt;Document&gt;</code></td>
+<td>Representa una col·lecció de documents</td>
+</tr>
+<tr>
+<td><code>Document</code></td>
+<td>Representa un document BSON/JSON</td>
+</tr>
+<tr>
+<td><code>Filters</code></td>
+<td>Classe d'utilitat per construir filtres de cerca</td>
+</tr>
+<tr>
+<td><code>Updates</code></td>
+<td>Classe d'utilitat per construir operacions d'update</td>
+</tr>
+</tbody>
+</table>
+<h2 id="3-connexio-a-mongodb">3. Connexió a MongoDB</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-2-10">10</a></span>
+<span class="normal"><a href="#__codelineno-2-11">11</a></span>
+<span class="normal"><a href="#__codelineno-2-12">12</a></span>
+<span class="normal"><a href="#__codelineno-2-13">13</a></span>
+<span class="normal"><a href="#__codelineno-2-14">14</a></span>
+<span class="normal"><a href="#__codelineno-2-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.MongoClient</span><span class="p">;</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.MongoClients</span><span class="p">;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.MongoCollection</span><span class="p">;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.MongoDatabase</span><span class="p">;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.Document</span><span class="p">;</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1">// La URI de connexió estàndard de MongoDB</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="c1">// Format: mongodb://host:port</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="c1">// Seleccionem la base de dades (es crea automàticament si no existeix)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="n">MongoDatabase</span><span class="w"> </span><span class="n">db</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">);</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="c1">// Seleccionem la col·lecció (equivalent a una taula)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Creació automàtica</p>
+<p>A diferència de MySQL, MongoDB crea automàticament la base de dades i la col·lecció quan hi inserim el primer document. No cal executar cap <code>CREATE DATABASE</code> ni <code>CREATE TABLE</code>.</p>
+</div>
+<h2 id="4-la-classe-document">4. La Classe Document</h2>
+<p><code>Document</code> és la classe central per treballar amb MongoDB en Java. Funciona com un <strong>mapa clau-valor</strong> i és la representació Java d'un document JSON/BSON.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-3-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-3-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-3-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-3-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-3-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-3-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-3-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-3-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-3-10">10</a></span>
+<span class="normal"><a href="#__codelineno-3-11">11</a></span>
+<span class="normal"><a href="#__codelineno-3-12">12</a></span>
+<span class="normal"><a href="#__codelineno-3-13">13</a></span>
+<span class="normal"><a href="#__codelineno-3-14">14</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="c1">// Crear un document nou</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">Document</span><span class="w"> </span><span class="n">estudiant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">();</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="n">estudiant</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Joan Garcia&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="n">estudiant</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">);</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="n">estudiant</span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAM&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1">// Alternativa: encadenar append() directament</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="n">Document</span><span class="w"> </span><span class="n">estudiant2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Maria Puig&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">)</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAW&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="c1">// Llegir valors d&#39;un document</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">estudiant2</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">);</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="kt">int</span><span class="w">    </span><span class="n">edat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">estudiant2</span><span class="p">.</span><span class="na">getInteger</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="5-read-consultar-documents">5. READ: Consultar Documents</h2>
+<h3 id="51-obtenir-tots-els-documents">5.1. Obtenir tots els documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-4-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-4-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-4-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-4-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-4-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-4-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-4-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-4-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-4-10">10</a></span>
+<span class="normal"><a href="#__codelineno-4-11">11</a></span>
+<span class="normal"><a href="#__codelineno-4-12">12</a></span>
+<span class="normal"><a href="#__codelineno-4-13">13</a></span>
+<span class="normal"><a href="#__codelineno-4-14">14</a></span>
+<span class="normal"><a href="#__codelineno-4-15">15</a></span>
+<span class="normal"><a href="#__codelineno-4-16">16</a></span>
+<span class="normal"><a href="#__codelineno-4-17">17</a></span>
+<span class="normal"><a href="#__codelineno-4-18">18</a></span>
+<span class="normal"><a href="#__codelineno-4-19">19</a></span>
+<span class="normal"><a href="#__codelineno-4-20">20</a></span>
+<span class="normal"><a href="#__codelineno-4-21">21</a></span>
+<span class="normal"><a href="#__codelineno-4-22">22</a></span>
+<span class="normal"><a href="#__codelineno-4-23">23</a></span>
+<span class="normal"><a href="#__codelineno-4-24">24</a></span>
+<span class="normal"><a href="#__codelineno-4-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.*</span><span class="p">;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.Document</span><span class="p">;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">LlistarEstudiants</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6"></a>
+<a id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">        </span><span class="c1">// try-with-resources: tanca el MongoClient automàticament</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9"></a>
+<a id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">            </span><span class="n">MongoDatabase</span><span class="w"> </span><span class="n">db</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">            </span><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">db</span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12"></a>
+<a id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">            </span><span class="c1">// find() sense arguments retorna tots els documents</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">            </span><span class="c1">// Iterem amb un bucle for-each</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">find</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">                </span><span class="kt">int</span><span class="w">    </span><span class="n">edat</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getInteger</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">                </span><span class="n">String</span><span class="w"> </span><span class="n">cicle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">);</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19"></a>
+<a id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;%s, %d anys - %s%n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nom</span><span class="p">,</span><span class="w"> </span><span class="n">edat</span><span class="p">,</span><span class="w"> </span><span class="n">cicle</span><span class="p">);</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23"></a><span class="w">        </span><span class="c1">// client es tanca automàticament aquí</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="52-filtrar-documents-amb-filters">5.2. Filtrar documents amb Filters</h3>
+<p>La classe <code>Filters</code> proporciona mètodes estàtics per construir condicions de cerca:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-5-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-5-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-5-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-5-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-5-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-5-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-5-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-5-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-5-10">10</a></span>
+<span class="normal"><a href="#__codelineno-5-11">11</a></span>
+<span class="normal"><a href="#__codelineno-5-12">12</a></span>
+<span class="normal"><a href="#__codelineno-5-13">13</a></span>
+<span class="normal"><a href="#__codelineno-5-14">14</a></span>
+<span class="normal"><a href="#__codelineno-5-15">15</a></span>
+<span class="normal"><a href="#__codelineno-5-16">16</a></span>
+<span class="normal"><a href="#__codelineno-5-17">17</a></span>
+<span class="normal"><a href="#__codelineno-5-18">18</a></span>
+<span class="normal"><a href="#__codelineno-5-19">19</a></span>
+<span class="normal"><a href="#__codelineno-5-20">20</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.Filters</span><span class="p">;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.conversions.Bson</span><span class="p">;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="c1">// Igualtat: cicle = &quot;DAM&quot;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAM&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1">// Més gran que: edat &gt; 21</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">gt</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">21</span><span class="p">);</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="c1">// Menys o igual: edat &lt;= 22</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">lte</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">);</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12"></a>
+<a id="__codelineno-5-13" name="__codelineno-5-13"></a><span class="c1">// Conté text (regex): nom que conté &quot;Pe&quot;</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14"></a><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">regex</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pe&quot;</span><span class="p">);</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16"></a><span class="c1">// Condició AND: cicle = &quot;Enginyeria de Sistemes&quot; I edat &lt;= 22</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17"></a><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">and</span><span class="p">(</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18"></a><span class="w">    </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enginyeria de Sistemes&quot;</span><span class="p">),</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19"></a><span class="w">    </span><span class="n">Filters</span><span class="p">.</span><span class="na">lte</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">)</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="53-exemple-buscar-estudiants-per-cicle">5.3. Exemple: Buscar estudiants per cicle</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-6-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-6-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-6-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-6-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-6-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-6-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-6-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-6-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-6-10">10</a></span>
+<span class="normal"><a href="#__codelineno-6-11">11</a></span>
+<span class="normal"><a href="#__codelineno-6-12">12</a></span>
+<span class="normal"><a href="#__codelineno-6-13">13</a></span>
+<span class="normal"><a href="#__codelineno-6-14">14</a></span>
+<span class="normal"><a href="#__codelineno-6-15">15</a></span>
+<span class="normal"><a href="#__codelineno-6-16">16</a></span>
+<span class="normal"><a href="#__codelineno-6-17">17</a></span>
+<span class="normal"><a href="#__codelineno-6-18">18</a></span>
+<span class="normal"><a href="#__codelineno-6-19">19</a></span>
+<span class="normal"><a href="#__codelineno-6-20">20</a></span>
+<span class="normal"><a href="#__codelineno-6-21">21</a></span>
+<span class="normal"><a href="#__codelineno-6-22">22</a></span>
+<span class="normal"><a href="#__codelineno-6-23">23</a></span>
+<span class="normal"><a href="#__codelineno-6-24">24</a></span>
+<span class="normal"><a href="#__codelineno-6-25">25</a></span>
+<span class="normal"><a href="#__codelineno-6-26">26</a></span>
+<span class="normal"><a href="#__codelineno-6-27">27</a></span>
+<span class="normal"><a href="#__codelineno-6-28">28</a></span>
+<span class="normal"><a href="#__codelineno-6-29">29</a></span>
+<span class="normal"><a href="#__codelineno-6-30">30</a></span>
+<span class="normal"><a href="#__codelineno-6-31">31</a></span>
+<span class="normal"><a href="#__codelineno-6-32">32</a></span>
+<span class="normal"><a href="#__codelineno-6-33">33</a></span>
+<span class="normal"><a href="#__codelineno-6-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.*</span><span class="p">;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.Filters</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.Document</span><span class="p">;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.conversions.Bson</span><span class="p">;</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BuscarPerCicle</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10"></a>
+<a id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">            </span><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">                                                  </span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">            </span><span class="c1">// Filtre: cicle igual a &quot;Enginyeria de Sistemes&quot;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">            </span><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Enginyeria de Sistemes&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Estudiants d&#39;Enginyeria de Sistemes:&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;=&quot;</span><span class="p">.</span><span class="na">repeat</span><span class="p">(</span><span class="mi">40</span><span class="p">));</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">            </span><span class="c1">// find(filtre) aplica el filtre a la cerca</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">            </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">find</span><span class="p">(</span><span class="n">filtre</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Nom: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">));</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Edat: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getInteger</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">));</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24"></a>
+<a id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="w">                </span><span class="c1">// El camp &#39;contacte&#39; és un document imbricat</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="w">                </span><span class="n">Document</span><span class="w"> </span><span class="n">contacte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">Document</span><span class="p">)</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;contacte&quot;</span><span class="p">);</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">contacte</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">                    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Email: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">contacte</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;email&quot;</span><span class="p">));</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="w">                </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">();</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="54-obtenir-un-sol-document">5.4. Obtenir un sol document</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1">1</a></span>
+<span class="normal"><a href="#__codelineno-7-2">2</a></span>
+<span class="normal"><a href="#__codelineno-7-3">3</a></span>
+<span class="normal"><a href="#__codelineno-7-4">4</a></span>
+<span class="normal"><a href="#__codelineno-7-5">5</a></span>
+<span class="normal"><a href="#__codelineno-7-6">6</a></span>
+<span class="normal"><a href="#__codelineno-7-7">7</a></span>
+<span class="normal"><a href="#__codelineno-7-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1">// first() retorna el primer document que coincideix, o null si no n&#39;hi ha cap</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">find</span><span class="p">(</span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ana Pérez&quot;</span><span class="p">)).</span><span class="na">first</span><span class="p">();</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">doc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Trobat: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">));</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;No s&#39;ha trobat l&#39;estudiant.&quot;</span><span class="p">);</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="6-create-inserir-documents">6. CREATE: Inserir Documents</h2>
+<h3 id="61-inserir-un-document">6.1. Inserir un document</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-8-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-8-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-8-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-8-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-8-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-8-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-8-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-8-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-8-10">10</a></span>
+<span class="normal"><a href="#__codelineno-8-11">11</a></span>
+<span class="normal"><a href="#__codelineno-8-12">12</a></span>
+<span class="normal"><a href="#__codelineno-8-13">13</a></span>
+<span class="normal"><a href="#__codelineno-8-14">14</a></span>
+<span class="normal"><a href="#__codelineno-8-15">15</a></span>
+<span class="normal"><a href="#__codelineno-8-16">16</a></span>
+<span class="normal"><a href="#__codelineno-8-17">17</a></span>
+<span class="normal"><a href="#__codelineno-8-18">18</a></span>
+<span class="normal"><a href="#__codelineno-8-19">19</a></span>
+<span class="normal"><a href="#__codelineno-8-20">20</a></span>
+<span class="normal"><a href="#__codelineno-8-21">21</a></span>
+<span class="normal"><a href="#__codelineno-8-22">22</a></span>
+<span class="normal"><a href="#__codelineno-8-23">23</a></span>
+<span class="normal"><a href="#__codelineno-8-24">24</a></span>
+<span class="normal"><a href="#__codelineno-8-25">25</a></span>
+<span class="normal"><a href="#__codelineno-8-26">26</a></span>
+<span class="normal"><a href="#__codelineno-8-27">27</a></span>
+<span class="normal"><a href="#__codelineno-8-28">28</a></span>
+<span class="normal"><a href="#__codelineno-8-29">29</a></span>
+<span class="normal"><a href="#__codelineno-8-30">30</a></span>
+<span class="normal"><a href="#__codelineno-8-31">31</a></span>
+<span class="normal"><a href="#__codelineno-8-32">32</a></span>
+<span class="normal"><a href="#__codelineno-8-33">33</a></span>
+<span class="normal"><a href="#__codelineno-8-34">34</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.*</span><span class="p">;</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.Document</span><span class="p">;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">AfegirEstudiant</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6"></a>
+<a id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">            </span><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">                                                  </span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11"></a>
+<a id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">            </span><span class="c1">// Construïm el document de l&#39;estudiant nou</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">            </span><span class="c1">// amb camps simples, un document imbricat i un array</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14"></a><span class="w">            </span><span class="n">Document</span><span class="w"> </span><span class="n">nouEstudiant</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pau Martí&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15"></a><span class="w">                </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">19</span><span class="p">)</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16"></a><span class="w">                </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAM&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17"></a><span class="w">                </span><span class="c1">// Document imbricat per a les dades de contacte</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18"></a><span class="w">                </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;contacte&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;email&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;pau.marti@institut.cat&quot;</span><span class="p">)</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19"></a><span class="w">                                        </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;telefon&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;666-111-222&quot;</span><span class="p">))</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20"></a><span class="w">                </span><span class="c1">// Array de mòduls (llista de documents)</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21"></a><span class="w">                </span><span class="c1">// Nota: les notes són double, entre 0 i 10</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22"></a><span class="w">                </span><span class="p">.</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;moduls&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">java</span><span class="p">.</span><span class="na">util</span><span class="p">.</span><span class="na">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Programació&quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;credits&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;nota&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">7.8</span><span class="p">),</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24"></a><span class="w">                    </span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Bases de Dades&quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;credits&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;nota&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">8.2</span><span class="p">)</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25"></a><span class="w">                </span><span class="p">));</span>
+<a id="__codelineno-8-26" name="__codelineno-8-26"></a>
+<a id="__codelineno-8-27" name="__codelineno-8-27"></a><span class="w">            </span><span class="c1">// insertOne() insereix un sol document</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28"></a><span class="w">            </span><span class="n">col</span><span class="p">.</span><span class="na">insertOne</span><span class="p">(</span><span class="n">nouEstudiant</span><span class="p">);</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29"></a>
+<a id="__codelineno-8-30" name="__codelineno-8-30"></a><span class="w">            </span><span class="c1">// Després d&#39;inserir, MongoDB assigna un _id automàticament</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Estudiant inserit amb _id: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nouEstudiant</span><span class="p">.</span><span class="na">getObjectId</span><span class="p">(</span><span class="s">&quot;_id&quot;</span><span class="p">));</span>
+<a id="__codelineno-8-32" name="__codelineno-8-32"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="62-inserir-multiples-documents">6.2. Inserir múltiples documents</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span>
+<span class="normal"><a href="#__codelineno-9-2">2</a></span>
+<span class="normal"><a href="#__codelineno-9-3">3</a></span>
+<span class="normal"><a href="#__codelineno-9-4">4</a></span>
+<span class="normal"><a href="#__codelineno-9-5">5</a></span>
+<span class="normal"><a href="#__codelineno-9-6">6</a></span>
+<span class="normal"><a href="#__codelineno-9-7">7</a></span>
+<span class="normal"><a href="#__codelineno-9-8">8</a></span>
+<span class="normal"><a href="#__codelineno-9-9">9</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.*</span><span class="p">;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2"></a>
+<a id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">List</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">estudiants</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">estudiants</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Clara Vidal&quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">20</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAW&quot;</span><span class="p">));</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="n">estudiants</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">Document</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Marc Soler&quot;</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">22</span><span class="p">).</span><span class="na">append</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ASIX&quot;</span><span class="p">));</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="c1">// insertMany() insereix una llista de documents d&#39;una sola vegada</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="n">col</span><span class="p">.</span><span class="na">insertMany</span><span class="p">(</span><span class="n">estudiants</span><span class="p">);</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;S&#39;han inserit &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">estudiants</span><span class="p">.</span><span class="na">size</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="s">&quot; estudiants.&quot;</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="7-update-modificar-documents">7. UPDATE: Modificar Documents</h2>
+<p>La classe <code>Updates</code> proporciona mètodes per construir les operacions de modificació:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-10-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-10-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-10-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-10-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-10-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-10-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-10-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-10-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-10-10">10</a></span>
+<span class="normal"><a href="#__codelineno-10-11">11</a></span>
+<span class="normal"><a href="#__codelineno-10-12">12</a></span>
+<span class="normal"><a href="#__codelineno-10-13">13</a></span>
+<span class="normal"><a href="#__codelineno-10-14">14</a></span>
+<span class="normal"><a href="#__codelineno-10-15">15</a></span>
+<span class="normal"><a href="#__codelineno-10-16">16</a></span>
+<span class="normal"><a href="#__codelineno-10-17">17</a></span>
+<span class="normal"><a href="#__codelineno-10-18">18</a></span>
+<span class="normal"><a href="#__codelineno-10-19">19</a></span>
+<span class="normal"><a href="#__codelineno-10-20">20</a></span>
+<span class="normal"><a href="#__codelineno-10-21">21</a></span>
+<span class="normal"><a href="#__codelineno-10-22">22</a></span>
+<span class="normal"><a href="#__codelineno-10-23">23</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.Updates</span><span class="p">;</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.Filters</span><span class="p">;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="c1">// Actualitzar un camp simple: canviar el cicle</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5"></a><span class="n">col</span><span class="p">.</span><span class="na">updateOne</span><span class="p">(</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6"></a><span class="w">    </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ana Pérez&quot;</span><span class="p">),</span><span class="w">    </span><span class="c1">// filtre: quin document</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7"></a><span class="w">    </span><span class="n">Updates</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;cicle&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;DAW&quot;</span><span class="p">)</span><span class="w">        </span><span class="c1">// operació: quin canvi</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8"></a><span class="p">);</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9"></a>
+<a id="__codelineno-10-10" name="__codelineno-10-10"></a><span class="c1">// Incrementar un valor numèric: edat + 1</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11"></a><span class="n">col</span><span class="p">.</span><span class="na">updateOne</span><span class="p">(</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12"></a><span class="w">    </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Luis Martínez&quot;</span><span class="p">),</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13"></a><span class="w">    </span><span class="n">Updates</span><span class="p">.</span><span class="na">inc</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14"></a><span class="p">);</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15"></a>
+<a id="__codelineno-10-16" name="__codelineno-10-16"></a><span class="c1">// Combinar múltiples canvis en un sol update</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17"></a><span class="n">col</span><span class="p">.</span><span class="na">updateOne</span><span class="p">(</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18"></a><span class="w">    </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;María López&quot;</span><span class="p">),</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19"></a><span class="w">    </span><span class="n">Updates</span><span class="p">.</span><span class="na">combine</span><span class="p">(</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20"></a><span class="w">        </span><span class="n">Updates</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">),</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21"></a><span class="w">        </span><span class="n">Updates</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;contacte.email&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;maria.lopez.nou@uni.edu&quot;</span><span class="p">)</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22"></a><span class="w">    </span><span class="p">)</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23"></a><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="71-exemple-actualitzar-la-nota-dun-modul">7.1. Exemple: Actualitzar la nota d'un mòdul</h3>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-11-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-11-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-11-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-11-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-11-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-11-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-11-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-11-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-11-10">10</a></span>
+<span class="normal"><a href="#__codelineno-11-11">11</a></span>
+<span class="normal"><a href="#__codelineno-11-12">12</a></span>
+<span class="normal"><a href="#__codelineno-11-13">13</a></span>
+<span class="normal"><a href="#__codelineno-11-14">14</a></span>
+<span class="normal"><a href="#__codelineno-11-15">15</a></span>
+<span class="normal"><a href="#__codelineno-11-16">16</a></span>
+<span class="normal"><a href="#__codelineno-11-17">17</a></span>
+<span class="normal"><a href="#__codelineno-11-18">18</a></span>
+<span class="normal"><a href="#__codelineno-11-19">19</a></span>
+<span class="normal"><a href="#__codelineno-11-20">20</a></span>
+<span class="normal"><a href="#__codelineno-11-21">21</a></span>
+<span class="normal"><a href="#__codelineno-11-22">22</a></span>
+<span class="normal"><a href="#__codelineno-11-23">23</a></span>
+<span class="normal"><a href="#__codelineno-11-24">24</a></span>
+<span class="normal"><a href="#__codelineno-11-25">25</a></span>
+<span class="normal"><a href="#__codelineno-11-26">26</a></span>
+<span class="normal"><a href="#__codelineno-11-27">27</a></span>
+<span class="normal"><a href="#__codelineno-11-28">28</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.*</span><span class="p">;</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.*</span><span class="p">;</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.Document</span><span class="p">;</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.conversions.Bson</span><span class="p">;</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ActualitzarNota</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8"></a>
+<a id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11"></a><span class="w">            </span><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">)</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12"></a><span class="w">                                                  </span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-13" name="__codelineno-11-13"></a>
+<a id="__codelineno-11-14" name="__codelineno-11-14"></a><span class="w">            </span><span class="c1">// Filtre: volem modificar &quot;Ana Pérez&quot;</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15"></a><span class="w">            </span><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ana Pérez&quot;</span><span class="p">);</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16"></a>
+<a id="__codelineno-11-17" name="__codelineno-11-17"></a><span class="w">            </span><span class="c1">// Operació: canviar la nota (double) del primer mòdul de l&#39;array</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18"></a><span class="w">            </span><span class="c1">// La notació &quot;moduls.0.nota&quot; accedeix a l&#39;índex 0 de l&#39;array</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19"></a><span class="w">            </span><span class="n">Bson</span><span class="w"> </span><span class="n">update</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Updates</span><span class="p">.</span><span class="na">set</span><span class="p">(</span><span class="s">&quot;moduls.0.nota&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">9.5</span><span class="p">);</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21"></a><span class="w">            </span><span class="c1">// updateOne() modifica el primer document que coincideix amb el filtre</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22"></a><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">resultat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">updateOne</span><span class="p">(</span><span class="n">filtre</span><span class="p">,</span><span class="w"> </span><span class="n">update</span><span class="p">);</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23"></a>
+<a id="__codelineno-11-24" name="__codelineno-11-24"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Documents trobats: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">resultat</span><span class="p">.</span><span class="na">getMatchedCount</span><span class="p">());</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Documents modificats: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">resultat</span><span class="p">.</span><span class="na">getModifiedCount</span><span class="p">());</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="8-delete-eliminar-documents">8. DELETE: Eliminar Documents</h2>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-12-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-12-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-12-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-12-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-12-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-12-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-12-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-12-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-12-10">10</a></span>
+<span class="normal"><a href="#__codelineno-12-11">11</a></span>
+<span class="normal"><a href="#__codelineno-12-12">12</a></span>
+<span class="normal"><a href="#__codelineno-12-13">13</a></span>
+<span class="normal"><a href="#__codelineno-12-14">14</a></span>
+<span class="normal"><a href="#__codelineno-12-15">15</a></span>
+<span class="normal"><a href="#__codelineno-12-16">16</a></span>
+<span class="normal"><a href="#__codelineno-12-17">17</a></span>
+<span class="normal"><a href="#__codelineno-12-18">18</a></span>
+<span class="normal"><a href="#__codelineno-12-19">19</a></span>
+<span class="normal"><a href="#__codelineno-12-20">20</a></span>
+<span class="normal"><a href="#__codelineno-12-21">21</a></span>
+<span class="normal"><a href="#__codelineno-12-22">22</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.*</span><span class="p">;</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kn">import</span><span class="w"> </span><span class="nn">com.mongodb.client.model.Filters</span><span class="p">;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">org.bson.conversions.Bson</span><span class="p">;</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4"></a>
+<a id="__codelineno-12-5" name="__codelineno-12-5"></a><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">EliminarEstudiant</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6"></a><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span><span class="w"> </span><span class="n">args</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8"></a><span class="w">        </span><span class="k">try</span><span class="w"> </span><span class="p">(</span><span class="n">MongoClient</span><span class="w"> </span><span class="n">client</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MongoClients</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="s">&quot;mongodb://localhost:27017&quot;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9"></a>
+<a id="__codelineno-12-10" name="__codelineno-12-10"></a><span class="w">            </span><span class="n">MongoCollection</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">client</span><span class="p">.</span><span class="na">getDatabase</span><span class="p">(</span><span class="s">&quot;escola&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11"></a><span class="w">                                                  </span><span class="p">.</span><span class="na">getCollection</span><span class="p">(</span><span class="s">&quot;estudiants&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12"></a>
+<a id="__codelineno-12-13" name="__codelineno-12-13"></a><span class="w">            </span><span class="c1">// Eliminem l&#39;estudiant amb nom &quot;Pau Martí&quot;</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14"></a><span class="w">            </span><span class="n">Bson</span><span class="w"> </span><span class="n">filtre</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Pau Martí&quot;</span><span class="p">);</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15"></a>
+<a id="__codelineno-12-16" name="__codelineno-12-16"></a><span class="w">            </span><span class="c1">// deleteOne() elimina el primer document que coincideix</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17"></a><span class="w">            </span><span class="kd">var</span><span class="w"> </span><span class="n">resultat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">deleteOne</span><span class="p">(</span><span class="n">filtre</span><span class="p">);</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18"></a>
+<a id="__codelineno-12-19" name="__codelineno-12-19"></a><span class="w">            </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Documents eliminats: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">resultat</span><span class="p">.</span><span class="na">getDeletedCount</span><span class="p">());</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>Per eliminar tots els documents que compleixen un criteri:</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span>
+<span class="normal"><a href="#__codelineno-13-2">2</a></span>
+<span class="normal"><a href="#__codelineno-13-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="c1">// deleteMany() elimina tots els documents que coincideixen</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="kd">var</span><span class="w"> </span><span class="n">resultat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">deleteMany</span><span class="p">(</span><span class="n">Filters</span><span class="p">.</span><span class="na">lt</span><span class="p">(</span><span class="s">&quot;edat&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">18</span><span class="p">));</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Eliminats: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">resultat</span><span class="p">.</span><span class="na">getDeletedCount</span><span class="p">());</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="9-accedir-a-documents-imbricats-i-arrays">9. Accedir a Documents Imbricats i Arrays</h2>
+<p>Una de les característiques de MongoDB és poder tenir dades estructurades dins el propi document.</p>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">Java</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-14-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-14-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-14-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-14-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-14-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-14-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-14-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-14-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-14-10">10</a></span>
+<span class="normal"><a href="#__codelineno-14-11">11</a></span>
+<span class="normal"><a href="#__codelineno-14-12">12</a></span>
+<span class="normal"><a href="#__codelineno-14-13">13</a></span>
+<span class="normal"><a href="#__codelineno-14-14">14</a></span>
+<span class="normal"><a href="#__codelineno-14-15">15</a></span>
+<span class="normal"><a href="#__codelineno-14-16">16</a></span>
+<span class="normal"><a href="#__codelineno-14-17">17</a></span>
+<span class="normal"><a href="#__codelineno-14-18">18</a></span>
+<span class="normal"><a href="#__codelineno-14-19">19</a></span>
+<span class="normal"><a href="#__codelineno-14-20">20</a></span>
+<span class="normal"><a href="#__codelineno-14-21">21</a></span>
+<span class="normal"><a href="#__codelineno-14-22">22</a></span>
+<span class="normal"><a href="#__codelineno-14-23">23</a></span>
+<span class="normal"><a href="#__codelineno-14-24">24</a></span>
+<span class="normal"><a href="#__codelineno-14-25">25</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">Document</span><span class="w"> </span><span class="n">doc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">col</span><span class="p">.</span><span class="na">find</span><span class="p">(</span><span class="n">Filters</span><span class="p">.</span><span class="na">eq</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ana Pérez&quot;</span><span class="p">)).</span><span class="na">first</span><span class="p">();</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">doc</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">null</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="w">    </span><span class="c1">// Camp simple</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">nom</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">    </span><span class="c1">// Document imbricat: el camp &#39;contacte&#39; és un Document</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="w">    </span><span class="n">Document</span><span class="w"> </span><span class="n">contacte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="s">&quot;contacte&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Document</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9"></a><span class="w">    </span><span class="n">String</span><span class="w"> </span><span class="n">email</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contacte</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;email&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-10" name="__codelineno-14-10"></a>
+<a id="__codelineno-14-11" name="__codelineno-14-11"></a><span class="w">    </span><span class="c1">// Array de documents: el camp &#39;moduls&#39; és una List&lt;Document&gt;</span>
+<a id="__codelineno-14-12" name="__codelineno-14-12"></a><span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Document</span><span class="o">&gt;</span><span class="w"> </span><span class="n">moduls</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">doc</span><span class="p">.</span><span class="na">getList</span><span class="p">(</span><span class="s">&quot;moduls&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">Document</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<a id="__codelineno-14-13" name="__codelineno-14-13"></a>
+<a id="__codelineno-14-14" name="__codelineno-14-14"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Estudiant: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">nom</span><span class="p">);</span>
+<a id="__codelineno-14-15" name="__codelineno-14-15"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Email: &quot;</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">email</span><span class="p">);</span>
+<a id="__codelineno-14-16" name="__codelineno-14-16"></a><span class="w">    </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Mòduls:&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-17" name="__codelineno-14-17"></a>
+<a id="__codelineno-14-18" name="__codelineno-14-18"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">Document</span><span class="w"> </span><span class="n">modul</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="n">moduls</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-19" name="__codelineno-14-19"></a><span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">nomModul</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">modul</span><span class="p">.</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;nom&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-20" name="__codelineno-14-20"></a><span class="w">        </span><span class="kt">int</span><span class="w">    </span><span class="n">credits</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">modul</span><span class="p">.</span><span class="na">getInteger</span><span class="p">(</span><span class="s">&quot;credits&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-21" name="__codelineno-14-21"></a><span class="w">        </span><span class="c1">// La nota és un double (0.0 - 10.0)</span>
+<a id="__codelineno-14-22" name="__codelineno-14-22"></a><span class="w">        </span><span class="kt">double</span><span class="w"> </span><span class="n">nota</span><span class="w">     </span><span class="o">=</span><span class="w"> </span><span class="n">modul</span><span class="p">.</span><span class="na">getDouble</span><span class="p">(</span><span class="s">&quot;nota&quot;</span><span class="p">);</span>
+<a id="__codelineno-14-23" name="__codelineno-14-23"></a><span class="w">        </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">printf</span><span class="p">(</span><span class="s">&quot;  - %-40s (%d crèdits): %.1f%n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">nomModul</span><span class="p">,</span><span class="w"> </span><span class="n">credits</span><span class="p">,</span><span class="w"> </span><span class="n">nota</span><span class="p">);</span>
+<a id="__codelineno-14-24" name="__codelineno-14-24"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-14-25" name="__codelineno-14-25"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">getDouble() vs getInteger()</p>
+<p>Les notes s'emmagatzemen com a <code>double</code> al document JSON (<code>8.5</code>, <code>4.2</code>...).
+Per llegir-les correctament cal usar <code>modul.getDouble("nota")</code> i no <code>getInteger()</code>,
+ja que aquest últim retornaria <code>null</code> per a valors amb decimals.</p>
+</div>
+<h2 id="10-comparativa-final-mysql-vs-mongodb">10. Comparativa Final: MySQL vs MongoDB</h2>
+<table>
+<thead>
+<tr>
+<th>Aspecte</th>
+<th>MySQL (JDBC)</th>
+<th>MongoDB (Driver)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connexió</strong></td>
+<td><code>DriverManager.getConnection()</code></td>
+<td><code>MongoClients.create()</code></td>
+</tr>
+<tr>
+<td><strong>Consulta</strong></td>
+<td><code>executeQuery()</code> → <code>ResultSet</code></td>
+<td><code>find()</code> → <code>MongoCursor</code></td>
+</tr>
+<tr>
+<td><strong>Filtre</strong></td>
+<td>Codi SQL (<code>WHERE ...</code>)</td>
+<td><code>Filters.eq(...)</code></td>
+</tr>
+<tr>
+<td><strong>Inserció</strong></td>
+<td><code>executeUpdate()</code> INSERT</td>
+<td><code>insertOne()</code> / <code>insertMany()</code></td>
+</tr>
+<tr>
+<td><strong>Modificació</strong></td>
+<td><code>executeUpdate()</code> UPDATE</td>
+<td><code>updateOne()</code> / <code>updateMany()</code></td>
+</tr>
+<tr>
+<td><strong>Eliminació</strong></td>
+<td><code>executeUpdate()</code> DELETE</td>
+<td><code>deleteOne()</code> / <code>deleteMany()</code></td>
+</tr>
+<tr>
+<td><strong>Esquema</strong></td>
+<td>Rígid (definit a CREATE TABLE)</td>
+<td>Flexible (cada doc pot variar)</td>
+</tr>
+<tr>
+<td><strong>Relacions</strong></td>
+<td>Claus forànies + JOIN</td>
+<td>Documents imbricats o <code>$lookup</code></td>
+</tr>
+<tr>
+<td><strong>Excepcions</strong></td>
+<td><code>SQLException</code></td>
+<td><code>MongoException</code></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition tip">
+<p class="admonition-title">Quan usar cadascun?</p>
+<ul>
+<li><strong>MySQL</strong>: Dades estructurades amb relacions clares, moltes consultes complexes, necessitat de transaccions ACID.</li>
+<li><strong>MongoDB</strong>: Dades flexibles o variables, documents complexos amb arrays i sub-documents, prototipat ràpid.</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Programació 1DAM/DAWsp by Abdó Garcia & Paco Galera & Joan Gerard Camarena es troba sota llicència CC BY-NC-SA 4.0 - <a href="#__consent">Canvia la configuració de les cookies</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="mailto:fj.galerataberner@edu.gva.es" target="_blank" rel="noopener" title="Contacte" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M536.4-26.3c9.8-3.5 20.6-1 28 6.3s9.8 18.2 6.3 28l-178 496.9c-5 13.9-18.1 23.1-32.8 23.1-14.2 0-27-8.6-32.3-21.7l-64.2-158c-4.5-11-2.5-23.6 5.2-32.6l94.5-112.4c5.1-6.1 4.7-15-.9-20.6s-14.6-6-20.6-.9l-112.4 94.3c-9.1 7.6-21.6 9.6-32.6 5.2L38.1 216.8c-13.1-5.3-21.7-18.1-21.7-32.3 0-14.7 9.2-27.8 23.1-32.8z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+
+  
+
+
+<h4>Consentiment de Cookies</h4>
+<p>Utilitzem cookies per reconèixer les vostres visites i preferències repetides, així com per mesurar l'eficàcia de la nostra documentació i si els usuaris troben el que estan cercant. Amb el vostre consentiment, ens esteu ajudant a millorar la nostra documentació.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+    
+      
+        
+  
+  
+    
+    
+  
+  <li class="task-list-item">
+    <label class="task-list-control">
+      <input type="checkbox" name="analytics" checked>
+      <span class="task-list-indicator"></span>
+      Google Analytics
+    </label>
+  </li>
+
+      
+    
+    
+      
+    
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accepta</button>
+    
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Gestiona la configuració</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>var consent=__md_get("__consent");if(consent)for(var input of document.forms.consent.elements)input.name&&(input.checked=consent[input.name]||!1);else"file:"!==location.protocol&&setTimeout((function(){document.querySelector("[data-md-component=consent]").hidden=!1}),250);var form=document.forms.consent;for(var action of["submit","reset"])form.addEventListener(action,(function(e){if(e.preventDefault(),"reset"===e.type)for(var n of document.forms.consent.elements)n.name&&(n.checked=!1);__md_set("__consent",Object.fromEntries(Array.from(new FormData(form).keys()).map((function(e){return[e,!0]})))),location.hash="",location.reload()}))</script>
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["content.code.copy", "content.code.annotate", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copiat al porta-retalls", "clipboard.copy": "C\u00f2pia al porta-retalls", "search.result.more.one": "1 m\u00e9s en aquesta p\u00e0gina", "search.result.more.other": "# m\u00e9s en aquesta p\u00e0gina", "search.result.none": "Cap document coincideix", "search.result.one": "1 document coincident", "search.result.other": "# documents coincidents", "search.result.placeholder": "Escriu per a comen\u00e7ar a cercar", "search.result.term.missing": "Desaparegut", "select.version": "Selecciona la versi\u00f3"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

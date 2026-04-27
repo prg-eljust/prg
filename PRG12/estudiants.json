@@ -1,0 +1,241 @@
+[
+  {
+    "nom": "Ana Pérez",
+    "edat": 22,
+    "cicle": "Enginyeria de Sistemes",
+    "contacte": { "email": "ana.perez@uni.edu", "telefon": "555-1234" },
+    "moduls": [
+      { "nom": "Bases de Dades", "credits": 4, "nota": 8.5 },
+      { "nom": "Programació Avançada", "credits": 5, "nota": 9.0 },
+      { "nom": "Xarxes d'Ordinadors", "credits": 4, "nota": 7.8 }
+    ]
+  },
+  {
+    "nom": "Luis Martínez",
+    "edat": 20,
+    "cicle": "Administració d'Empreses",
+    "contacte": { "email": "luis.martinez@uni.edu", "telefon": "555-5678" },
+    "moduls": [
+      { "nom": "Comptabilitat General", "credits": 3, "nota": 4.8 },
+      { "nom": "Economia", "credits": 4, "nota": 8.0 },
+      { "nom": "Estadística Empresarial", "credits": 3, "nota": 3.5 },
+      { "nom": "Màrqueting", "credits": 3, "nota": 8.8 }
+    ]
+  },
+  {
+    "nom": "María López",
+    "edat": 23,
+    "cicle": "Enginyeria Civil",
+    "contacte": { "email": "maria.lopez@uni.edu", "telefon": "555-9876" },
+    "moduls": [
+      { "nom": "Resistència de Materials", "credits": 5, "nota": 9.5 },
+      { "nom": "Mecànica de Sòls", "credits": 4, "nota": 8.8 },
+      { "nom": "Hidràulica", "credits": 4, "nota": 9.1 },
+      { "nom": "Topografia", "credits": 3, "nota": 8.4 },
+      { "nom": "Disseny Estructural", "credits": 5, "nota": 8.9 }
+    ]
+  },
+  {
+    "nom": "Carlos Rodríguez",
+    "edat": 21,
+    "cicle": "Enginyeria de Sistemes",
+    "contacte": { "email": "carlos.rodriguez@uni.edu", "telefon": "555-2345" },
+    "moduls": [
+      { "nom": "Programació Orientada a Objectes", "credits": 5, "nota": 9.2 },
+      { "nom": "Bases de Dades", "credits": 4, "nota": 8.7 },
+      { "nom": "Algorismes i Estructures de Dades", "credits": 5, "nota": 4.2 },
+      { "nom": "Sistemes Operatius", "credits": 4, "nota": 8.1 }
+    ]
+  },
+  {
+    "nom": "Laura Sánchez",
+    "edat": 24,
+    "cicle": "Medicina",
+    "contacte": { "email": "laura.sanchez@uni.edu", "telefon": "555-3456" },
+    "moduls": [
+      { "nom": "Anatomia Humana", "credits": 6, "nota": 8.8 },
+      { "nom": "Fisiologia", "credits": 6, "nota": 8.2 },
+      { "nom": "Bioquímica", "credits": 5, "nota": 7.9 },
+      { "nom": "Farmacologia", "credits": 5, "nota": 8.5 },
+      { "nom": "Patologia General", "credits": 5, "nota": 9.0 }
+    ]
+  },
+  {
+    "nom": "Pedro García",
+    "edat": 19,
+    "cicle": "Administració d'Empreses",
+    "contacte": { "email": "pedro.garcia@uni.edu", "telefon": "555-4567" },
+    "moduls": [
+      { "nom": "Comptabilitat General", "credits": 3, "nota": 3.9 },
+      { "nom": "Introducció a l'Economia", "credits": 4, "nota": 7.3 }
+    ]
+  },
+  {
+    "nom": "Sofía Torres",
+    "edat": 22,
+    "cicle": "Psicologia",
+    "contacte": { "email": "sofia.torres@uni.edu", "telefon": "555-5679" },
+    "moduls": [
+      { "nom": "Psicologia del Desenvolupament", "credits": 4, "nota": 9.1 },
+      { "nom": "Neurociència Cognitiva", "credits": 5, "nota": 8.7 },
+      { "nom": "Psicopatologia", "credits": 4, "nota": 9.3 }
+    ]
+  },
+  {
+    "nom": "Diego Ramírez",
+    "edat": 25,
+    "cicle": "Enginyeria Civil",
+    "contacte": { "email": "diego.ramirez@uni.edu", "telefon": "555-6789" },
+    "moduls": [
+      { "nom": "Disseny Estructural", "credits": 5, "nota": 7.6 },
+      { "nom": "Gestió de Projectes", "credits": 4, "nota": 8.2 },
+      { "nom": "Formigó Armat", "credits": 5, "nota": 4.5 },
+      { "nom": "Instal·lacions en Edificis", "credits": 3, "nota": 8.5 }
+    ]
+  },
+  {
+    "nom": "Valentina Morales",
+    "edat": 20,
+    "cicle": "Medicina",
+    "contacte": { "email": "valentina.morales@uni.edu", "telefon": "555-7890" },
+    "moduls": [
+      { "nom": "Anatomia Humana", "credits": 6, "nota": 9.4 },
+      { "nom": "Histologia", "credits": 4, "nota": 9.0 },
+      { "nom": "Bioquímica", "credits": 5, "nota": 8.8 },
+      { "nom": "Embriologia", "credits": 3, "nota": 9.2 },
+      { "nom": "Fisiologia", "credits": 6, "nota": 8.6 }
+    ]
+  },
+  {
+    "nom": "Andrés Jiménez",
+    "edat": 23,
+    "cicle": "Enginyeria de Sistemes",
+    "contacte": { "email": "andres.jimenez@uni.edu", "telefon": "555-8901" },
+    "moduls": [
+      { "nom": "Xarxes d'Ordinadors", "credits": 4, "nota": 8.3 },
+      { "nom": "Seguretat Informàtica", "credits": 4, "nota": 8.8 },
+      { "nom": "Sistemes Distribuïts", "credits": 5, "nota": 3.8 }
+    ]
+  },
+  {
+    "nom": "Camila Vargas",
+    "edat": 21,
+    "cicle": "Psicologia",
+    "contacte": { "email": "camila.vargas@uni.edu", "telefon": "555-9012" },
+    "moduls": [
+      { "nom": "Psicologia Social", "credits": 4, "nota": 8.9 },
+      { "nom": "Tècniques d'Avaluació Psicològica", "credits": 5, "nota": 8.5 },
+      { "nom": "Psicologia del Treball", "credits": 4, "nota": 7.8 },
+      { "nom": "Psicopatologia", "credits": 4, "nota": 9.1 }
+    ]
+  },
+  {
+    "nom": "Fernando Castro",
+    "edat": 26,
+    "cicle": "Dret",
+    "contacte": { "email": "fernando.castro@uni.edu", "telefon": "555-0123" },
+    "moduls": [
+      { "nom": "Dret Civil", "credits": 5, "nota": 7.7 },
+      { "nom": "Dret Penal", "credits": 5, "nota": 8.2 },
+      { "nom": "Dret Constitucional", "credits": 4, "nota": 8.6 },
+      { "nom": "Dret Mercantil", "credits": 4, "nota": 8.0 },
+      { "nom": "Dret Internacional", "credits": 3, "nota": 7.4 }
+    ]
+  },
+  {
+    "nom": "Isabella Flores",
+    "edat": 20,
+    "cicle": "Administració d'Empreses",
+    "contacte": { "email": "isabella.flores@uni.edu", "telefon": "555-1235" },
+    "moduls": [
+      { "nom": "Fonaments d'Administració", "credits": 3, "nota": 8.4 },
+      { "nom": "Comptabilitat General", "credits": 3, "nota": 7.9 },
+      { "nom": "Matemàtiques Financeres", "credits": 4, "nota": 4.0 }
+    ]
+  },
+  {
+    "nom": "Mateo Herrera",
+    "edat": 22,
+    "cicle": "Dret",
+    "contacte": { "email": "mateo.herrera@uni.edu", "telefon": "555-2346" },
+    "moduls": [
+      { "nom": "Dret Civil", "credits": 5, "nota": 9.0 },
+      { "nom": "Dret Romà", "credits": 3, "nota": 8.8 },
+      { "nom": "Teoria del Dret", "credits": 4, "nota": 9.2 },
+      { "nom": "Dret Penal", "credits": 5, "nota": 8.5 }
+    ]
+  },
+  {
+    "nom": "Lucía Mendoza",
+    "edat": 24,
+    "cicle": "Enginyeria Civil",
+    "contacte": { "email": "lucia.mendoza@uni.edu", "telefon": "555-3457" },
+    "moduls": [
+      { "nom": "Topografia", "credits": 3, "nota": 8.7 },
+      { "nom": "Hidràulica", "credits": 4, "nota": 8.3 },
+      { "nom": "Planificació Urbana", "credits": 4, "nota": 9.0 },
+      { "nom": "Gestió de Projectes", "credits": 4, "nota": 8.8 },
+      { "nom": "Formigó Armat", "credits": 5, "nota": 8.2 }
+    ]
+  },
+  {
+    "nom": "Sebastián Ortiz",
+    "edat": 21,
+    "cicle": "Psicologia",
+    "contacte": { "email": "sebastian.ortiz@uni.edu", "telefon": "555-4568" },
+    "moduls": [
+      { "nom": "Psicologia del Desenvolupament", "credits": 4, "nota": 7.6 },
+      { "nom": "Psicologia Clínica", "credits": 5, "nota": 8.1 },
+      { "nom": "Estadística Aplicada a la Psicologia", "credits": 4, "nota": 3.2 }
+    ]
+  },
+  {
+    "nom": "Gabriela Ruiz",
+    "edat": 23,
+    "cicle": "Medicina",
+    "contacte": { "email": "gabriela.ruiz@uni.edu", "telefon": "555-5680" },
+    "moduls": [
+      { "nom": "Patologia General", "credits": 5, "nota": 8.8 },
+      { "nom": "Microbiologia", "credits": 4, "nota": 9.2 },
+      { "nom": "Farmacologia", "credits": 5, "nota": 8.4 },
+      { "nom": "Medicina Interna", "credits": 6, "nota": 8.7 }
+    ]
+  },
+  {
+    "nom": "Nicolás Reyes",
+    "edat": 25,
+    "cicle": "Dret",
+    "contacte": { "email": "nicolas.reyes@uni.edu", "telefon": "555-6790" },
+    "moduls": [
+      { "nom": "Dret Constitucional", "credits": 4, "nota": 7.9 },
+      { "nom": "Dret Administratiu", "credits": 4, "nota": 8.3 },
+      { "nom": "Dret Laboral", "credits": 4, "nota": 4.8 },
+      { "nom": "Dret Mercantil", "credits": 4, "nota": 8.1 },
+      { "nom": "Dret Internacional", "credits": 3, "nota": 7.5 }
+    ]
+  },
+  {
+    "nom": "Paula Aguilar",
+    "edat": 19,
+    "cicle": "Enginyeria de Sistemes",
+    "contacte": { "email": "paula.aguilar@uni.edu", "telefon": "555-7891" },
+    "moduls": [
+      { "nom": "Fonaments de Programació", "credits": 5, "nota": 9.6 },
+      { "nom": "Càlcul Diferencial", "credits": 4, "nota": 8.9 },
+      { "nom": "Àlgebra Lineal", "credits": 4, "nota": 9.1 }
+    ]
+  },
+  {
+    "nom": "Tomás Navarro",
+    "edat": 22,
+    "cicle": "Administració d'Empreses",
+    "contacte": { "email": "tomas.navarro@uni.edu", "telefon": "555-8902" },
+    "moduls": [
+      { "nom": "Gestió de Recursos Humans", "credits": 3, "nota": 8.5 },
+      { "nom": "Màrqueting", "credits": 3, "nota": 9.0 },
+      { "nom": "Finances Corporatives", "credits": 4, "nota": 8.2 },
+      { "nom": "Economia", "credits": 4, "nota": 7.8 },
+      { "nom": "Estadística Empresarial", "credits": 3, "nota": 7.4 }
+    ]
+  }
+]
